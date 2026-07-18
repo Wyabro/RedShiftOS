@@ -46,10 +46,18 @@ RedShiftOS/
 │   ├── Lessons-Learned.md
 │   └── Decision-Framework.md
 ├── PROCESS/
-│   └── Feature-Lifecycle.md
+│   ├── Feature-Lifecycle.md
+│   └── Session-Handoffs.md
+├── AI/
+│   ├── Model-Routing.md
+│   ├── Triage-and-Recovery.md
+│   └── Prompt-Library.md
+├── REFERENCE/
+│   └── Assets-and-Provenance.md
 └── GAME_TEMPLATE/       ← copy into a new game repo to wire it to this OS
     ├── AGENTS.md
     ├── PROJECT.md
+    ├── Tasks.md
     └── README.md
 ```
 
@@ -62,8 +70,8 @@ and that's the signal to fix the process, not to skip it.
 
 ---
 
-*Status: v0.1 foundation complete + agent wiring in place. The Manifesto is in Wyatt's voice
-(rules-on-the-wall); Lessons Learned is seeded (17 entries) and grows as games ship — the
-head-only lessons accrete during the build, not up front. `AGENTS.md` + `GAME_TEMPLATE/` wire
-agents to the OS. Remaining folders (AI, TEMPLATES, POSTMORTEMS) earn their place when Game #2
-gives them real content to hold.*
+*Status: v0.1 foundation complete, agent wiring in place, and the best of the ai-builder-
+playbook folded in — verification gates + proof ladder, the agent working-loop, an `AI/` layer
+(model routing, triage & recovery, prompt library), and asset provenance. The Manifesto is in
+Wyatt's voice; Lessons Learned is seeded (17) and grows as games ship. Remaining folders
+(TEMPLATES, POSTMORTEMS) earn their place when Game #2 gives them real content.*

@@ -25,6 +25,14 @@ The Manifesto and Lessons Learned are **binding** — they override your default
 lesson or decision names a file, flag, or command, verify it still exists before relying on
 it (these are point-in-time notes, not live state).
 
+**Load when the task calls for it** (pointers, not inlined — this file stays dense):
+
+- `AI/Model-Routing.md` — which model for which task; context & cost discipline; velocity debt.
+- `AI/Triage-and-Recovery.md` — when an agent is stuck: the escalation ladder + stopping rule.
+- `AI/Prompt-Library.md` — copy-paste prompts for planning, review, diagnosis, verification.
+- `PROCESS/Session-Handoffs.md` — the three-line handoff that ends every session.
+- `REFERENCE/Assets-and-Provenance.md` — asset log + provenance discipline.
+
 ---
 
 ## If you're building a GAME with this OS
@@ -53,11 +61,33 @@ it (these are point-in-time notes, not live state).
 
 ---
 
+## The working loop
+
+Every non-trivial change follows this loop — it's what keeps agents consistent:
+
+**Explore → Plan → Approve → Implement → Diff-review → Commit → Validate → Handoff.**
+
+- **Explore** the code and report risks — no edits yet.
+- **Plan** in writing: files to touch, approach, risks, how it'll be verified.
+- **Human approves the plan.** This checkpoint is the highest-leverage gate — it's cheaper to
+  fix a plan than a diff.
+- **Implement** the plan, targeted edits only.
+- **Diff-review:** the human reads the diff. For non-trivial work, a *fresh-context*
+  writer-reviewer checks the diff + plan for scope creep — the agent that wrote the code has
+  already convinced itself it's fine.
+- **Commit** as a save-state (checkpoint before risky runs; feature branches — Lesson L-11).
+- **Validate** against both merge gates + the proof ladder (`PROCESS/Feature-Lifecycle.md`).
+- **Handoff** (`PROCESS/Session-Handoffs.md`) so the next session doesn't start from zero.
+
+Never go straight from request to code.
+
 ## Standing behavioral rules (any agent, any repo under this OS)
 
 The Manifesto, made agent-actionable:
 
-- **One feature or bug at a time.** Explain the plan before broad edits.
+- **One feature or bug at a time** — the single top task in `Tasks.md`. The human sets
+  priority by editing that file; don't self-assign what to work on. Explain the plan before
+  broad edits.
 - **Targeted edits only.** Don't rewrite whole files or refactor architecture unless the plan
   says so. Don't touch unrelated files "while you're here."
 - **No new dependencies** without written justification and human approval (Manifesto §5).

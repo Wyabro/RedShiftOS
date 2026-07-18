@@ -30,7 +30,8 @@ Every feature runs through the Feature Lifecycle — no skipping. Prove it befor
 
 ## Non-negotiables
 
-- One feature or bug at a time; explain the plan before broad edits.
+- Work only the single top task in `Tasks.md` (the human sets priority); explain the plan
+  before broad edits.
 - Targeted edits only — no whole-file rewrites or refactors unless the plan says so; don't
   touch unrelated files.
 - No new dependencies without written justification + approval.

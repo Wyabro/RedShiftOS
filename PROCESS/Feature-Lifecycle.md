@@ -58,6 +58,49 @@ A feature does not advance until its current stage's gate is met:
 | QA | Verified in the deployed/shipped artifact, not just locally. |
 | Postmortem | Lessons captured; OS docs updated to match reality. |
 
+## Say the feeling before you build
+
+At Player Value / Design, describe the end result in human terms — the *feeling* and the
+destination — before anyone writes code. "Add a menu" is an implementation task; "the title
+screen should feel like a small arcade game, not a corporate app — big centered title,
+one Start + one Settings, Enter-to-start, works on laptop and phone, don't build Settings
+yet" is a destination. A destination gives the agent a target and gives you a way to reject
+output that misses the feel without arguing about code. (Prompt in
+[AI/Prompt-Library](../AI/Prompt-Library.md).)
+
+## Killing a prototype is a valid outcome
+
+A prototype's job is to answer a question: *is this fun / is it worth building?* If the
+answer is no, **killing it is success, not failure** — it did its job cheaply. The expensive
+mistake is sinking production work into a loop that never earned it. Kill it when: it isn't
+fun rough and you can't see why it would be finished; it fights a design pillar; or the cost
+to make it good keeps climbing every playtest. Log the kill (Decision Framework) so the
+"why" survives.
+
+## The merge gate: two independent gates
+
+Nothing merges until it passes **both** gates. "The agent said it's good" is not a reason to
+merge.
+
+- **Gate 1 — does it actually work (subjective).** The end-to-end flow works with no
+  narration or "you have to do X first," zero console errors, real error handling (not just
+  the happy path), and it looks/feels right. Watch for red-flag phrases: *"it works if you
+  just…"*, *"it's basically done"*, *"it's only a prototype"* three weeks in.
+- **Gate 2 — is it sound (deterministic).** The human **reads the diff** (non-negotiable),
+  tests pass, no unapproved dependencies snuck in, and no secrets/keys are in the change.
+
+**Verify in the shipped artifact — the proof ladder** (strongest to weakest):
+
+1. A real person using the live product.
+2. The deployed build on the target device, confirmed by a **production marker** — add a
+   unique string to the change, deploy, fetch the live URL *with no-cache headers*, and grep
+   the response for the marker before you test the feature.
+3. A local build you actually ran.
+4. "The AI says it works." ← not proof.
+
+Local files don't count. Build folders don't count. A browser tab from ten minutes ago
+doesn't count. (This ladder is Lesson L-07 made concrete.)
+
 ## Scaling the pipeline
 
 The pipeline is fixed; its *weight* scales with the feature. A one-line tuning tweak runs

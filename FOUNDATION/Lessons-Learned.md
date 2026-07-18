@@ -168,6 +168,9 @@ why*, not just the* what.
   session's changes stomp another's.
 - **Rule:** Commit the moment a unit of work is verified, and stage surgically — name the
   files you mean to commit, never blanket-add. Treat a co-edited file as a merge point.
+  Checkpoint-commit *before* any risky agent run, and keep agent work on a feature branch — so
+  if it makes a mess you discard the branch instead of debugging in place. Git is your primary
+  safety net against agent mistakes, not just version control.
 - **Example:** Recovering co-edited files required `git apply --cached` per file rather than
   a blanket commit — the fix was discipline, not tooling.
 
@@ -205,8 +208,11 @@ why*, not just the* what.
 - **Root cause:** The obvious lever treated a symptom (bots can't avoid the hole) as the cause
   (turning too stiff). The real cause was missing path routing; physics was never the problem.
 - **Rule:** Find the real cause before reaching for the intuitive fix — the obvious knob often
-  papers over the bug and costs feel elsewhere. Measure it (a soak, a metric) before and
-  after, so "fixed" is proven, not hoped.
+  papers over the bug and costs feel elsewhere. Treat what you observe as ground truth: if the
+  bug is still visible, it's still real — don't let an agent explain it away. Force the frame —
+  three candidate causes, the smallest test for each, what you'd see if each were true — and
+  agree the diagnosis before the fix. Measure it (a soak, a metric) before and after, so
+  "fixed" is proven, not hoped.
 - **Example:** Instead of loosening handling, the fix added hole routing; a soak proved it
   (~63 → 5 self-KOs) without touching how the carts drive.
 

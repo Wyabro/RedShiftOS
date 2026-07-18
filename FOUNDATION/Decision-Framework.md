@@ -118,3 +118,41 @@ Tradeoffs:
 
 Reversible?:
   Yes — the wiring is copy-in; templates evolve as real games reveal what they need.
+
+## Decision #3 — Fold the best of ai-builder-playbook into the OS
+
+Date: 2026-07-17
+Status: Accepted
+
+Question:
+  Wyatt's earlier `ai-builder-playbook` repo (main / v5 / v6 snapshots) holds a lot of
+  hard-won AI-workflow guidance, but it drifted and the current version is "botched." What
+  gets imported into RedShiftOS?
+
+Alternatives:
+  - Leave it in the playbook repo and reference it.
+  - Fold the transferable nuggets into RedShiftOS, routed to the right docs.
+
+Chosen:
+  Fold in all four reviewed bundles, routed by fit (not dumped in one place):
+  - **Verification** → Feature-Lifecycle (dual-gate + proof ladder) and Lesson L-14
+    (visible-bug ground-truth).
+  - **Agent working-loop** → AGENTS.md (the loop + writer-reviewer + single-top-task), Lesson
+    L-11 (checkpoint commits), `PROCESS/Session-Handoffs.md`, `GAME_TEMPLATE/Tasks.md`.
+  - **AI layer** → new `AI/` folder: `Model-Routing.md` (+ velocity debt),
+    `Triage-and-Recovery.md`, `Prompt-Library.md`.
+  - **Re-imported depth v6 dropped** → `REFERENCE/Assets-and-Provenance.md` + Feature-Lifecycle
+    (say-the-feeling, kill-a-prototype).
+
+Reason:
+  It's Wyatt's own proven material and the playbook was decaying; RedShiftOS is the durable
+  home. Routing by fit (vs. one dumping-ground doc) keeps each doc single-responsibility and
+  the always-read rules files dense.
+
+Tradeoffs:
+  Some playbook depth was deliberately left behind for now (full stack-selection tables, the
+  complete prompt library, publishing / OWASP-LLM safety) — captured in session notes, to
+  import if a game actually needs it.
+
+Reversible?:
+  Yes — docs can be trimmed or merged as real games show what's actually used.
