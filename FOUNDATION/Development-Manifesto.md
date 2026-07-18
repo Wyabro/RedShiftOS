@@ -1,6 +1,6 @@
 # Development Manifesto
 
-*How RedShift builds games. Rules on the wall — not a pep talk. Every line is something you
+*How Red Shift Studios builds games. Rules on the wall — not a pep talk. Every line is something you
 can be held to. If it grows past two pages it's a rulebook; cut it back.*
 
 > **Voice locked (rules-on-the-wall). Now gut-check the beliefs.** These are seeded from how

@@ -2,8 +2,11 @@
 
 *Every hard-earned lesson turned into a permanent, reusable rule. This is the most valuable
 document in RedShiftOS: it's the difference between making a mistake once and making it every
-project. Format is fixed — Problem → Root Cause → Rule → Example — so each entry teaches the*
-why*, not just the* what.
+project. Format — Problem → *(Why we missed it)* → Root Cause → Rule → *(Exceptions)* →
+Example — so each entry teaches the* why*, not just the* what*. The parenthetical fields
+appear where they add signal:* **Why we missed it** *(the blind spot that let it happen —
+this is what teaches judgment) and* **Exceptions** *(when the rule does* not *apply, so it
+doesn't get cargo-culted).
 
 > **Seeded from the Cart Clash build** — reconstructed from Claude's working session memory
 > (both the production/polish passes and the playtest/sprint triage records), the repo's own
@@ -26,6 +29,9 @@ why*, not just the* what.
   Much of the early history is raw churn — `chore: diagnose why physics substeps never run`,
   dozens of spawn-ring / collider / center-of-mass tuning commits — and the entire build,
   deploy, and module structure had to be retrofitted onto jam-era bones.
+- **Why we missed it:** It was a jam. There was no time or reason to build production
+  boundaries, and a working prototype *feels* like a foundation — nothing signals "this
+  scaffolding is disposable" until you're already standing on it.
 - **Root cause:** A jam optimizes for "shippable before the deadline," not for the
   boundaries a lasting product needs. When it graduated, the prototype was *extended* rather
   than *re-founded* — including infrastructure chosen purely for speed-to-ship.
@@ -34,6 +40,8 @@ why*, not just the* what.
   cross-cutting concerns, verification harness — before piling on features. Assume the jam's
   *infrastructure* gets fully replaced, not just its code. Treat "prototype code" and
   "production code" as different materials, not different amounts of the same code.
+- **Exceptions:** A true throwaway you'll never ship needs no re-foundation. The trap is only
+  when a prototype *graduates* — that's the moment to re-found, not extend.
 - **Example:** The jam prototype had **no bundler** (dependencies via an HTML import map) and
   deployed to **Vercel** at `cartrave.lol`; production retrofitted a **Vite** build, a modular
   `src/` tree, Zustand stores, `bootstrap.js` / `levelManager.js` extractions, and a
@@ -45,6 +53,9 @@ why*, not just the* what.
 - **Problem:** Multiplayer *intent* was set early, yet the genuinely hard netcode problems —
   host migration, clock-domain mismatches, fall/collision dedupe, reconciliation — surfaced
   much later, and several remain open (live 2‑client smoke is still pending).
+- **Why we missed it:** Single-client testing looked completely fine. The hard authority and
+  timing bugs are invisible until several real machines hit the system at once — which happens
+  long after the feature already reads as "done."
 - **Root cause:** Planning the concern early is necessary but not sufficient. The transport
   was re-architected mid-project (WebSocket server-relay → WebRTC P2P DataChannels at ~40 Hz),
   and authority/timing edge cases only appear under real multi-client load — which arrives
@@ -52,6 +63,8 @@ why*, not just the* what.
 - **Rule:** Decide cross-cutting concerns (authority model, transport, time base) on day one
   *and* budget a dedicated late-stage hardening + live-multi-client verification pass from
   the start. "We planned for multiplayer" does not mean "multiplayer works."
+- **Exceptions:** A genuinely single-player game can defer this — but decide it's
+  single-player *on purpose*, don't back into it because multiplayer felt hard.
 - **Example:** The jam shipped host-authoritative sync as **60 Hz input / 20 Hz transforms
   over the PartyKit WebSocket relay**; production re-architected to **~40 Hz binary snapshots
   over WebRTC P2P DataChannels** — a transport swap, not a tweak. The old "server forwards
@@ -87,10 +100,15 @@ why*, not just the* what.
 
 - **Problem:** A diagnostic tool (F8 bug capture) silently did nothing in the shipped build,
   even though it worked in dev.
+- **Why we missed it:** You only ever run the dev build while building. A build-time gate
+  looks harmless in the editor and gives zero signal that it compiled *out* of the thing
+  players actually run.
 - **Root cause:** The code path was gated on a dev-only *build* flag, so it compiled out of
   the production bundle. The thing you rely on to debug prod wasn't in prod.
 - **Rule:** Anything you depend on to diagnose the shipped game must ship *in* it, gated at
   runtime, not at build time. Assume dev and prod diverge until proven identical.
+- **Exceptions:** Instrumentation you'd truly never want in production can stay build-gated —
+  just never build-gate the things you diagnose *prod* with.
 - **Example:** A keydown listener wrapped in a `DEV`-only guard vanished from the prod bundle;
   the fix was a runtime gate. (Related: a scary "2s first level-swap" turned out to be a Vite
   dev-transform artifact worth zero production cost — dev noise masquerading as a prod bug.)
@@ -100,6 +118,9 @@ why*, not just the* what.
 - **Problem:** Performance and rendering looked fine in development but broke on real
   machines — jank on a friend's PC, a menu clipped only at 1080p @ 125% OS scaling, and a
   black-frame flicker that never once reproduced in the offline test rig.
+- **Why we missed it:** The dev machine physically *cannot* reproduce a driver-specific quirk,
+  so from where you're standing the bug simply doesn't exist. Absence in dev is not evidence of
+  absence.
 - **Root cause:** Dev ran a software GPU (SwiftShader) and dev-server overhead — which
   literally *cannot* reproduce driver-specific quirks like the ANGLE/NVIDIA half-float bug.
   Truth lives on the target stack, not the dev box.
@@ -141,11 +162,16 @@ why*, not just the* what.
 
 - **Problem:** An attractive physics optimization (SIMD Rapier) shipped a game-breaking
   borrow error and had to be reverted.
+- **Why we missed it:** The optimization was real and it worked in the first cases tried;
+  "make it the default" felt like shipping a win, not betting on unproven code under the whole
+  game.
 - **Root cause:** A performance optimization was made the *default* before it was proven safe
   under the real game, with no cheap fallback.
 - **Rule:** Don't optimize before playtests point at the need, and never make an unproven
   optimization the default — gate it opt-in behind a working fallback until it earns trust.
   Every optimization is a dependency that must justify itself and degrade gracefully.
+- **Exceptions:** A measured, isolated, proven win with a working fallback is fine to adopt —
+  the rule targets *unproven* optimizations made default, not optimization itself.
 - **Example:** `9d8a69e` preferred SIMD Rapier; `8174180` reverted to standard Rapier by
   default after the borrow error — SIMD stayed opt-in only.
 
@@ -234,11 +260,16 @@ why*, not just the* what.
 - **Problem:** Aggressive systems (rubberband catch-up, every bot converging on one target)
   read as "too much" — but toning them down would have sanded off the exact chaos the game is
   built on.
+- **Why we missed it:** Playtesters (and you) report "that felt like too much" the same way
+  for spice and for defects — the *feeling* is identical; only the cause differs.
 - **Root cause:** "Feels intense" and "is broken" get lumped together in playtest reactions.
   Only one of them is a defect.
 - **Rule:** When something feels harsh, decide first whether it's a bug or the spice. Fix the
   bugs; keep the intensity that's on-theme. Don't smooth the game's edges just because they're
   sharp.
+- **Exceptions:** Intensity that actually drives players away — confusion, unfairness, motion
+  sickness — is a real defect, not spice. "Hard and chaotic" is spice; "I want to stop
+  playing" is not.
 - **Example:** The rubberband + single-target convergence were kept by explicit choice — the
   bugs in them were fixed, the intensity left intact.
 
