@@ -56,5 +56,7 @@ and that's the signal to fix the process, not to skip it.
 
 ---
 
-*Status: v0.1 — foundation draft. The Manifesto and Lessons Learned still need Wyatt's
-voice and verification; see the notes at the top of each.*
+*Status: v0.1 foundation complete. The Manifesto is in Wyatt's voice (rules-on-the-wall);
+Lessons Learned is seeded (17 entries) and grows as games ship — the head-only lessons
+accrete during the build, not up front. Foundation earns new folders (AI, TEMPLATES,
+GAME_TEMPLATE, POSTMORTEMS) when Game #2 gives them real content to hold.*
