@@ -5,9 +5,10 @@ document in RedShiftOS: it's the difference between making a mistake once and ma
 project. Format is fixed — Problem → Root Cause → Rule → Example — so each entry teaches the*
 why*, not just the* what.
 
-> **Seeded from the Cart Clash build** — reconstructed from three sources: Claude's working
+> **Seeded from the Cart Clash build** — reconstructed from four sources: Claude's working
 > session memory (production/polish era), the repo's own architecture doc + append-only
-> decision log, and 800+ commits of git history back to the original jam prototype.
+> decision log, 800+ commits of git history, and the frozen `main` (jam) branch's founding
+> docs (README, `todo.md`) back to the original Cursor Vibe Jam prototype.
 > These are real, evidenced patterns, but they're one lens. Wyatt: verify each one, correct
 > anything I got wrong, and add the lessons only you remember — the design fights, the
 > playtest surprises, the things that felt bad before they were provably wrong.
@@ -19,20 +20,24 @@ why*, not just the* what.
 
 ## L-01 — A prototype's architecture is not a production architecture
 
-- **Problem:** Cart Clash began as a weekend game-jam prototype ("Initial Cart Rave
-  prototype") and grew into an 800+‑commit production. Much of the early history is raw
-  churn — `chore: diagnose why physics substeps never run`, dozens of spawn-ring / collider /
-  center-of-mass tuning commits — and production structure had to be retrofitted onto
-  jam-era bones.
-- **Root cause:** A jam optimizes for "playable this weekend," not for the boundaries a
-  shipping product needs. When it graduated, the prototype was *extended* rather than
-  *re-founded*.
+- **Problem:** Cart Clash began as a **Cursor Vibe Jam** prototype ("Initial Cart Rave
+  prototype") built to a hard deadline (May 1, 2026) and grew into an 800+‑commit production.
+  Much of the early history is raw churn — `chore: diagnose why physics substeps never run`,
+  dozens of spawn-ring / collider / center-of-mass tuning commits — and the entire build,
+  deploy, and module structure had to be retrofitted onto jam-era bones.
+- **Root cause:** A jam optimizes for "shippable before the deadline," not for the
+  boundaries a lasting product needs. When it graduated, the prototype was *extended* rather
+  than *re-founded* — including infrastructure chosen purely for speed-to-ship.
 - **Rule:** When a prototype proves the loop and earns the right to become a product,
-  schedule an explicit re-foundation pass — module boundaries, cross-cutting concerns,
-  verification harness — before piling on features. Treat "prototype code" and "production
-  code" as different materials, not different amounts of the same code.
-- **Example:** `bootstrap.js` / `levelManager.js` extractions, Zustand stores, and the Vite
-  build were all *post-jam* retrofits onto what started as a single-file prototype.
+  schedule an explicit re-foundation pass — build system, deploy target, module boundaries,
+  cross-cutting concerns, verification harness — before piling on features. Assume the jam's
+  *infrastructure* gets fully replaced, not just its code. Treat "prototype code" and
+  "production code" as different materials, not different amounts of the same code.
+- **Example:** The jam prototype had **no bundler** (dependencies via an HTML import map) and
+  deployed to **Vercel** at `cartrave.lol`; production retrofitted a **Vite** build, a modular
+  `src/` tree, Zustand stores, `bootstrap.js` / `levelManager.js` extractions, and a
+  **Cloudflare Workers** deploy. Match length (60s → 150s) and arena count (1 → 3) changed too
+  — the game's own core parameters were still being discovered well after "launch."
 
 ## L-02 — Cross-cutting concerns: plan early, but expect the hard bugs late
 
@@ -46,9 +51,11 @@ why*, not just the* what.
 - **Rule:** Decide cross-cutting concerns (authority model, transport, time base) on day one
   *and* budget a dedicated late-stage hardening + live-multi-client verification pass from
   the start. "We planned for multiplayer" does not mean "multiplayer works."
-- **Example:** "The server forwards inputs" was true early, then went stale after the P2P
-  re-architecture; migration ghost-freeze and dedupe hazards are tracked in
-  `netcode-deep-dive.md` and still partly unverified.
+- **Example:** The jam shipped host-authoritative sync as **60 Hz input / 20 Hz transforms
+  over the PartyKit WebSocket relay**; production re-architected to **~40 Hz binary snapshots
+  over WebRTC P2P DataChannels** — a transport swap, not a tweak. The old "server forwards
+  inputs" note went stale, and migration ghost-freeze / dedupe hazards tracked in
+  `netcode-deep-dive.md` remain partly unverified.
 
 ## L-03 — Module boundaries are load-bearing
 
