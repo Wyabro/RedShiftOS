@@ -39,12 +39,18 @@ no empty folders — those get added when they have real content to hold.
 ```
 RedShiftOS/
 ├── README.md
+├── AGENTS.md            ← canonical agent rules; read first, every session
+├── CLAUDE.md            ← thin pointer to AGENTS.md (Claude Code reads this)
 ├── FOUNDATION/
 │   ├── Development-Manifesto.md
 │   ├── Lessons-Learned.md
 │   └── Decision-Framework.md
-└── PROCESS/
-    └── Feature-Lifecycle.md
+├── PROCESS/
+│   └── Feature-Lifecycle.md
+└── GAME_TEMPLATE/       ← copy into a new game repo to wire it to this OS
+    ├── AGENTS.md
+    ├── PROJECT.md
+    └── README.md
 ```
 
 ## The system eats its own dogfood
@@ -56,7 +62,8 @@ and that's the signal to fix the process, not to skip it.
 
 ---
 
-*Status: v0.1 foundation complete. The Manifesto is in Wyatt's voice (rules-on-the-wall);
-Lessons Learned is seeded (17 entries) and grows as games ship — the head-only lessons
-accrete during the build, not up front. Foundation earns new folders (AI, TEMPLATES,
-GAME_TEMPLATE, POSTMORTEMS) when Game #2 gives them real content to hold.*
+*Status: v0.1 foundation complete + agent wiring in place. The Manifesto is in Wyatt's voice
+(rules-on-the-wall); Lessons Learned is seeded (17 entries) and grows as games ship — the
+head-only lessons accrete during the build, not up front. `AGENTS.md` + `GAME_TEMPLATE/` wire
+agents to the OS. Remaining folders (AI, TEMPLATES, POSTMORTEMS) earn their place when Game #2
+gives them real content to hold.*

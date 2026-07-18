@@ -87,3 +87,34 @@ Tradeoffs:
 
 Reversible?:
   Yes — folders and documents are added at any time when they have real content to hold.
+
+## Decision #2 — Agent wiring: how games consume the OS
+
+Date: 2026-07-17
+Status: Accepted
+
+Question:
+  How do agents get pointed at RedShiftOS, and where does the wiring live?
+
+Alternatives:
+  - Hand-roll each game's rules from scratch (the ai-builder-playbook era — it drifted and
+    the current version got "botched").
+  - A canonical `AGENTS.md` in the OS + a copy-in `GAME_TEMPLATE/` every game repo uses.
+
+Chosen:
+  Root `AGENTS.md` (canonical, read-first) + thin `CLAUDE.md` pointer + `GAME_TEMPLATE/`
+  (`AGENTS.md` + `PROJECT.md` + `README.md`) that a new game copies. RedShiftOS rides beside
+  each game as a git submodule or sibling checkout. Session load order = game `AGENTS.md` →
+  OS `FOUNDATION` → OS `PROCESS` → game `PROJECT.md` → tasks / latest handoff.
+
+Reason:
+  Mirrors what already works in cart-rave (`AGENTS.md` canonical, `CLAUDE.md` pointer) and
+  Wyatt's own ai-builder-playbook starter-template. Rules live in the repo and every session
+  reads them first; the OS is the shared context that stops per-game drift.
+
+Tradeoffs:
+  Each game must keep RedShiftOS in sync (submodule pin vs. sibling checkout). `GAME_TEMPLATE`
+  is real, usable content, so it earns its folder under Decision #1's rule.
+
+Reversible?:
+  Yes — the wiring is copy-in; templates evolve as real games reveal what they need.
