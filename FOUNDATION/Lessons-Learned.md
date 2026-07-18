@@ -5,10 +5,11 @@ document in RedShiftOS: it's the difference between making a mistake once and ma
 project. Format is fixed — Problem → Root Cause → Rule → Example — so each entry teaches the*
 why*, not just the* what.
 
-> **Seeded from the Cart Clash build** — reconstructed from four sources: Claude's working
-> session memory (production/polish era), the repo's own architecture doc + append-only
-> decision log, 800+ commits of git history, and the frozen `main` (jam) branch's founding
-> docs (README, `todo.md`) back to the original Cursor Vibe Jam prototype.
+> **Seeded from the Cart Clash build** — reconstructed from Claude's working session memory
+> (both the production/polish passes and the playtest/sprint triage records), the repo's own
+> architecture doc + append-only decision log, 800+ commits of git history, and the frozen
+> `main` (jam) branch's founding docs (README, `todo.md`) back to the original Cursor Vibe
+> Jam prototype.
 > These are real, evidenced patterns, but they're one lens. Wyatt: verify each one, correct
 > anything I got wrong, and add the lessons only you remember — the design fights, the
 > playtest surprises, the things that felt bad before they were provably wrong.
@@ -169,6 +170,84 @@ why*, not just the* what.
   files you mean to commit, never blanket-add. Treat a co-edited file as a merge point.
 - **Example:** Recovering co-edited files required `git apply --cached` per file rather than
   a blanket commit — the fix was discipline, not tooling.
+
+## L-12 — Seam regressions live between the fixes, not in them
+
+- **Problem:** A sprint of individually-correct fixes shipped a fresh crop of bugs — none in
+  any single fix, all in the seams between them (fall-queue lifecycle, clock domains, override
+  slots, phase-flip ordering).
+- **Root cause:** Each fix was verified in isolation; nobody reviewed how the fixes
+  *interacted*. Bugs breed in the interfaces, not the commits.
+- **Rule:** After any batch of fixes, run a dedicated integration pass that targets
+  interactions — shared lifecycles, ordering, state that multiple fixes touch — not the
+  individual diffs. Assume the next bug is in a seam.
+- **Example:** A post-sprint review found 9 regressions, every one in a seam between fixes (a
+  solo fall-queue backlog spawning phantom KOs; a skewed host clock that could never end a
+  round) — zero in the fixes themselves.
+
+## L-13 — Systems only know what you tell them about the world
+
+- **Problem:** NPC carts drove straight into one arena's center hole and self-destructed
+  constantly, while the same bots handled every other arena's hazards fine.
+- **Root cause:** That arena's center hole had no AI path routing, so bots drew straight-line
+  chords across it. A hazard existing in the world is not a hazard the AI knows about —
+  awareness is per-hazard, per-arena, and explicit.
+- **Rule:** Wire up explicit AI/system awareness for every hazard in every arena. When you add
+  a hazard, add its routing/avoidance in the same breath — don't assume existing logic
+  generalizes to it.
+- **Example:** Adding hole-routing waypoints + a time-to-lip panic brake cut bot self-KOs
+  from ~63 in a soak to 5 per 150 s round, zero into the hole.
+
+## L-14 — Root-cause before the obvious fix, and put a number on it
+
+- **Problem:** The intuitive fix for suiciding bots was "make the carts turn easier" — which
+  would have masked the real cause and dulled the driving feel for everyone.
+- **Root cause:** The obvious lever treated a symptom (bots can't avoid the hole) as the cause
+  (turning too stiff). The real cause was missing path routing; physics was never the problem.
+- **Rule:** Find the real cause before reaching for the intuitive fix — the obvious knob often
+  papers over the bug and costs feel elsewhere. Measure it (a soak, a metric) before and
+  after, so "fixed" is proven, not hoped.
+- **Example:** Instead of loosening handling, the fix added hole routing; a soak proved it
+  (~63 → 5 self-KOs) without touching how the carts drive.
+
+## L-15 — Playtest the first-time experience with your shortcuts off
+
+- **Problem:** The real progression / onboarding funnel had never actually been played — the
+  dev profile unlocks everything, so nobody had seen what a brand-new player sees.
+- **Root cause:** Development accretes dev flags, unlocks, and deep-link shortcuts that quietly
+  hide the new-player experience. You test the game you can reach, not the one they land in.
+- **Rule:** Playtest the FTUE on a fresh profile with dev shortcuts OFF. And sequence
+  playtests deliberately: drain your own taste-tuning queue first (tuning invalidates later
+  feel notes), and save fresh external testers for one-shot first impressions — never spend
+  them on known bugs.
+- **Example:** Cart Clash gated a real onboarding session behind a `devUnlocks=off` clean
+  profile precisely because "dev unlocks all" had masked the funnel the whole project.
+
+## L-16 — Separate "intense" from "broken"
+
+- **Problem:** Aggressive systems (rubberband catch-up, every bot converging on one target)
+  read as "too much" — but toning them down would have sanded off the exact chaos the game is
+  built on.
+- **Root cause:** "Feels intense" and "is broken" get lumped together in playtest reactions.
+  Only one of them is a defect.
+- **Rule:** When something feels harsh, decide first whether it's a bug or the spice. Fix the
+  bugs; keep the intensity that's on-theme. Don't smooth the game's edges just because they're
+  sharp.
+- **Example:** The rubberband + single-target convergence were kept by explicit choice — the
+  bugs in them were fixed, the intensity left intact.
+
+## L-17 — When a bug class keeps coming back, enforce an invariant
+
+- **Problem:** "Every audio change breaks something" was a recurring class — menu music playing
+  over game music, mute double-toggling — reappearing every time the audio code was touched.
+- **Root cause:** The rule (one music track at a time; one input handler) lived as discipline
+  spread across call sites, so any new code could quietly violate it.
+- **Rule:** When the same class of bug keeps recurring, stop fixing instances — move the rule
+  into one place as an enforced invariant with a regression test. Make the wrong thing
+  impossible, not just currently-absent.
+- **Example:** Music exclusivity was moved *inside* the audio manager (starting game music
+  stops menu music, and vice-versa) with regression tests, structurally closing the class; a
+  duplicate keydown listener that double-fired mute was collapsed to one.
 
 ---
 
