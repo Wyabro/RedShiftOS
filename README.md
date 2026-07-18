@@ -1,11 +1,14 @@
 # RedShiftOS
 
-**An AI-first operating system for planning, architecting, building, testing, and shipping games.**
+**The operating system for building better games — an AI-first process for planning,
+architecting, building, testing, and shipping.**
+
+![RedShiftOS — the operating system for building better games](assets/redshiftos-overview.png)
 
 RedShiftOS is not a game and not an engine. It is the repeatable development *process* —
-design philosophy, engineering rules, production workflow, and AI-collaboration standards —
-that lives beside every game RedShift Studios makes. The code changes from project to
-project. The process shouldn't.
+philosophy, engineering rules, production workflow, and AI-collaboration standards — that
+lives beside every game Red Shift Studios makes. **The code changes from project to project.
+The process shouldn't.**
 
 It exists because of one lesson from the first game (Cart Clash): every time an AI agent
 implemented a feature, it only knew about *that feature*. It didn't know the long-term
@@ -13,48 +16,67 @@ vision, the design pillars, the architectural intent, or the lessons already lea
 every implementation was locally optimal and globally expensive.
 
 RedShiftOS is the shared context that fixes that. Before an agent touches a new game's
-source tree, it reads this repository first — and now it knows *how RedShift builds games*,
-not just *today's prompt*.
+source tree, it reads this repository first — and now it knows *how Red Shift Studios builds
+games*, not just *today's prompt*.
 
 ## How it's used
 
-1. A new game starts by ingesting RedShiftOS — `FOUNDATION/` first, then `PROCESS/`.
-2. Every feature flows through the [Feature Lifecycle](PROCESS/Feature-Lifecycle.md). No skipping.
-3. Every significant decision is run through the [Decision Framework](FOUNDATION/Decision-Framework.md) and logged.
-4. Every project's pain feeds back into [Lessons Learned](FOUNDATION/Lessons-Learned.md). The system gets smarter because we actually shipped with it.
+The OS walks you through a game in order:
 
-## v0.1 scope
+1. **Read `FOUNDATION/` first** — how the studio thinks. It's binding and applies to every phase.
+2. **Walk `LIFECYCLE/` in order** — Project → Design → Engineering → Implementation →
+   Playtesting → Production → Postmortems.
+3. **Every feature flows through the [Feature Lifecycle](FOUNDATION/Feature-Lifecycle.md)** —
+   idea → merge, no skipping.
+4. **Every significant decision** runs the [Decision Framework](FOUNDATION/Decision-Framework.md)
+   and gets logged.
+5. **Every shipped project's pain** feeds back into
+   [Lessons Learned](FOUNDATION/Lessons-Learned.md) and
+   [Anti-Patterns](FOUNDATION/Anti-Patterns.md). The system gets smarter because we actually
+   shipped with it.
 
-Deliberately tiny. The foundation only. No templates, no engine guides, no prompt library,
-no empty folders — those get added when they have real content to hold.
+## What's inside
 
-- [x] README (the "why")
-- [x] [Development Manifesto](FOUNDATION/Development-Manifesto.md) — how RedShift builds games, on one page
-- [x] [Lessons Learned](FOUNDATION/Lessons-Learned.md) — Cart Clash pain turned into permanent rules
-- [x] [Decision Framework](FOUNDATION/Decision-Framework.md) — the checklist before any major commitment
-- [x] [Feature Lifecycle](PROCESS/Feature-Lifecycle.md) — the path every feature follows, idea → merge
+- **[FOUNDATION/](FOUNDATION/)** — how we think: [Philosophy](FOUNDATION/Studio-Philosophy.md)
+  (the *why*), [Manifesto](FOUNDATION/Development-Manifesto.md) (the *what*),
+  [Lessons Learned](FOUNDATION/Lessons-Learned.md), [Anti-Patterns](FOUNDATION/Anti-Patterns.md),
+  [Decision Framework](FOUNDATION/Decision-Framework.md), and the
+  [Feature Lifecycle](FOUNDATION/Feature-Lifecycle.md).
+- **[LIFECYCLE/](LIFECYCLE/)** — the seven chronological phases, each with its own guidance.
+- **[AI/](AI/)** — the cross-cutting AI-collaboration layer: model routing, triage & recovery,
+  prompt library.
+- **[GAME_TEMPLATE/](GAME_TEMPLATE/)** — copy into a new game repo to wire it to this OS.
+- **[ROADMAP.md](ROADMAP.md)** — where this is headed (the automation endgame — recorded, not
+  yet built).
 
 ## Structure
 
 ```
 RedShiftOS/
 ├── README.md
-├── AGENTS.md            ← canonical agent rules; read first, every session
-├── CLAUDE.md            ← thin pointer to AGENTS.md (Claude Code reads this)
-├── FOUNDATION/
+├── AGENTS.md              ← canonical agent rules; read first, every session
+├── CLAUDE.md              ← thin pointer to AGENTS.md (Claude Code reads this)
+├── ROADMAP.md             ← where this is headed
+├── FOUNDATION/            how we think — loaded first, applies to every phase
+│   ├── Studio-Philosophy.md
 │   ├── Development-Manifesto.md
 │   ├── Lessons-Learned.md
-│   └── Decision-Framework.md
-├── PROCESS/
-│   ├── Feature-Lifecycle.md
-│   └── Session-Handoffs.md
-├── AI/
+│   ├── Anti-Patterns.md
+│   ├── Decision-Framework.md
+│   └── Feature-Lifecycle.md
+├── LIFECYCLE/             the chronological phases — the OS walks you through a game
+│   ├── 1-PROJECT/
+│   ├── 2-DESIGN/
+│   ├── 3-ENGINEERING/
+│   ├── 4-IMPLEMENTATION/  (+ Session-Handoffs.md)
+│   ├── 5-PLAYTESTING/
+│   ├── 6-PRODUCTION/      (+ Assets-and-Provenance.md)
+│   └── 7-POSTMORTEMS/
+├── AI/                    cross-cutting AI-collaboration layer
 │   ├── Model-Routing.md
 │   ├── Triage-and-Recovery.md
 │   └── Prompt-Library.md
-├── REFERENCE/
-│   └── Assets-and-Provenance.md
-└── GAME_TEMPLATE/       ← copy into a new game repo to wire it to this OS
+└── GAME_TEMPLATE/         copy into a new game repo to wire it to this OS
     ├── AGENTS.md
     ├── PROJECT.md
     ├── Tasks.md
@@ -63,15 +85,15 @@ RedShiftOS/
 
 ## The system eats its own dogfood
 
-RedShiftOS is built using RedShiftOS. Its first "feature" is this foundation, and it went
-through the same Feature Lifecycle and Decision Framework it prescribes. If the process
-feels cumbersome while building the OS, it would feel cumbersome while building a game —
-and that's the signal to fix the process, not to skip it.
+RedShiftOS is built using RedShiftOS. Its changes run through the same Feature Lifecycle and
+Decision Framework it prescribes, and its structural calls are logged in the Decision
+Framework. If the process feels cumbersome while building the OS, it would feel cumbersome
+while building a game — and that's the signal to fix the process, not to skip it.
 
 ---
 
-*Status: v0.1 foundation complete, agent wiring in place, and the best of the ai-builder-
-playbook folded in — verification gates + proof ladder, the agent working-loop, an `AI/` layer
-(model routing, triage & recovery, prompt library), and asset provenance. The Manifesto is in
-Wyatt's voice; Lessons Learned is seeded (17) and grows as games ship. Remaining folders
-(TEMPLATES, POSTMORTEMS) earn their place when Game #2 gives them real content.*
+*Status: foundation complete and organized around the development lifecycle. FOUNDATION holds
+philosophy, manifesto, 17 lessons, a 13-entry anti-pattern catalog, the decision log, and the
+feature pipeline; LIFECYCLE lays out the seven phases; AI/ carries the collaboration layer.
+Phase folders and future layers grow as real games — starting with Game #2 — give them
+content. See [ROADMAP.md](ROADMAP.md).*

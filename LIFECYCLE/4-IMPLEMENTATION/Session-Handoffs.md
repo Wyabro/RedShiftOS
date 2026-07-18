@@ -28,4 +28,4 @@ That's it. More than three lines is fine; fewer means you skipped one.
 If context feels degraded mid-session — the agent is looping, contradicting itself, or
 forgetting decisions — **stop and write the handoff now**, then restart from a fresh context.
 Rescuing a degraded session costs more than restarting from a clean one (see
-[Triage & Recovery](../AI/Triage-and-Recovery.md)).
+[Triage & Recovery](../../AI/Triage-and-Recovery.md)).

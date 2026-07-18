@@ -1,7 +1,7 @@
 # AGENTS.md — <GAME NAME>
 
-**Read this first, every session.** This game is built with **RedShiftOS**, RedShift's Game
-Development Operating System. `CLAUDE.md` points here; point other agents (Cursor, Copilot,
+**Read this first, every session.** This game is built with **RedShiftOS**, Red Shift Studios'
+Game Development Operating System. `CLAUDE.md` points here; point other agents (Cursor, Copilot,
 Windsurf) here too.
 
 ---
@@ -10,10 +10,13 @@ Windsurf) here too.
 
 1. **This file.**
 2. **RedShiftOS** (checked out at `./RedShiftOS` as a submodule, or a sibling directory):
+   - `RedShiftOS/FOUNDATION/Studio-Philosophy.md` — why the studio builds this way
    - `RedShiftOS/FOUNDATION/Development-Manifesto.md` — the 10 build rules
    - `RedShiftOS/FOUNDATION/Lessons-Learned.md` — mistakes already made, now rules
+   - `RedShiftOS/FOUNDATION/Anti-Patterns.md` — named failure modes to avoid
    - `RedShiftOS/FOUNDATION/Decision-Framework.md` — how decisions get made + the log
-   - `RedShiftOS/PROCESS/Feature-Lifecycle.md` — the pipeline every feature follows
+   - `RedShiftOS/FOUNDATION/Feature-Lifecycle.md` — the pipeline every feature follows
+   - then walk `RedShiftOS/LIFECYCLE/` for the phase you're in
 3. **`PROJECT.md`** — this game's contract (concept, stack, first shippable version, cut list).
 4. **`STATUS.md` / `Tasks.md` / latest handoff** — what's in flight right now.
 

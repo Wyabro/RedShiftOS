@@ -31,5 +31,5 @@ clean.
 
 - **Checkpoint commits** before risky runs, and agent work on a feature branch — so a revert
   costs nothing (see Lesson L-11).
-- **A handoff** written the moment context degrades (see [Session Handoffs](../PROCESS/Session-Handoffs.md)).
+- **A handoff** written the moment context degrades (see [Session Handoffs](../LIFECYCLE/4-IMPLEMENTATION/Session-Handoffs.md)).
 - **Small slices**, so "the last good state" is never far behind.

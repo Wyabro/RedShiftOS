@@ -6,7 +6,7 @@ filename varies, the habit doesn't: the rules live in the repo and every session
 first.
 
 RedShiftOS is an AI-first **Game Development Operating System** — a docs/process repo, not
-code. It carries how RedShift builds games so every agent pulls toward the same north star
+code. It carries how Red Shift Studios builds games so every agent pulls toward the same north star
 instead of optimizing one prompt at a time. It lives *beside* every game.
 
 ---
@@ -16,10 +16,14 @@ instead of optimizing one prompt at a time. It lives *beside* every game.
 Read these, in order, before doing anything else:
 
 1. **This file** (`AGENTS.md`).
-2. **`FOUNDATION/Development-Manifesto.md`** — the 10 rules for how games get built here.
-3. **`FOUNDATION/Lessons-Learned.md`** — mistakes already made, turned into permanent rules.
-4. **`FOUNDATION/Decision-Framework.md`** — how decisions get made, and the append-only log.
-5. **`PROCESS/Feature-Lifecycle.md`** — the pipeline every feature follows, idea → merge.
+2. **`FOUNDATION/Studio-Philosophy.md`** — why we build this way (the beliefs under the rules).
+3. **`FOUNDATION/Development-Manifesto.md`** — the 10 rules for how games get built here.
+4. **`FOUNDATION/Lessons-Learned.md`** — mistakes already made, turned into permanent rules.
+5. **`FOUNDATION/Anti-Patterns.md`** — named failure modes to detect and avoid.
+6. **`FOUNDATION/Decision-Framework.md`** — how decisions get made, and the append-only log.
+7. **`FOUNDATION/Feature-Lifecycle.md`** — the pipeline every feature follows, idea → merge.
+
+Then, for the phase you're in, walk **`LIFECYCLE/`** in order (1-PROJECT → 7-POSTMORTEMS).
 
 The Manifesto and Lessons Learned are **binding** — they override your defaults. When a
 lesson or decision names a file, flag, or command, verify it still exists before relying on
@@ -30,21 +34,21 @@ it (these are point-in-time notes, not live state).
 - `AI/Model-Routing.md` — which model for which task; context & cost discipline; velocity debt.
 - `AI/Triage-and-Recovery.md` — when an agent is stuck: the escalation ladder + stopping rule.
 - `AI/Prompt-Library.md` — copy-paste prompts for planning, review, diagnosis, verification.
-- `PROCESS/Session-Handoffs.md` — the three-line handoff that ends every session.
-- `REFERENCE/Assets-and-Provenance.md` — asset log + provenance discipline.
+- `LIFECYCLE/4-IMPLEMENTATION/Session-Handoffs.md` — the three-line handoff that ends every session.
+- `LIFECYCLE/6-PRODUCTION/Assets-and-Provenance.md` — asset log + provenance discipline.
 
 ---
 
 ## If you're building a GAME with this OS
 
 - RedShiftOS is checked out **beside your game repo** — a git submodule at `./RedShiftOS`, or
-  a sibling directory. Read its `FOUNDATION/` then `PROCESS/` at session start.
+  a sibling directory. Read its `FOUNDATION/` then walk `LIFECYCLE/` at session start.
 - The game repo has its **own** `AGENTS.md` + thin `CLAUDE.md` that point here — start from
   `GAME_TEMPLATE/` (copy `AGENTS.md` + `PROJECT.md` into the new repo).
 - Session load order inside a game: game `AGENTS.md` → RedShiftOS `FOUNDATION` → RedShiftOS
-  `PROCESS` → the game's `PROJECT.md` (its contract) → the game's current tasks / status /
-  latest handoff.
-- Every feature runs through `PROCESS/Feature-Lifecycle.md`. No skipping. Prove it before you
+  `LIFECYCLE` (the phase you're in) → the game's `PROJECT.md` (its contract) → the game's
+  current tasks / status / latest handoff.
+- Every feature runs through `FOUNDATION/Feature-Lifecycle.md`. No skipping. Prove it before you
   build it.
 
 ## If you're working ON RedShiftOS itself
@@ -76,8 +80,8 @@ Every non-trivial change follows this loop — it's what keeps agents consistent
   writer-reviewer checks the diff + plan for scope creep — the agent that wrote the code has
   already convinced itself it's fine.
 - **Commit** as a save-state (checkpoint before risky runs; feature branches — Lesson L-11).
-- **Validate** against both merge gates + the proof ladder (`PROCESS/Feature-Lifecycle.md`).
-- **Handoff** (`PROCESS/Session-Handoffs.md`) so the next session doesn't start from zero.
+- **Validate** against both merge gates + the proof ladder (`FOUNDATION/Feature-Lifecycle.md`).
+- **Handoff** (`LIFECYCLE/4-IMPLEMENTATION/Session-Handoffs.md`) so the next session doesn't start from zero.
 
 Never go straight from request to code.
 

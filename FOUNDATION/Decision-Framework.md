@@ -156,3 +156,46 @@ Tradeoffs:
 
 Reversible?:
   Yes — docs can be trimmed or merged as real games show what's actually used.
+
+## Decision #4 — Reorganize around the development lifecycle
+
+Date: 2026-07-17
+Status: Accepted
+
+Question:
+  A review (Wyatt + a friend) proposed organizing the OS around *time* — the phases of building
+  a game — instead of around document type, plus adding a Philosophy doc, an Anti-Patterns
+  catalog, and richer Lessons. How much, and how?
+
+Alternatives:
+  - Keep the document-organized layout (FOUNDATION / PROCESS / AI / REFERENCE).
+  - Full chronological reorg into phase folders now.
+  - Adopt the order as navigation only; defer the folders.
+
+Chosen:
+  Full reorg. FOUNDATION stays (how we think — always loaded) and gains `Studio-Philosophy.md`,
+  `Anti-Patterns.md`, and `Feature-Lifecycle.md` (moved from PROCESS). A new `LIFECYCLE/` holds
+  the seven chronological phases (`1-PROJECT` … `7-POSTMORTEMS`), each with a real index README;
+  `Session-Handoffs.md` → `LIFECYCLE/4-IMPLEMENTATION/`, `Assets-and-Provenance.md` →
+  `LIFECYCLE/6-PRODUCTION/`. `AI/` and `GAME_TEMPLATE/` stay as cross-cutting layers; `PROCESS/`
+  and `REFERENCE/` dissolved. Also: one values doc (Philosophy folds in the non-duplicate
+  decision lenses — no separate `Principles.md`); Lessons gained "Why we missed it" +
+  "Exceptions" fields where they add signal; studio name standardized to "Red Shift Studios."
+
+Reason:
+  The OS should walk you through development in order (the review's insight), and the project
+  infographic's banded model (foundation pillars / lifecycle / AI layer) maps onto it. Phase
+  folders carry real index content, so they're navigation — not the empty stubs Decision #1
+  forbids. A `LIFECYCLE/` wrapper (vs. eight flat top-level folders) keeps FOUNDATION stable
+  and the phases correctly ordered.
+
+Tradeoffs:
+  Paths recorded in Decisions #2/#3 (`PROCESS/Session-Handoffs.md`,
+  `REFERENCE/Assets-and-Provenance.md`) are now stale — those entries are historical record
+  (append-only). Current homes: `FOUNDATION/Feature-Lifecycle.md`,
+  `LIFECYCLE/4-IMPLEMENTATION/Session-Handoffs.md`, `LIFECYCLE/6-PRODUCTION/Assets-and-Provenance.md`.
+  Several LIFECYCLE phase folders are README-only until real games fill them.
+
+Reversible?:
+  Yes — folders and moves are cheap; the structure evolves as real games reveal what each
+  phase actually needs.
