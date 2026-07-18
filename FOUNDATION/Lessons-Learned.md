@@ -8,17 +8,23 @@ appear where they add signal:* **Why we missed it** *(the blind spot that let it
 this is what teaches judgment) and* **Exceptions** *(when the rule does* not *apply, so it
 doesn't get cargo-culted).
 
-> **Seeded from the Cart Clash build** — reconstructed from Claude's working session memory
-> (both the production/polish passes and the playtest/sprint triage records), the repo's own
-> architecture doc + append-only decision log, 800+ commits of git history, and the frozen
-> `main` (jam) branch's founding docs (README, `todo.md`) back to the original Cursor Vibe
-> Jam prototype.
-> These are real, evidenced patterns, but they're one lens. Wyatt: verify each one, correct
-> anything I got wrong, and add the lessons only you remember — the design fights, the
-> playtest surprises, the things that felt bad before they were provably wrong.
->
-> IDs are stable and append-only from here (like the project's own decision log). When a new
-> lesson arrives, give it the next number; don't renumber.
+> Lessons are earned from real shipped work, not theory. IDs are **append-only and stable** —
+> a new lesson gets the next number; never renumber or silently delete. Add the head-only ones
+> as you build: the design fights, the playtest surprises, the things that felt bad before they
+> were provably wrong.
+
+## Pull by tag
+
+Load the lessons a task needs, not all seventeen:
+
+- **architecture** — L-01, L-03, L-04, L-17
+- **net / multiplayer** — L-02, L-08
+- **ship / verify** — L-05, L-07, L-08
+- **perf / hardware** — L-06, L-09, L-10
+- **process / workflow** — L-01, L-10, L-11, L-12, L-14, L-17
+- **ai-collaboration** — L-05, L-11, L-13, L-14
+- **design / feel** — L-13, L-16
+- **playtest** — L-06, L-15, L-16
 
 ---
 
