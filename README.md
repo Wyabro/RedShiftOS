@@ -3,7 +3,7 @@
 **The operating system for building better games — an AI-first process for planning,
 architecting, building, testing, and shipping.**
 
-![RedShiftOS — the operating system for building better games](assets/redshiftos-overview.png)
+![RedShiftOS — the operating system for building better games](assets/redshiftos-overview.svg)
 
 RedShiftOS is not a game and not an engine. It is the repeatable development *process* —
 philosophy, engineering rules, production workflow, and AI-collaboration standards — that
