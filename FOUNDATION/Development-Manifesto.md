@@ -1,48 +1,45 @@
 # Development Manifesto
 
-*How RedShift Studios builds games. This is operational, not motivational — every line is a
-rule you can be held to, not a poster. If it grows past two pages it has become a rulebook;
-cut it back.*
+*How RedShift builds games. Rules on the wall — not a pep talk. Every line is something you
+can be held to. If it grows past two pages it's a rulebook; cut it back.*
 
-> **Draft — needs Wyatt's voice.** These principles are seeded from the Cart Clash
-> experience. Rewrite them in your words, cut the ones you don't believe, and add the ones
-> you do. A manifesto you didn't write won't get followed.
+> **Voice locked (rules-on-the-wall). Now gut-check the beliefs.** These are seeded from how
+> Cart Clash actually got built. Delete any rule you don't hold, sharpen the wording, add the
+> ones only you'd write. A manifesto you don't believe won't get followed.
 
 ---
 
-1. **Prove the loop before you build the game.** Fun is validated with programmer art and a
-   rough prototype — never assumed, never polished into existence. If the core loop isn't
-   fun rough, it won't be fun finished.
+1. **Prove the loop before you build the game.** Programmer art only. If it's not fun rough,
+   it won't be fun polished — stop and fix the loop before anything else gets made.
 
-2. **Prototype before architecture.** Requirements → prototype → validate → *then* production
-   architecture. Committing to expensive structure before the idea is proven is how Cart
-   Clash's code and design co-evolved the hard way.
+2. **Prototype before you architect.** No production structure until a throwaway version
+   earns it. Requirements → prototype → validate → *then* build it for real. This is where
+   Cart Clash bled the most time.
 
-3. **Decide cross-cutting concerns first.** Networking, save, input, and persistence change
-   the shape of everything. Their assumptions get documented *before* gameplay is
-   implemented, not retrofitted after.
+3. **Playtesting beats opinion.** Put it in front of a real person on real hardware before
+   you trust your read. Don't polish or optimize until a playtest tells you what matters.
 
-4. **Every system owns one responsibility.** Files are organized by responsibility, not by
-   the order features happened to arrive. When a file needs "and" to describe it, split it.
+4. **Nail the cross-cutting stuff before gameplay.** Networking, save, input, time base —
+   they touch everything. Decide them early, even if they ship later. Retrofitting them is
+   the most expensive mistake you can make. (It's the one you already made.)
 
-5. **Every feature has a measurable purpose.** It supports a named design pillar and you can
-   state how you'll know it worked. If it can't answer that, it isn't ready.
+5. **One responsibility per file.** Organize by what a thing *does*, not by the order
+   features showed up. If describing a file needs the word "and," split it.
 
-6. **Playtesting beats opinion.** Ship it to a real person on real hardware before you trust
-   your read on it. Don't optimize or polish before playtests point at what matters.
+6. **Simplicity beats cleverness.** The simplest thing that holds is the right thing. Every
+   dependency and every abstraction is debt — make it justify itself in writing, or cut it.
 
-7. **Simplicity beats cleverness.** The simplest solution that holds is the correct one.
-   Every dependency and every abstraction is a debt that requires written justification.
+7. **Every feature earns its place.** It serves a named pillar and you know how you'll judge
+   it — playtest feel counts as a metric. Can't say what it's for? It's not ready.
 
-8. **You can't fix what you can't see.** Build the ability to observe — diagnostics, capture,
-   verification — *before* you need it, not in a panic mid-project.
+8. **Build the ability to see before you need it.** Capture, diagnostics, a headless harness
+   — early, not mid-crisis. You can't fix what you can't watch.
 
-9. **"Done" means verified in the artifact you actually ship.** Not "it compiles," not "it
-   works in dev." The deployed build is authoritative.
+9. **"Done" means verified in the build you ship.** Not "it compiles." Not "works in dev."
+   Pull the deployed artifact, confirm the build stamp, watch it work. Remote is the truth.
 
-10. **Documentation is part of the feature.** A feature isn't done until the decision behind
-    it is logged and the relevant OS doc reflects reality.
+10. **Log the decision or it didn't happen.** Six months out, "why did I do this?" needs an
+    answer. Write down what you chose, what you rejected, and why — for you and for the agents.
 
-11. **AI is a collaborator, not the designer.** Agents implement against this OS's intent.
-    The vision, the pillars, and the taste are Wyatt's. Preserve momentum — keep the agents
-    pointed at the same north star.
+11. **AI builds; you direct.** Agents implement against this OS. The vision, the pillars, the
+    taste — those stay yours. Keep every agent pointed at the same north star. Keep momentum.
