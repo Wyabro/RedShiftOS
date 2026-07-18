@@ -3,10 +3,6 @@
 *How Red Shift Studios builds games. Rules on the wall — not a pep talk. Every line is something you
 can be held to. If it grows past two pages it's a rulebook; cut it back.*
 
-> **Voice locked (rules-on-the-wall). Now gut-check the beliefs.** These are seeded from how
-> Cart Clash actually got built. Delete any rule you don't hold, sharpen the wording, add the
-> ones only you'd write. A manifesto you don't believe won't get followed.
-
 ---
 
 1. **Prove it before you build it.** Programmer art, throwaway code. If the loop isn't fun

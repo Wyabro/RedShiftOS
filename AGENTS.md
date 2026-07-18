@@ -6,62 +6,41 @@ filename varies, the habit doesn't: the rules live in the repo and every session
 first.
 
 RedShiftOS is an AI-first **Game Development Operating System** — a docs/process repo, not
-code. It carries how Red Shift Studios builds games so every agent pulls toward the same north star
-instead of optimizing one prompt at a time. It lives *beside* every game.
+code. It carries how Red Shift Studios builds games so every agent pulls toward the same north
+star instead of optimizing one prompt at a time. It lives *beside* every game.
 
 ---
 
-## Context-loading order
+## Always load (the whole session-start budget)
 
-Read these, in order, before doing anything else:
+Two things, every session — nothing else:
 
-1. **This file** (`AGENTS.md`).
-2. **`FOUNDATION/Studio-Philosophy.md`** — why we build this way (the beliefs under the rules).
-3. **`FOUNDATION/Development-Manifesto.md`** — the 10 rules for how games get built here.
-4. **`FOUNDATION/Lessons-Learned.md`** — mistakes already made, turned into permanent rules.
-5. **`FOUNDATION/Anti-Patterns.md`** — named failure modes to detect and avoid.
-6. **`FOUNDATION/Decision-Framework.md`** — how decisions get made, and the append-only log.
-7. **`FOUNDATION/Feature-Lifecycle.md`** — the pipeline every feature follows, idea → merge.
+1. **This file** — the working loop, the non-negotiables, and the task map below.
+2. **`FOUNDATION/Development-Manifesto.md`** — the 10 rules (binding; they override your defaults).
 
-Then, for the phase you're in, walk **`LIFECYCLE/`** in order (1-PROJECT → 7-POSTMORTEMS).
+Everything else in `FOUNDATION/` is a **reference law library** — pull it *by task*, don't
+boot-load it. "More context is not better context — it dilutes signal" (`AI/Model-Routing.md`).
+A syllabus you skim beats nothing, but loses to a single page you actually follow.
 
-The Manifesto and Lessons Learned are **binding** — they override your defaults. When a
-lesson or decision names a file, flag, or command, verify it still exists before relying on
-it (these are point-in-time notes, not live state).
+## Load by task
 
-**Load when the task calls for it** (pointers, not inlined — this file stays dense):
+Pull only what the task in front of you needs:
 
-- `AI/Model-Routing.md` — which model for which task; context & cost discipline; velocity debt.
-- `AI/Triage-and-Recovery.md` — when an agent is stuck: the escalation ladder + stopping rule.
-- `AI/Prompt-Library.md` — copy-paste prompts for planning, review, diagnosis, verification.
-- `LIFECYCLE/4-IMPLEMENTATION/Session-Handoffs.md` — the three-line handoff that ends every session.
-- `LIFECYCLE/6-PRODUCTION/Assets-and-Provenance.md` — asset log + provenance discipline.
+| When you're… | Also load |
+|---|---|
+| starting a new system / feature | `FOUNDATION/Feature-Lifecycle.md` (full) · `FOUNDATION/Decision-Framework.md` · Lessons tagged *architecture / design* |
+| fixing a bug | root-cause first (L-14) · the Lesson IDs for that area (Lessons → "Pull by tag") · the proof ladder |
+| tuning feel / balance | the prototype + playtest gates · Lessons tagged *design / playtest* |
+| working netcode / multiplayer | Lessons tagged *net* (L-02, L-08) · the game's own netcode notes |
+| shipping or verifying | the proof ladder (`FOUNDATION/Feature-Lifecycle.md`) · `LIFECYCLE/6-PRODUCTION/Assets-and-Provenance.md` |
+| reviewing a diff | `FOUNDATION/Anti-Patterns.md` — the detection checklist |
+| an agent is stuck / looping | `AI/Triage-and-Recovery.md` |
+| picking a model / watching cost | `AI/Model-Routing.md` |
+| a rule and reality conflict | `FOUNDATION/Studio-Philosophy.md` — the *why* under the rules |
+| ending a session | write a handoff → `LIFECYCLE/4-IMPLEMENTATION/Session-Handoffs.md` |
 
----
-
-## If you're building a GAME with this OS
-
-- RedShiftOS is checked out **beside your game repo** — a git submodule at `./RedShiftOS`, or
-  a sibling directory. Read its `FOUNDATION/` then walk `LIFECYCLE/` at session start.
-- The game repo has its **own** `AGENTS.md` + thin `CLAUDE.md` that point here — start from
-  `GAME_TEMPLATE/` (copy `AGENTS.md` + `PROJECT.md` into the new repo).
-- Session load order inside a game: game `AGENTS.md` → RedShiftOS `FOUNDATION` → RedShiftOS
-  `LIFECYCLE` (the phase you're in) → the game's `PROJECT.md` (its contract) → the game's
-  current tasks / status / latest handoff.
-- Every feature runs through `FOUNDATION/Feature-Lifecycle.md`. No skipping. Prove it before you
-  build it.
-
-## If you're working ON RedShiftOS itself
-
-- **No stub files.** A document exists only when it holds real content (Decision #1). Empty
-  scaffolding is the exact sprawl this OS exists to prevent.
-- **Lessons-Learned IDs are append-only and stable.** A new lesson gets the next `L-NN`;
-  never renumber, never silently delete — correct via a new entry or a human-approved edit.
-- **Keep the Manifesto to one page.** Past two pages it's a rulebook — cut it back.
-- **Eat the dogfood.** Run OS changes through the Feature Lifecycle and Decision Framework;
-  log significant structural decisions in the Decision Framework's log.
-- This repo is **docs-only** — no build, no tests. The gate is: does it follow the Manifesto,
-  and is it dense, scannable, and stable?
+When a lesson or decision names a file, flag, or command, verify it still exists before
+relying on it — these are point-in-time notes, not live state.
 
 ---
 
@@ -83,9 +62,10 @@ Every non-trivial change follows this loop — it's what keeps agents consistent
 - **Validate** against both merge gates + the proof ladder (`FOUNDATION/Feature-Lifecycle.md`).
 - **Handoff** (`LIFECYCLE/4-IMPLEMENTATION/Session-Handoffs.md`) so the next session doesn't start from zero.
 
-Never go straight from request to code.
+Never go straight from request to code. Scale the ceremony to the task class (see the Feature
+Lifecycle) — a typo fix and a new game mode do not get the same gates.
 
-## Standing behavioral rules (any agent, any repo under this OS)
+## Standing non-negotiables (any agent, any repo under this OS)
 
 The Manifesto, made agent-actionable:
 
@@ -104,6 +84,36 @@ The Manifesto, made agent-actionable:
   stay the human's (Manifesto §10).
 - **If context feels degraded, stop and write a handoff** instead of continuing — restart
   fresh from it.
+
+---
+
+## If you're building a GAME with this OS
+
+- RedShiftOS is checked out **beside your game repo** — a git submodule at `./RedShiftOS`, or
+  a sibling directory. At session start, load the Manifesto + this task map, then pull
+  FOUNDATION by task.
+- The game repo has its **own** `AGENTS.md` + thin `CLAUDE.md` that point here — start from
+  `GAME_TEMPLATE/` (copy `AGENTS.md` + `PROJECT.md` into the new repo).
+- Session load order inside a game: game `AGENTS.md` → the Manifesto → *what the task needs* →
+  the game's `PROJECT.md` (its contract) → the game's current tasks / status / latest handoff.
+- **Game-specific decisions and burns live in the game repo** (a `decisions.md` / postmortem).
+  Promote a lesson into RedShiftOS only when a *second* game re-derives it — that's what keeps
+  the OS evergreen instead of one game's archive.
+- Non-trivial features run through `FOUNDATION/Feature-Lifecycle.md` — pick the task class, run
+  its gates. Prove it before you build it.
+
+## If you're working ON RedShiftOS itself
+
+- **No stub files.** A document exists only when it holds real content (Decision #1). Empty
+  scaffolding is the exact sprawl this OS exists to prevent.
+- **Lessons-Learned IDs are append-only and stable.** A new lesson gets the next `L-NN`;
+  never renumber, never silently delete — correct via a new entry or a human-approved edit.
+- **Keep the always-load surface small.** The Manifesto stays one page; the task map stays a
+  table. New depth goes into reference docs pulled by task, never into the boot budget.
+- **Eat the dogfood.** Run OS changes through the Feature Lifecycle and Decision Framework;
+  log significant structural decisions in the Decision Framework's log.
+- This repo is **docs-only** — no build, no tests. The gate is: does it follow the Manifesto,
+  and is it dense, scannable, and stable?
 
 ## Off-limits
 

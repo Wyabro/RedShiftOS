@@ -1,12 +1,13 @@
 # Feature Lifecycle
 
-*The path every feature follows, from idea to merged. This is the development heartbeat.
-Each stage has one narrow objective, which is exactly what makes AI agents consistent — a
-step with a single goal is a step an agent can't wander off from.*
+*The full path a **new system** follows, idea to merged — the development heartbeat. Smaller
+work runs a subset (see Task classes below). Each stage has one narrow objective, which is
+what keeps an agent from wandering off it.*
 
-**The rule: no skipping, no exceptions.** A feature that jumps straight to implementation is
-a feature that will be redesigned. The whole point of Cart Clash's expensive lessons was
-that coding is not step two.
+**The rule: pick the task class honestly, then run its gates.** A *new system* that jumps
+straight to implementation gets redesigned — coding is not step two. But a typo fix doesn't
+need a Player-Value writeup. Match the gates to the work; when you drop a gate it's a named
+choice, not a silent skip.
 
 ---
 
@@ -37,7 +38,7 @@ QA                  — verified in the artifact that actually ships (not just d
   ↓
 Merge
   ↓
-Postmortem          — what did this teach? new Lessons-Learned entries if any.
+Postmortem          — on a surprise / kill / incident: what did this teach? (not every feature)
 ```
 
 ## Stage gates (definition of done per stage)
@@ -56,7 +57,7 @@ A feature does not advance until its current stage's gate is met:
 | Production | Implemented against architecture rules; one responsibility per file. |
 | Code Review | Passed review; every new dependency justified in writing. |
 | QA | Verified in the deployed/shipped artifact, not just locally. |
-| Postmortem | Lessons captured; OS docs updated to match reality. |
+| Postmortem | Only after a surprise, a killed prototype, or a production incident — capture the lesson in the *game* repo; promote to the OS if a later game re-derives it. |
 
 ## Say the feeling before you build
 
@@ -101,10 +102,19 @@ merge.
 Local files don't count. Build folders don't count. A browser tab from ten minutes ago
 doesn't count. (This ladder is Lesson L-07 made concrete.)
 
-## Scaling the pipeline
+## Task classes — match the gates to the work
 
-The pipeline is fixed; its *weight* scales with the feature. A one-line tuning tweak runs
-through the same stages in minutes (player value: obvious; prototype: the tune panel;
-playtest: feel it). A new game mode takes days. The stages don't get skipped — they get
-sized. When a stage genuinely doesn't apply, that's a decision to *log*, not to skip
-silently.
+The full pipeline is the path for a **new system**. Most work is smaller. Pick the honest
+class and run its gates; anything you drop is a named choice, not a silent skip.
+
+| Class | Gates it runs | Consciously drops |
+|---|---|---|
+| **new-system** | the full pipeline | — |
+| **feature** | Player Value → Design → Prototype → Playtest → Production → Code Review → Validate | Technical/Risk writeups when the system is well understood |
+| **bug** | Root-cause (L-14) → Fix → Code Review → Validate | design · prototype · playtest |
+| **tune / feel** | Prototype (the tune panel) → Playtest → apply → Validate | design docs · heavy review |
+| **chore / docs** | Code Review → Validate | everything upstream |
+
+Two gates **never** drop, whatever the class: **root-cause before the fix** (L-14) and
+**verify in the shipped artifact** (the proof ladder). If you're unsure which class it is,
+size up — a mislabeled `chore` that was really a `new-system` is how Cart Clash bled time.
