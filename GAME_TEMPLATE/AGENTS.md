@@ -10,13 +10,10 @@ Windsurf) here too.
 
 1. **This file.**
 2. **RedShiftOS** (checked out at `./RedShiftOS` as a submodule, or a sibling directory):
-   - `RedShiftOS/FOUNDATION/Studio-Philosophy.md` — why the studio builds this way
-   - `RedShiftOS/FOUNDATION/Development-Manifesto.md` — the 10 build rules
-   - `RedShiftOS/FOUNDATION/Lessons-Learned.md` — mistakes already made, now rules
-   - `RedShiftOS/FOUNDATION/Anti-Patterns.md` — named failure modes to avoid
-   - `RedShiftOS/FOUNDATION/Decision-Framework.md` — how decisions get made + the log
-   - `RedShiftOS/FOUNDATION/Feature-Lifecycle.md` — the pipeline every feature follows
-   - then walk `RedShiftOS/LIFECYCLE/` for the phase you're in
+   - `RedShiftOS/AGENTS.md` — the task map: what to load for the task in front of you
+   - `RedShiftOS/FOUNDATION/Development-Manifesto.md` — the 10 build rules (binding)
+   - then pull the rest of `FOUNDATION/` (Lessons, Anti-Patterns, Decision-Framework,
+     Feature-Lifecycle, Philosophy) *by task*, per that map — don't boot-load it all
 3. **`PROJECT.md`** — this game's contract (concept, stack, first shippable version, cut list).
 4. **`STATUS.md` / `Tasks.md` / latest handoff** — what's in flight right now.
 

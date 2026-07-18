@@ -7,6 +7,13 @@ gives AI agents the* reasoning *behind the architecture, not just the architectu
 
 ---
 
+## Where decisions live
+
+This log is for **OS-level** decisions (structure, rules, process). **Game-specific** decisions
+and burns live in the game's own repo (a `decisions.md` / postmortem) — keeping them there
+avoids coupling the RedShiftOS submodule pin to one game's history. Promote a decision into this
+log only when it's about the OS itself, or when a *second* game re-derives the same lesson.
+
 ## The pre-decision checklist
 
 Before committing to a major decision, answer:
@@ -199,3 +206,46 @@ Tradeoffs:
 Reversible?:
   Yes — folders and moves are cheap; the structure evolves as real games reveal what each
   phase actually needs.
+
+## Decision #5 — Thin the boot load; freeze pending Game #2
+
+Date: 2026-07-17
+Status: Accepted
+
+Question:
+  A critical external review argued the always-load design (~16k tokens of FOUNDATION every
+  session) fights how agents use context, the dual catalog duplicates itself, the pipeline is
+  too absolute, and the OS is unproven without a second game. What changes?
+
+Alternatives:
+  - Defend and keep as-is.
+  - Throw it out (partly rhetorical overreach — the lessons are earned from real shipping, not
+    conjecture).
+  - Corrective pass: cut the delivery-mechanism overhead, protect the earned content, then freeze.
+
+Chosen:
+  The corrective pass. The distinction that drove it: the *lessons* are proven (a real
+  jam → production arc that shipped); the *delivery mechanism* is not. So — protect every
+  lesson, the philosophy, the proof ladder, the prompts; cut the force-feeding:
+  - `AGENTS.md` → thin always-load card (Manifesto + a task map); FOUNDATION pulled by task.
+  - `Feature-Lifecycle` → task classes (new-system / feature / bug / tune / chore); killed
+    "no skipping, no exceptions"; postmortems are event-driven, not per-feature.
+  - `Anti-Patterns` → grep-able detection checklist (was a 13-section essay duplicating Lessons).
+  - `Lessons-Learned` → "Pull by tag" index; stayed single-source (an index + full split would
+    be the L-17 two-copy sync trap the reviewer's own fix walked into).
+  - Removed the empty LIFECYCLE phase folders; game decisions live in the game repo.
+  - Defined Game-#2 success metrics (ROADMAP) and froze OS expansion until they move.
+
+Reason:
+  A fair test of the hypothesis needs a thinned OS — a bloated always-load would just confirm
+  "agents ignore it," which the review already predicted. The material is a real asset; the
+  packaging was over-built. Where the review overreached (lessons = conjecture; split Lessons
+  into two files) we didn't follow.
+
+Tradeoffs:
+  Depth moved from always-on to on-demand — agents must actually *pull* it (the task map is the
+  bet). The lifecycle-as-navigation is looser now.
+
+Reversible?:
+  Yes — and Game #2 is the real reversibility test: it decides what comes back, what stays cut,
+  and what finally earns automation.

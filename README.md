@@ -21,15 +21,14 @@ games*, not just *today's prompt*.
 
 ## How it's used
 
-The OS walks you through a game in order:
-
-1. **Read `FOUNDATION/` first** — how the studio thinks. It's binding and applies to every phase.
-2. **Walk `LIFECYCLE/` in order** — Project → Design → Engineering → Implementation →
-   Playtesting → Production → Postmortems.
-3. **Every feature flows through the [Feature Lifecycle](FOUNDATION/Feature-Lifecycle.md)** —
-   idea → merge, no skipping.
+1. **Load the Manifesto + `AGENTS.md`'s task map** — then pull the rest of `FOUNDATION/` *by
+   task*. Don't boot-load the whole library; more context dilutes signal.
+2. **Move through the lifecycle phases** as you build — Project → Design → … → Postmortems
+   (`LIFECYCLE/`).
+3. **Non-trivial features run the [Feature Lifecycle](FOUNDATION/Feature-Lifecycle.md)** — pick
+   the task class, run its gates.
 4. **Every significant decision** runs the [Decision Framework](FOUNDATION/Decision-Framework.md)
-   and gets logged.
+   and gets logged (game-specific ones live in the game repo).
 5. **Every shipped project's pain** feeds back into
    [Lessons Learned](FOUNDATION/Lessons-Learned.md) and
    [Anti-Patterns](FOUNDATION/Anti-Patterns.md). The system gets smarter because we actually
@@ -42,7 +41,8 @@ The OS walks you through a game in order:
   [Lessons Learned](FOUNDATION/Lessons-Learned.md), [Anti-Patterns](FOUNDATION/Anti-Patterns.md),
   [Decision Framework](FOUNDATION/Decision-Framework.md), and the
   [Feature Lifecycle](FOUNDATION/Feature-Lifecycle.md).
-- **[LIFECYCLE/](LIFECYCLE/)** — the seven chronological phases, each with its own guidance.
+- **[LIFECYCLE/](LIFECYCLE/)** — the seven phases; folders exist where content does, the rest
+  are covered by FOUNDATION until a game fills them.
 - **[AI/](AI/)** — the cross-cutting AI-collaboration layer: model routing, triage & recovery,
   prompt library.
 - **[GAME_TEMPLATE/](GAME_TEMPLATE/)** — copy into a new game repo to wire it to this OS.
@@ -64,14 +64,10 @@ RedShiftOS/
 │   ├── Anti-Patterns.md
 │   ├── Decision-Framework.md
 │   └── Feature-Lifecycle.md
-├── LIFECYCLE/             the chronological phases — the OS walks you through a game
-│   ├── 1-PROJECT/
-│   ├── 2-DESIGN/
-│   ├── 3-ENGINEERING/
-│   ├── 4-IMPLEMENTATION/  (+ Session-Handoffs.md)
-│   ├── 5-PLAYTESTING/
-│   ├── 6-PRODUCTION/      (+ Assets-and-Provenance.md)
-│   └── 7-POSTMORTEMS/
+├── LIFECYCLE/             the 7 phases (folders exist where content does — see LIFECYCLE/README)
+│   ├── 1-PROJECT/         define the game
+│   ├── 4-IMPLEMENTATION/  build it (+ Session-Handoffs.md)
+│   └── 6-PRODUCTION/      ship it (+ Assets-and-Provenance.md)
 ├── AI/                    cross-cutting AI-collaboration layer
 │   ├── Model-Routing.md
 │   ├── Triage-and-Recovery.md
@@ -92,8 +88,9 @@ while building a game — and that's the signal to fix the process, not to skip 
 
 ---
 
-*Status: foundation complete and organized around the development lifecycle. FOUNDATION holds
-philosophy, manifesto, 17 lessons, a 13-entry anti-pattern catalog, the decision log, and the
-feature pipeline; LIFECYCLE lays out the seven phases; AI/ carries the collaboration layer.
-Phase folders and future layers grow as real games — starting with Game #2 — give them
-content. See [ROADMAP.md](ROADMAP.md).*
+*Status: **frozen — validating on Game #2.** After a critical review, the always-load design
+was thinned to a Manifesto + a task map (FOUNDATION is now a reference library pulled by task),
+the feature pipeline got honest task classes, the dual catalog collapsed to one narrative + one
+checklist, and the empty phase folders were removed. The earned content — 17 lessons, the
+philosophy, the proof ladder — is untouched. Game #2 is the experiment that tells us what to
+add next; success metrics are in [ROADMAP.md](ROADMAP.md). No OS expansion until then.*
