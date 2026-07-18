@@ -17,8 +17,10 @@ Windsurf) here too.
 3. **`PROJECT.md`** — this game's contract (concept, stack, first shippable version, cut list).
 4. **`STATUS.md` / `Tasks.md` / latest handoff** — what's in flight right now.
 
-The RedShiftOS **Manifesto and Lessons Learned are binding** and override your defaults.
-Every feature runs through the Feature Lifecycle — no skipping. Prove it before you build it.
+The RedShiftOS **Manifesto is binding** and overrides your defaults. **Lessons Learned are
+binding when the task pulls them** (see `RedShiftOS/AGENTS.md` → "Load by task"). Non-trivial
+features run the Feature Lifecycle — pick the task class and run its gates; a dropped gate is a
+named choice, not a silent skip. Prove it before you build it.
 
 ---
 

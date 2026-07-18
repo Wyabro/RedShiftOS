@@ -98,7 +98,7 @@ Reversible?:
 ## Decision #2 — Agent wiring: how games consume the OS
 
 Date: 2026-07-17
-Status: Accepted
+Status: Accepted — load order superseded in part by #5
 
 Question:
   How do agents get pointed at RedShiftOS, and where does the wiring live?
@@ -167,7 +167,7 @@ Reversible?:
 ## Decision #4 — Reorganize around the development lifecycle
 
 Date: 2026-07-17
-Status: Accepted
+Status: Accepted — always-load model & empty phase folders superseded in part by #5
 
 Question:
   A review (Wyatt + a friend) proposed organizing the OS around *time* — the phases of building

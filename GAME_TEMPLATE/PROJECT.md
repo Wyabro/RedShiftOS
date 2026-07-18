@@ -35,8 +35,8 @@ belongs in a separate doc, not here.
 
 ## AI rules & patterns that already burned us
 
-The RedShiftOS Manifesto + Lessons Learned are binding (see `AGENTS.md` load order). This
-section is for *this game's* extras — engine-specific rules, forbidden patterns, and the
-specific mistakes this project has already paid for:
+The RedShiftOS Manifesto is binding, and Lessons Learned are binding when the task pulls them
+(see `AGENTS.md` load order). This section is for *this game's* extras — engine-specific rules,
+forbidden patterns, and the specific mistakes this project has already paid for:
 
 -
