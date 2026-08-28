@@ -66,15 +66,15 @@ want first. Revisit only if mcp-go fails the doctor on this machine.
 ## Skills allow-list (Godot 4.7 only)
 
 Source: [`gamedev-skills/awesome-gamedev-agent-skills`](https://github.com/gamedev-skills/awesome-gamedev-agent-skills)
-(Apache-2.0). Version table (checked 2026-08-08): **Godot 4.7** for new projects.
+(Apache-2.0). Version table (checked 2026-08-28): **Godot 4.7** for new projects.
 
-Install into the **game** repo (`.agents/skills/` / `.claude/skills/`), never into
-RedShiftOS. Copy **only** these folders, and only after you open each `SKILL.md` and confirm
-it targets Godot 4.7:
+These are approved candidates, not a default install. Copy a skill into the **game** repo
+(`.agents/skills/` / `.claude/skills/`), never into RedShiftOS, only when the current task
+matches its trigger. Before copying it, open its `SKILL.md` and confirm it still targets
+Godot 4.7 when it is engine-specific.
 
 | Skill | When |
 |---|---|
-| `router` | Always, if any of these are installed |
 | `prototype-fast` | Concept prove (engine-agnostic workflow; still 4.7 when the engine skill loads) |
 | `godot-gdscript` | Any GDScript |
 | `godot-nodes-scenes` | Scene work |
@@ -82,12 +82,26 @@ it targets Godot 4.7:
 | `godot-3d-essentials` | If the prove is 3D |
 | `godot-2d-movement` | If the prove is 2D |
 | `godot-multiplayer` | If `PROJECT.md` is co-op — 4.7 ENet / `@rpc` |
+| `input-systems` | From first prove: named actions, edge/held input, deadzones, and required devices. Rebinding UI and saved bindings wait until KEEP |
 | `physics-tuning` | After the verb exists |
 | `game-feel` | After KEEP on the verb, before polish spirals |
+| `godot-signals-groups` | After KEEP, when production scenes need decoupled communication |
+| `camera-systems` | During prove only when camera behavior is the question; otherwise after KEEP |
+| `godot-ui-control` | After KEEP, for HUD, menus, layout, themes, and controller focus |
+| `godot-export` | First external human build and every release/QA build |
 
-**Do not install:** the other 50+ skills, Unity/Unreal/web packs, `create-game-assets` during
-prove (player-facing gen art), or any Godot collection that does not pin **4.7**
-(unversioned “Godot 4.x” mega-packs, Godot 3 snippets, GD-Agentic-Skills as a whole dump).
+Keep the upstream Apache-2.0 license and any supplied notice with copied skills. Add their
+source and version to the game's third-party provenance record in the same commit.
+
+**Do not install:** the upstream master `router`; the other 50+ skills; Unity/Unreal/web
+packs; `game-jam` (overlaps `prototype-fast`); genre packs before the concept is chosen;
+`create-game-assets` during prove (player-facing gen art); `steam-publish` before its release
+advice is checked against current official Steamworks documentation; or any Godot collection
+that does not pin **4.7** (unversioned “Godot 4.x” mega-packs, Godot 3 snippets,
+GD-Agentic-Skills as a whole dump).
+
+Audio, animation, resources, save, level-design, and performance skills stay task-dependent.
+Re-evaluate them after KEEP instead of expanding the day-0 skill surface.
 
 GUT / GdUnit4: after KEEP. They test behavior, not fun.
 
