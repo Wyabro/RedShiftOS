@@ -29,10 +29,13 @@ Pull only what the task in front of you needs:
 | When you're… | Also load |
 |---|---|
 | starting a new system / feature | `FOUNDATION/Feature-Lifecycle.md` (full) · `FOUNDATION/Decision-Framework.md` · Lessons tagged *architecture / design* |
+| starting / proving a Godot game | `LIFECYCLE/3-ENGINEERING/Godot.md` · `AI/Agent-Loops.md` · Lessons L-18–L-22 |
+| prototyping a verb (any engine) | Feature-Lifecycle **Evidence states** + **One question per prototype** · `AI/Agent-Loops.md` · `prototype-fast` if installed in the *game* repo |
 | fixing a bug | root-cause first (L-14) · the Lesson IDs for that area (Lessons → "Pull by tag") · the proof ladder |
 | tuning feel / balance | the prototype + playtest gates · Lessons tagged *design / playtest* |
-| working netcode / multiplayer | Lessons tagged *net* (L-02, L-08) · the game's own netcode notes |
+| working netcode / multiplayer | Lessons tagged *net* (L-02, L-08, L-22) · the game's own netcode notes · Godot: `godot-multiplayer` skill **only if** it names 4.7 |
 | shipping or verifying | the proof ladder (`FOUNDATION/Feature-Lifecycle.md`) · `LIFECYCLE/6-PRODUCTION/Assets-and-Provenance.md` |
+| adding Asset Store / Library / Kenney / third-party | `LIFECYCLE/6-PRODUCTION/Assets-and-Provenance.md` (sources + license buckets) · `LIFECYCLE/3-ENGINEERING/Godot.md` · Manifesto §5 |
 | reviewing a diff | `FOUNDATION/Anti-Patterns.md` — the detection checklist |
 | an agent is stuck / looping | `AI/Triage-and-Recovery.md` |
 | picking a model / watching cost | `AI/Model-Routing.md` |

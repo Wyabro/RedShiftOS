@@ -210,7 +210,7 @@ Reversible?:
 ## Decision #5 — Thin the boot load; freeze pending Game #2
 
 Date: 2026-07-17
-Status: Accepted
+Status: Accepted — freeze lifted in part by #6
 
 Question:
   A critical external review argued the always-load design (~16k tokens of FOUNDATION every
@@ -249,3 +249,46 @@ Tradeoffs:
 Reversible?:
   Yes — and Game #2 is the real reversibility test: it decides what comes back, what stays cut,
   and what finally earns automation.
+
+## Decision #6 — Lift the Game #2 freeze for an evidence kernel (v0.2)
+
+Date: 2026-08-28
+Status: Accepted
+
+Question:
+  Game #2 (Slop Park) used RedShiftOS and dead-ended: agents stamped PASS, Wyatt’s verdict is
+  FAIL. Decision #5 froze OS expansion until Game #2 produced evidence. What do we add?
+
+Alternatives:
+  - Keep the freeze (treat Slop Park as “not a real test”).
+  - Import Cart Clash tooling wholesale (BRIEFING generator, ARCHITECTURE.json, npm qa).
+  - Import a 60+ Godot skill pack and a large MCP into this repo.
+  - Small evidence kernel: states, one-question prototypes, Godot 4.7 cuts, ranked agent loop,
+    skill *allow-list* in the game repo only.
+
+Chosen:
+  The evidence kernel (v0.2 docs). Slop Park is **frozen** — do not polish it. Primary job of
+  v0.2 is to **reject weak hooks quickly**; Cart Clash production discipline applies after KEEP.
+
+  In scope: Feature-Lifecycle evidence states; L-18–L-22; Anti-Patterns 14–18; `AI/Agent-Loops.md`;
+  `LIFECYCLE/3-ENGINEERING/Godot.md` (Godot **4.7.x**, stock Jolt, `godot-mcp-go` as an eval
+  candidate, awesome-gamedev-agent-skills **4.7** allow-list); GAME_TEMPLATE prove-then-structure;
+  Steam provenance note.
+
+  Out of scope: automation wizard, vendoring MCP/skills into RedShiftOS, gag pick for Game #3,
+  BRIEFING generators.
+
+Reason:
+  Decision #5 asked Game #2 to move the metrics. It moved them the wrong way: false PASS,
+  scope stacked, experimental physics, critic theater. Cart Clash’s later gates (playtest debt,
+  Wyatt-only PASS) matured after the freeze and are more valuable than another rulebook.
+  Godot 4.7 commercial proof exists; the hole was operational gates, not the engine.
+
+Tradeoffs:
+  Always-load stays two files (task map grew by two rows). Godot-only engineering page — other
+  engines wait. MCP is named, not bundled; it must pass `doctor` on this Windows box before a
+  game pins it.
+
+Reversible?:
+  Yes — docs can be cut if Game #3 shows they are lore. Automation still waits for a game past
+  KEEP to name a repetitive step.

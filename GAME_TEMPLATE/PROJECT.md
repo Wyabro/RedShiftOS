@@ -10,26 +10,39 @@ belongs in a separate doc, not here.
 ## Project
 
 - **Name & one-sentence concept:**
+- **Visible hook** (what a 5-second GIF shows):
+- **Comparable games** (2–3, including what we are *not*):
 - **Target player:**
 - **Target platform & hardware:**
+- **Price band (if Steam):**
 - **Current milestone — what success looks like:**
+- **Current evidence state:** *(TECH PASS / AGENT REVIEW / HUMAN PLAYTEST OWED / HUMAN PASS / HUMAN FAIL / KEEP / REWORK / KILL)* — human writes PASS/FAIL/KEEP/KILL
 
 ## Stack
 
-- **Engine / framework + language:**
+- **Engine / framework + language:** Godot **4.7.x** + GDScript *(or name the exception)*
+- **Physics:** stock Jolt *(no GDExtension in prove)*
+- **Player count at 1.0:** 1 / 2 / 4
+- **Authority model** (if 2+): host-authoritative *(or written alternative)*
 - **Backend / database / hosting:**
+- **Pinned Godot MCP** (name + release tag, or “headless floor only”):
 - **AI coding tools in use:**
-- **Runtime AI / model use (if any):**
+- **Runtime AI / model use (if any):** none for M1 unless written here
 
-## First shippable version
+## First shippable version (the prove)
 
-- **Core loop / primary flow:**
-- **Required scenes / systems:**
-- **What counts as "done":**
+- **The one question:**
+- **Core verb:**
+- **Required scenes / systems** (greybox only):
+- **What counts as KEEP:** a fresh player does the verb unprompted and repeats without being asked
+- **Kill if:**
+
+If 1.0 is co-op, this prove is **two local players** on one machine (L-22). Steam, lobbies,
+and migration are not this section.
 
 ## Cut list
 
-- **Deferred for now:**
+- **Deferred until KEEP:**
 - **Cut if blocked:**
 - **Post-launch:**
 
@@ -39,4 +52,7 @@ The RedShiftOS Manifesto is binding, and Lessons Learned are binding when the ta
 (see `AGENTS.md` load order). This section is for *this game's* extras — engine-specific rules,
 forbidden patterns, and the specific mistakes this project has already paid for:
 
+- Agents do not write HUMAN PASS / KEEP / KILL.
+- Godot skills, if installed, are the **4.7** allow-list in `RedShiftOS/LIFECYCLE/3-ENGINEERING/Godot.md` — not a 60+ pack.
+- Third-party (Asset Store first, then Asset Library, Kenney, Poly Haven, GitHub): license row in the provenance table **same commit** as the files. Prefer 4.7; 4.x only with a 4.7 smoke + tweak note. No GPL/NC toward Steam without a written accept.
 -

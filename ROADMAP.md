@@ -6,21 +6,23 @@ list to build now. The rule stands: nothing here gets built until a real game ne
 
 ---
 
-## Frozen — validating on Game #2
+## Now — v0.2 evidence kernel (Decision #6)
 
-The OS is a hypothesis: that loading this context makes agents build better games. Game #2 is
-the experiment. **No OS expansion — no new standards, no new phases, no automation — until
-Game #2 produces evidence.** Build the game *by hand* through the OS, feel what's actually
-missing, and let that drive the next change.
+Game #2 (Slop Park) ran the v0.1 OS and dead-ended. Agents stamped PASS; the human gate is
+FAIL. The project is **frozen** — do not polish it.
 
-**How we'll know it's working** (measure on Game #2 against the Cart Clash baseline):
+v0.2’s job is to **reject weak hooks quickly** (one-question prototypes, evidence states,
+Godot 4.7 hard cuts, ranked agent loops). Cart Clash production discipline stays for after
+KEEP. **Still no automation wizard.**
 
-- **Repeat mistakes** — times we re-hit a Cart Clash lesson class the OS already names. *(fewer)*
-- **Scope creep** — times an agent ran past its approved plan. *(fewer — the plan gate should catch them)*
-- **Done → verified gap** — median time from an agent saying "done" to verified-in-the-shipped-artifact. *(shrinks — the proof ladder should make it routine)*
-- **OS overhead** — hours maintaining the OS vs. hours coding the game. *(small, and falling)*
+**How we'll know v0.2 worked** (measure on Game #3):
 
-If these don't move, the OS is lore, not leverage — and we cut harder, not add.
+- **False PASS** — agent writes HUMAN PASS / KEEP. *(zero)*
+- **Repeat L-18–L-22** — critic-as-close, Box3D-class plugins, OS-before-laugh, harness-as-game, solo-only prove on a co-op 1.0. *(fewer)*
+- **Time to first human play** of the core verb. *(hours, not days)*
+- **OS overhead** — hours maintaining the OS vs. hours in `prototypes/`. *(small)*
+
+If these don't move, cut v0.2 harder — do not add layers.
 
 ---
 
@@ -30,11 +32,11 @@ RedShiftOS grows through five layers. The first three exist; the last two are ah
 
 1. **Philosophy** — why we build this way. *(FOUNDATION: Studio-Philosophy, Manifesto.)* — ✅
 2. **Process** — what happens, in what order, who reviews. *(FOUNDATION: Feature-Lifecycle,
-   Decision-Framework; the LIFECYCLE phases.)* — ✅
+   Decision-Framework; the LIFECYCLE phases; evidence states.)* — ✅
 3. **Standards** — folder layouts, code, scenes, naming, git, AI. *(Partial: AGENTS, AI/,
-   Anti-Patterns; a `LIFECYCLE/3-ENGINEERING` folder gets created when Game #2 produces real standards.)* — ◐
+   Anti-Patterns, `LIFECYCLE/3-ENGINEERING/Godot.md` for Godot 4.7.)* — ◐
 4. **Templates** — every document already exists; copy, rename, fill. *(Partial: GAME_TEMPLATE;
-   grows into per-phase templates — design doc, risk analysis, QA checklist, playtest plan.)* — ◐
+   prove-then-structure start.)* — ◐
 5. **Automation** — the OS *generates* the work, not just describes it. — ○
 
 ## The automation endgame
@@ -49,10 +51,8 @@ wires RedShiftOS in, copies templates, generates AI context, opens the decision 
 feature/playtest trackers, and bootstraps the engine — so you're not creating a game, you're
 creating a studio-ready project.
 
-## Why not now
+## Why not the wizard now
 
-Automation is tooling, and the OS is docs. Building the wizard before there's a second game to
-run it on is Architecture Astronautics (see `FOUNDATION/Anti-Patterns.md`). The path is: build
-Game #2 *by hand* through this OS, feel exactly which steps are repetitive and painful, and
-automate those — evidence first, tooling second. The OS is more valuable than any one game;
-let it earn its automation from real use.
+Automation is tooling, and the OS is docs. Building the wizard before a game **past KEEP**
+names a repetitive step is Architecture Astronautics (`FOUNDATION/Anti-Patterns.md`). Game #2
+showed we needed gates, not generators. Evidence first, tooling second.

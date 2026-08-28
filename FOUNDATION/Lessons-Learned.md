@@ -15,16 +15,17 @@ doesn't get cargo-culted).
 
 ## Pull by tag
 
-Load the lessons a task needs, not all seventeen:
+Load the lessons a task needs, not all twenty-two:
 
-- **architecture** — L-01, L-03, L-04, L-17
-- **net / multiplayer** — L-02, L-08
-- **ship / verify** — L-05, L-07, L-08
+- **architecture** — L-01, L-03, L-04, L-17, L-19
+- **net / multiplayer** — L-02, L-08, L-22
+- **ship / verify** — L-05, L-07, L-08, L-18
 - **perf / hardware** — L-06, L-09, L-10
-- **process / workflow** — L-01, L-10, L-11, L-12, L-14, L-17
-- **ai-collaboration** — L-05, L-11, L-13, L-14
-- **design / feel** — L-13, L-16
-- **playtest** — L-06, L-15, L-16
+- **process / workflow** — L-01, L-10, L-11, L-12, L-14, L-17, L-20, L-21
+- **ai-collaboration** — L-05, L-11, L-13, L-14, L-18, L-21
+- **design / feel** — L-13, L-16, L-20
+- **playtest** — L-06, L-15, L-16, L-18, L-20
+- **godot / engine** — L-19, L-21
 
 ---
 
@@ -291,6 +292,86 @@ Load the lessons a task needs, not all seventeen:
 - **Example:** Music exclusivity was moved *inside* the audio manager (starting game music
   stops menu music, and vice-versa) with regression tests, structurally closing the class; a
   duplicate keydown listener that double-fired mute was collapsed to one.
+
+## L-18 — An LLM critic cannot close a human gate
+
+- **Problem:** Slop Park’s M1 required a friend laugh on a local build. Agents stamped
+  **FINAL VERDICT: PASS** from scripted runs, 1 Hz screenshots, and AI critics. The critic
+  itself noted that feel and humor still needed a human. Wyatt’s verdict is FAIL. The project
+  is frozen — do not polish it.
+- **Why we missed it:** A gauntlet with scores looks like a playtest. The OS already required
+  “a real person, real hardware, real build”; nothing *stopped* an agent from writing PASS.
+- **Root cause:** AGENT REVIEW was allowed to masquerade as HUMAN PASS. The model in use also
+  had weak vision, so it scored stills timed for the camera, not play.
+- **Rule:** LLM critics are **AGENT REVIEW** only. They may use video or live frames and score
+  observables (is the spark on screen, did both pads move a body). They never write HUMAN PASS,
+  KEEP, or KILL. Only a named human closes those. A critic that cannot see is not a critic —
+  skip it.
+- **Exceptions:** TECH PASS (compile, SCRIPT ERROR, scenario asserts) stays an agent job.
+- **Example:** `SLOP-PARK/HANDOFF.md` “FINAL VERDICT: PASS” vs `gauntlet/critique/` admitting
+  a human playtest was still owed.
+
+## L-19 — Experimental engine plugins are not an M1
+
+- **Problem:** Slop Park pinned Box3D (`Stink-O/box3d-godot` v0.4.2) before proving the toy.
+  Weeks went to HEIGHT_FIELD never colliding, corrupt large meshes, pose-before-`add_child`.
+- **Why we missed it:** The binding looked like the “real” physics for the fantasy, so it felt
+  like a day-0 decision rather than a bet.
+- **Root cause:** The first question was “is grab / weld / launch fun?” Stock Godot Jolt could
+  answer it. The experiment answered “can agents integrate a GDExtension?” instead.
+- **Rule:** M1 uses the engine’s **built-in** physics and nodes (Godot **4.7.x** + stock Jolt).
+  No GDExtension, engine fork, or custom physics binary until KEEP on the verb.
+- **Exceptions:** The whole game *is* the plugin (you are shipping the binding). That is not
+  an M1 toy.
+- **Example:** Box3D collider matrix in `SLOP-PARK/HANDOFF.md` §3 — capability probes that
+  should never have gated a laugh.
+
+## L-20 — Structure after KEEP, not before the first laugh
+
+- **Problem:** Cart Clash moved because the first two weeks were a jam with almost no OS.
+  Slop Park ran RedShiftOS ceremony first (20 decisions, gauntlet, whole-game slice) and never
+  got a human laugh.
+- **Why we missed it:** The OS existed, so using all of it felt like discipline. Cart Clash’s
+  later gates (playtest debt, Wyatt PASS) did not exist yet when the OS was frozen.
+- **Root cause:** Process without a playable verb is theater. Production discipline cannot
+  rescue an unproven hook (Manifesto §1).
+- **Rule:** Concept prove is unstructured: one lot, one verb, greybox, you play. Cards,
+  briefing-style structure, and production architecture start **after KEEP**. If 1.0 is
+  multiplayer, the unstructured prove is still **2-player-shaped** (L-22) — that is a design
+  constraint, not a process novel.
+- **Exceptions:** A behavior change on a game that already has KEEP follows the full gates.
+- **Example:** Cart Clash jam (Apr 2026) vs RedShiftOS written in July from those lessons —
+  Game #2 cargo-culted the docs, not the jam.
+
+## L-21 — The harness must not become the game
+
+- **Problem:** Slop Park tuned weld FX so 1 Hz PNG dumps caught a glow, biased RV pops into
+  the chase cam, and spawned a gravity-0 crate in front of the camera so weld/launch smokes
+  always “worked.”
+- **Root cause:** Manifesto §7 (“ability to see”) was implemented as screenshot-optimized
+  gameplay. The agent optimized the metric in front of it.
+- **Rule:** Headless/MCP asserts check *player-visible* state (a welded joint exists, a body
+  moved). Do not add `_smoke_assist`, lengthen VFX to match capture cadence, or teleport props
+  into frame. If the harness needs a lie, the mechanic is not proven.
+- **Example:** `interaction_controller.gd` hold spring computed velocity and never applied it;
+  smokes still passed.
+
+## L-22 — If 1.0 is multiplayer, the prove unit is two players
+
+- **Problem:** Slop Park forbade net in M1, then wrote extensive multiplayer / replication /
+  hosting decisions anyway. The toy stayed solo. Bolting net onto a solo mountain is the
+  Cart Clash retrofit (L-02) in reverse.
+- **Why we missed it:** “No net in M1” sounded like Manifesto §1. It actually licensed a
+  solo-only design plus docs theater.
+- **Root cause:** Multiplayer is a **day-0 design constraint**, not a late feature and not a
+  decision novel. How to Fish and Cart Clash both treated 2p as the unit of fun.
+- **Rule:** `PROJECT.md` locks player count and authority on day 0. If 1.0 needs co-op, the
+  prototype is two pads, split-screen, or two local clients on one machine before content
+  grows. Do not add hidden local-only state, unseeded RNG as gameplay truth, or systems that
+  cannot net. Steam lobbies, host migration, and snapshot-rate essays wait until KEEP.
+- **Exceptions:** A genuinely single-player game decides that on purpose (L-02).
+- **Example:** Cart Clash host-authoritative Rapier was a one-line invariant from early on;
+  the transport still changed later. The invariant informed the toy. The essay did not.
 
 ---
 

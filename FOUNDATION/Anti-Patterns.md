@@ -27,6 +27,12 @@ its cross-referenced Lesson or Manifesto rule — this file is the **detector**,
 | 11 | **Singleton Abuse** | Runtime (non-init) code assigns to a global / `CONFIG`; two stores expose the same state; a test fails unless you reset a global first. | Manifesto §4 |
 | 12 | **Architecture Astronautics** | An interface / factory / plugin system with one implementation and no second on the roadmap; a folder of stub files; you can't name the concrete case it serves *today*. | Manifesto §5 |
 | 13 | **Manager-Manager Syndrome** | Two+ `*Manager` / `*System` / `*Controller` in one call path, at least one of which only delegates; a class with no behavior of its own. | Manifesto §4 |
+| 14 | **False PASS** | An agent writes HUMAN PASS, KEEP, KILL, or “FINAL VERDICT: PASS”; or a critic file closes M1. Only a human writes those states. | L-18 |
+| 15 | **Screenshot-cadence FX** | VFX duration, camera bias, or a helper named `smoke`/`assist` exists so a capture harness looks right. | L-21 |
+| 16 | **Decision novel before a laugh** | `decisions.md` has production net/render/hosting entries while M1 is still “prove the verb”; or >~10 decisions before HUMAN PLAYTEST OWED. | L-20, L-22 |
+| 17 | **Skill-pack dump** | The game repo installed a whole 60+ skill marketplace, mixed engine versions, or a Godot skill that does not name **4.7**. | L-19, Godot.md |
+| 18 | **Experimental physics in prove** | M1 depends on a GDExtension, engine fork, or non-stock physics binary. | L-19 |
+| 19 | **Unlogged third-party** | New `addons/`, Asset Store/Library, Kenney, or GitHub files with no license row in the game’s provenance table; listing license ≠ repo `LICENSE`; GPL/NC shipped toward Steam with no written accept. | Provenance |
 
 ## How to use it
 

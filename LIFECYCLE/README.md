@@ -8,11 +8,11 @@ Astronautics smell this OS refuses — Decision #1).
 
 1. **Project** → [1-PROJECT/](1-PROJECT/) — define the game
 2. **Design** — shape the experience *(for now: Feature-Lifecycle design stage + Lessons `design`)*
-3. **Engineering** — set the standards *(for now: the Manifesto + Anti-Patterns)*
+3. **Engineering** — set the standards → [3-ENGINEERING/](3-ENGINEERING/) *(Godot 4.7 cuts; other engines when a game earns them)*
 4. **Implementation** → [4-IMPLEMENTATION/](4-IMPLEMENTATION/) — build it *(+ Session-Handoffs)*
 5. **Playtesting** — test with real players *(for now: Lessons L-15 / L-16 / L-06)*
 6. **Production** → [6-PRODUCTION/](6-PRODUCTION/) — ship it *(+ Assets-and-Provenance)*
 7. **Postmortems** — learn & feed back *(for now: Lessons + the game repo's own postmortem)*
 
 The gaps in the folder numbers are honest: those phases exist in the model but haven't earned
-a folder yet.
+a folder yet. Engineering earned one after Game #2 (Godot 4.7 cuts only).

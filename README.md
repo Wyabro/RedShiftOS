@@ -44,7 +44,7 @@ games*, not just *today's prompt*.
 - **[LIFECYCLE/](LIFECYCLE/)** — the seven phases; folders exist where content does, the rest
   are covered by FOUNDATION until a game fills them.
 - **[AI/](AI/)** — the cross-cutting AI-collaboration layer: model routing, triage & recovery,
-  prompt library.
+  prompt library, [agent loops](AI/Agent-Loops.md).
 - **[GAME_TEMPLATE/](GAME_TEMPLATE/)** — copy into a new game repo to wire it to this OS.
 - **[ROADMAP.md](ROADMAP.md)** — where this is headed (the automation endgame — recorded, not
   yet built).
@@ -66,12 +66,14 @@ RedShiftOS/
 │   └── Feature-Lifecycle.md
 ├── LIFECYCLE/             the 7 phases (folders exist where content does — see LIFECYCLE/README)
 │   ├── 1-PROJECT/         define the game
+│   ├── 3-ENGINEERING/     engine cuts (+ Godot.md, 4.7.x)
 │   ├── 4-IMPLEMENTATION/  build it (+ Session-Handoffs.md)
 │   └── 6-PRODUCTION/      ship it (+ Assets-and-Provenance.md)
 ├── AI/                    cross-cutting AI-collaboration layer
 │   ├── Model-Routing.md
 │   ├── Triage-and-Recovery.md
-│   └── Prompt-Library.md
+│   ├── Prompt-Library.md
+│   └── Agent-Loops.md
 └── GAME_TEMPLATE/         copy into a new game repo to wire it to this OS
     ├── AGENTS.md
     ├── PROJECT.md

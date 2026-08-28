@@ -36,6 +36,21 @@ paste. Keep them short — a prompt you have to re-read is too long.*
 > root causes, the smallest test for each, and what I'd observe if each were true. We agree on
 > the diagnosis **before** you propose a fix.
 
+## Agent review (not a human gate)
+
+> You are an AGENT REVIEW, not a playtest. Watch the video / live frames against this
+> QUESTION: `<question>`. Score only observables: is the player on screen, did the core verb
+> change the named state, did a second body move if this is 2p, any SCRIPT ERROR. Do **not**
+> score funny, hooked, or comparisons to other games. End with HUMAN PLAYTEST OWED. Never
+> write HUMAN PASS, KEEP, or KILL.
+
+## One-question prototype brief
+
+> Fill this, then stop and wait:
+> QUESTION / CORE VERB / PLAYERS (1 or 2 local) / THROWAWAY? / TIMEBOX / KEEP IF / KILL IF.
+> Greybox only. Stock Godot 4.7 Jolt. No GDExtension. Spike in prototypes/ or a throwaway
+> branch. Do not stamp HUMAN PASS.
+
 ## Verify in the shipped artifact
 
 > Add a unique marker to this change, deploy, then fetch the live URL with no-cache headers and

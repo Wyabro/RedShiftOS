@@ -51,8 +51,8 @@ A feature does not advance until its current stage's gate is met:
 | Design | Written, with edge cases and a measurable success metric. |
 | Technical Review | Impact on existing systems and cross-cutting concerns documented. |
 | Risk Review | Biggest risk named; a way to test the assumption cheaply identified. |
-| Prototype | Playable rough version exists — no production art, no production code. |
-| Playtest | Observed with a real player on a real build. |
+| Prototype | Answers **one written question** in a greybox sitting (30–90 min for a verb; one or two evenings for a slice). No production art, no production architecture. **TECH PASS** possible. An LLM critic may not close this stage. |
+| Playtest | Observed with a real player on a real build. Only a named human writes **HUMAN PASS** or **HUMAN FAIL**. |
 | Revision | Design updated from playtest evidence (or explicitly confirmed unchanged). |
 | Production | Implemented against architecture rules; one responsibility per file. |
 | Code Review | Passed review; every new dependency justified in writing. |
@@ -68,6 +68,40 @@ one Start + one Settings, Enter-to-start, works on laptop and phone, don't build
 yet" is a destination. A destination gives the agent a target and gives you a way to reject
 output that misses the feel without arguing about code. (Prompt in
 [AI/Prompt-Library](../AI/Prompt-Library.md).)
+
+## Evidence states (agents may not skip ahead)
+
+An agent reports the **highest state the evidence supports**. It never awards itself HUMAN PASS.
+
+| State | Who may write it | Evidence |
+|---|---|---|
+| **TECH PASS** | Agent | Headless or MCP run: no `SCRIPT ERROR`, no crash, a named scenario assert holds. |
+| **AGENT REVIEW** | Agent (LLM critic) | Notes from **video or live frames**, against a written checklist. Not a close. |
+| **HUMAN PLAYTEST OWED** | Agent, after TECH PASS | Named steps, local build, one issue. Seeded like Cart Clash playtest debt. |
+| **HUMAN PASS** / **HUMAN FAIL** | Human only | They played the build. Their words in the game repo. |
+| **KEEP** / **REWORK** / **KILL** | Human only | After HUMAN PASS or FAIL on the *question*, not on the slice looking complete. |
+
+Slop Park’s “FINAL VERDICT: PASS” from screenshots and AI critics was a skip from AGENT REVIEW to KEEP. Frozen. Do not polish it.
+
+LLM critics are useful when the model can **see** (GameDevBench: visual feedback raised pass rates). They score observables (“the weld spark fired,” “both pads move a body”). They do **not** score fun. A weak-vision critic is worse than none — it stamps theater.
+
+## One question per prototype
+
+If you have two questions, build two prototypes. A prototype that tests movement + experimental physics + welding + terrain + HUD + comedy tests nothing (Slop Park).
+
+Fill this before any prototype code:
+
+```text
+QUESTION:     The one thing this must prove (binary if possible).
+CORE VERB:    The single action the player repeats.
+PLAYERS:      1 / 2 local. If 1.0 is co-op, the prove unit is 2.
+THROWAWAY?:   yes → hard-code, delete after. no → minimal names you can grow.
+TIMEBOX:      30–90 min (verb) or one sitting (slice). Stop when it rings.
+KEEP IF:      a fresh player does the verb unprompted and repeats without being asked.
+KILL IF:      it only works after you explain it, or fun needs systems far beyond this sitting.
+```
+
+Spike in `prototypes/<idea>/` or a throwaway branch. KEEP authorizes a **rewrite** in the real project, not a copy-paste of the spike. (Shape adapted from `prototype-fast` in awesome-gamedev-agent-skills, Godot **4.7** baseline.)
 
 ## Killing a prototype is a valid outcome
 
@@ -97,7 +131,7 @@ merge.
    unique string to the change, deploy, fetch the live URL *with no-cache headers*, and grep
    the response for the marker before you test the feature.
 3. A local build you actually ran.
-4. "The AI says it works." ← not proof.
+4. "The AI says it works." / AGENT REVIEW / a gauntlet vs other games' stills. ← not proof.
 
 Local files don't count. Build folders don't count. A browser tab from ten minutes ago
 doesn't count. (This ladder is Lesson L-07 made concrete.)
@@ -114,6 +148,7 @@ class and run its gates; anything you drop is a named choice, not a silent skip.
 | **bug** | Root-cause (L-14) → Fix → Code Review → Validate | design · prototype · playtest |
 | **tune / feel** | Prototype (the tune panel) → Playtest → apply → Validate | design docs · heavy review |
 | **chore / docs** | Code Review → Validate | everything upstream |
+| **concept-prove** | One-question prototype → TECH PASS → (optional AGENT REVIEW) → human play → KEEP/REWORK/KILL | production architecture · skill packs · net essays |
 
 Two gates **never** drop, whatever the class: **root-cause before the fix** (L-14) and
 **verify in the shipped artifact** (the proof ladder). If you're unsure which class it is,
