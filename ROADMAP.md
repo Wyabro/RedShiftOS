@@ -6,14 +6,15 @@ list to build now. The rule stands: nothing here gets built until a real game ne
 
 ---
 
-## Now — v0.2 evidence kernel (Decision #6)
+## Now — v0.2 evidence kernel (Decisions #6–#8)
 
 Game #2 (Slop Park) ran the v0.1 OS and dead-ended. Agents stamped PASS; the human gate is
 FAIL. The project is **frozen** — do not polish it.
 
 v0.2’s job is to **reject weak hooks quickly** (one-question prototypes, evidence states,
-Godot 4.7 hard cuts, ranked agent loops). Cart Clash production discipline stays for after
-KEEP. **Still no automation wizard.**
+Godot 4.7 hard cuts, ranked agent loops). KEEP opens the Production Foundation Gate
+(Decision #7) — not production feature cards. **Still no automation wizard.** Pointers stay
+thin (Decision #8) so Grok, Codex, Cursor, Gemini, and Claude hit the same `AGENTS.md`.
 
 **How we'll know v0.2 worked** (measure on Game #3):
 
@@ -36,7 +37,7 @@ RedShiftOS grows through five layers. The first three exist; the last two are ah
 3. **Standards** — folder layouts, code, scenes, naming, git, AI. *(Partial: AGENTS, AI/,
    Anti-Patterns, `LIFECYCLE/3-ENGINEERING/Godot.md` for Godot 4.7.)* — ◐
 4. **Templates** — every document already exists; copy, rename, fill. *(Partial: GAME_TEMPLATE;
-   prove-then-structure start.)* — ◐
+   prove-then-structure + thin pointers.)* — ◐
 5. **Automation** — the OS *generates* the work, not just describes it. — ○
 
 ## The automation endgame

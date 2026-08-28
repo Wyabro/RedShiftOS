@@ -98,7 +98,7 @@ Reversible?:
 ## Decision #2 — Agent wiring: how games consume the OS
 
 Date: 2026-07-17
-Status: Accepted — load order superseded in part by #5
+Status: Accepted — load order superseded in part by #5; pointer set extended by #8
 
 Question:
   How do agents get pointed at RedShiftOS, and where does the wiring live?
@@ -333,3 +333,41 @@ Tradeoffs:
 Reversible?:
   Yes — the rule and template fields can be removed if Game #3 shows no improvement. A
   game’s approved contract remains game-local and can evolve through superseding decisions.
+
+## Decision #8 — Thin pointers for every auto-read filename (agent-agnostic boot)
+
+Date: 2026-08-28
+Status: Accepted
+
+Question:
+  Wyatt switches models often. How does a game (and this OS) stay on one rule set without
+  each tool growing its own copy of the process?
+
+Alternatives:
+  - Keep a single `CLAUDE.md` pointer and hope other tools find `AGENTS.md`.
+  - Import Cart Clash’s generated BRIEFING, ARCHITECTURE.json, and git-hook machine.
+  - Canonical `AGENTS.md` plus thin pointers for each well-known auto-read filename.
+    Pointers never restate stack, gates, or invariants. A paste-able opener covers tools
+    that do not auto-read. Each game names its own primaries in `PROJECT.md`.
+
+Chosen:
+  The thin-pointer set. OS and `GAME_TEMPLATE/` ship `GROK.md`, `CLAUDE.md`, `GEMINI.md`,
+  and `.cursorrules`. Codex reads `AGENTS.md` natively. If another tool auto-reads a
+  different filename, add a thin pointer — do not restate the rules. Do not freeze Cart
+  Clash’s 2026-08 routing table (Grok + Codex, Claude demoted) as studio law.
+
+  Still out of scope (Decision #6): BRIEFING generators, ARCHITECTURE.json, Claude hooks as
+  process authority, Routine/Standard/Critical lanes, `skills:sync`.
+
+Reason:
+  Cart Clash lost a day to copies that drifted (`CLAUDE.md` restated gates; they rotted).
+  The fix that survived was one canonical file plus thin pointers. Game #3 needs that on
+  day 0, not after KEEP. The production machine (BRIEFING, qa hooks) waits until a game
+  past FOUNDATION APPROVED names a repetitive step.
+
+Tradeoffs:
+  Four extra files in the template. They must stay thin or they become the problem they
+  solve. A new vendor filename is a copy-in, not a redesign.
+
+Reversible?:
+  Yes — delete unused pointers. `AGENTS.md` remains the source.

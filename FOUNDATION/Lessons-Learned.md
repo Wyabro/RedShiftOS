@@ -335,10 +335,11 @@ Load the lessons a task needs, not all twenty-two:
   later gates (playtest debt, Wyatt PASS) did not exist yet when the OS was frozen.
 - **Root cause:** Process without a playable verb is theater. Production discipline cannot
   rescue an unproven hook (Manifesto §1).
-- **Rule:** Concept prove is unstructured: one lot, one verb, greybox, you play. Cards,
-  briefing-style structure, and production architecture start **after KEEP**. If 1.0 is
-  multiplayer, the unstructured prove is still **2-player-shaped** (L-22) — that is a design
-  constraint, not a process novel.
+- **Rule:** Concept prove is unstructured: one lot, one verb, greybox, you play. After
+  **KEEP**, the next task is the Production Foundation Gate — not feature cards, and not a
+  copy of the spike. Cards and production architecture start after **FOUNDATION APPROVED**.
+  If 1.0 is multiplayer, the unstructured prove is still **2-player-shaped** (L-22) — that is
+  a design constraint, not a process novel.
 - **Exceptions:** A behavior change on a game that already has KEEP follows the full gates.
 - **Example:** Cart Clash jam (Apr 2026) vs RedShiftOS written in July from those lessons —
   Game #2 cargo-culted the docs, not the jam.

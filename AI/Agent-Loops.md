@@ -14,10 +14,15 @@ screenshot gauntlet and called it PASS (L-18). This page is the loop we trust, r
 ```
 one question → edit → run → observe → assert (TECH PASS) → AGENT REVIEW (optional)
     → HUMAN PLAYTEST OWED → HUMAN PASS / FAIL → KEEP / REWORK / KILL
+    KEEP → production-foundation → FOUNDATION TECH PASS → FOUNDATION APPROVED → feature work
 ```
 
 Stop at ~45 minutes or 3 failed approaches (`AI/Triage-and-Recovery.md`). Write a handoff.
 Do not start a critic gauntlet to “unblock” a timebox.
+
+After **KEEP:** stop feature work. The next loop is the Production Foundation Gate in
+`FOUNDATION/Feature-Lifecycle.md`. An agent may report FOUNDATION TECH PASS. Only Wyatt
+writes FOUNDATION APPROVED. REWORK returns to the one-question loop. KILL is a valid stop.
 
 | Step | Proof it belongs | What it is not |
 |---|---|---|
@@ -74,5 +79,5 @@ Godot-specific commands and the MCP pin live in
 - Whole-game critic loops vs PEAK / Horde / RV There Yet from screenshots
 - Installing 60+ skills into the OS or a prove repo (Anti-Pattern 17)
 - Engine forks (Solers and similar) as a substitute for the loop
-- BRIEFING generators / architecture.json until a game past KEEP actually needs them
-  (ROADMAP: still no automation wizard)
+- BRIEFING generators / architecture.json until a game **past FOUNDATION APPROVED** names
+  a repetitive step (ROADMAP: still no automation wizard)

@@ -55,9 +55,9 @@ games*, not just *today's prompt*.
 RedShiftOS/
 ├── README.md
 ├── AGENTS.md              ← canonical agent rules; read first, every session
-├── CLAUDE.md              ← thin pointer to AGENTS.md (Claude Code reads this)
+├── GROK.md / CLAUDE.md / GEMINI.md / .cursorrules  ← thin pointers; do not restate AGENTS.md
 ├── ROADMAP.md             ← where this is headed
-├── FOUNDATION/            how we think — loaded first, applies to every phase
+├── FOUNDATION/            how we think — Manifesto always-load; the rest by task
 │   ├── Studio-Philosophy.md
 │   ├── Development-Manifesto.md
 │   ├── Lessons-Learned.md
@@ -76,6 +76,7 @@ RedShiftOS/
 │   └── Agent-Loops.md
 └── GAME_TEMPLATE/         copy into a new game repo to wire it to this OS
     ├── AGENTS.md
+    ├── GROK.md / CLAUDE.md / GEMINI.md / .cursorrules
     ├── PROJECT.md
     ├── Tasks.md
     └── README.md
@@ -90,9 +91,8 @@ while building a game — and that's the signal to fix the process, not to skip 
 
 ---
 
-*Status: **frozen — validating on Game #2.** After a critical review, the always-load design
-was thinned to a Manifesto + a task map (FOUNDATION is now a reference library pulled by task),
-the feature pipeline got honest task classes, the dual catalog collapsed to one narrative + one
-checklist, and the empty phase folders were removed. The earned content — 17 lessons, the
-philosophy, the proof ladder — is untouched. Game #2 is the experiment that tells us what to
-add next; success metrics are in [ROADMAP.md](ROADMAP.md). No OS expansion until then.*
+*Status: **v0.2 evidence kernel.** Game #2 (Slop Park) is frozen — do not polish it. The OS
+freeze from Decision #5 is lifted (Decisions #6–#8): evidence states, L-18–L-22, Godot 4.7
+cuts, the Production Foundation Gate after KEEP, and thin per-tool pointers so every model
+hits the same `AGENTS.md`. Measure on Game #3 — metrics in [ROADMAP.md](ROADMAP.md). Still no
+automation wizard.*

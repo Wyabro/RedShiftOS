@@ -1,0 +1,10 @@
+## Canonical rules
+
+- **Cold start:** read `AGENTS.md`, then `FOUNDATION/Development-Manifesto.md`. Pull the rest of FOUNDATION by the task map in `AGENTS.md`. Do not boot-load the library.
+- **`AGENTS.md` at the repo root is canonical.** Stack, working loop, task map, and off-limits live THERE, not here. If anything disagrees, `AGENTS.md` wins. Do not restate its content in this file — the copies rot.
+
+## Cursor notes
+
+- This repo is docs-only. No build, no tests.
+- Windows + PowerShell: `Select-String`, not `grep`; single-line commits with `-m "..."`.
+- Role here is IDE / backup unless Wyatt names Cursor as a primary for the current task.

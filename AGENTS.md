@@ -1,9 +1,9 @@
 # AGENTS.md — RedShiftOS
 
-**Canonical rules for working with RedShiftOS. Read this first, every session.** `CLAUDE.md`
-points here; other agents (Cursor, Copilot, Windsurf, Cline) should be pointed here too — the
-filename varies, the habit doesn't: the rules live in the repo and every session reads them
-first.
+**Canonical rules for working with RedShiftOS. Read this first, every session.** Thin pointers
+(`GROK.md`, `CLAUDE.md`, `GEMINI.md`, `.cursorrules`) point here. Other tools (Codex, Copilot,
+Windsurf, Cline) get the same treatment: a thin pointer to this file, or this file itself.
+Do not restate this file in a pointer — the copies rot.
 
 RedShiftOS is an AI-first **Game Development Operating System** — a docs/process repo, not
 code. It carries how Red Shift Studios builds games so every agent pulls toward the same north
@@ -30,6 +30,7 @@ Pull only what the task in front of you needs:
 |---|---|
 | starting a new system / feature | `FOUNDATION/Feature-Lifecycle.md` (full) · `FOUNDATION/Decision-Framework.md` · Lessons tagged *architecture / design* |
 | starting / proving a Godot game | `LIFECYCLE/3-ENGINEERING/Godot.md` · `AI/Agent-Loops.md` · Lessons L-18–L-22 |
+| after HUMAN KEEP / production foundation | Feature-Lifecycle **Production Foundation Gate** · game `PROJECT.md` ownership contract · `LIFECYCLE/3-ENGINEERING/Godot.md` (export hygiene) |
 | prototyping a verb (any engine) | Feature-Lifecycle **Evidence states** + **One question per prototype** · `AI/Agent-Loops.md` · `prototype-fast` if installed in the *game* repo |
 | fixing a bug | root-cause first (L-14) · the Lesson IDs for that area (Lessons → "Pull by tag") · the proof ladder |
 | tuning feel / balance | the prototype + playtest gates · Lessons tagged *design / playtest* |
@@ -95,8 +96,10 @@ The Manifesto, made agent-actionable:
 - RedShiftOS is checked out **beside your game repo** — a git submodule at `./RedShiftOS`, or
   a sibling directory. At session start, load the Manifesto + this task map, then pull
   FOUNDATION by task.
-- The game repo has its **own** `AGENTS.md` + thin `CLAUDE.md` that point here — start from
-  `GAME_TEMPLATE/` (copy `AGENTS.md` + `PROJECT.md` into the new repo).
+- The game repo has its **own** `AGENTS.md` plus thin pointers (`GROK.md`, `CLAUDE.md`,
+  `GEMINI.md`, `.cursorrules`) that point here — start from `GAME_TEMPLATE/` (copy `AGENTS.md`,
+  `PROJECT.md`, `Tasks.md`, and the pointer files). If a tool auto-reads a different filename,
+  add another thin pointer. Do not restate the rules in it.
 - Session load order inside a game: game `AGENTS.md` → the Manifesto → *what the task needs* →
   the game's `PROJECT.md` (its contract) → the game's current tasks / status / latest handoff.
 - **Game-specific decisions and burns live in the game repo** (a `decisions.md` / postmortem).
@@ -113,6 +116,8 @@ The Manifesto, made agent-actionable:
   never renumber, never silently delete — correct via a new entry or a human-approved edit.
 - **Keep the always-load surface small.** The Manifesto stays one page; the task map stays a
   table. New depth goes into reference docs pulled by task, never into the boot budget.
+- **Pointers stay thin.** `GROK.md`, `CLAUDE.md`, `GEMINI.md`, `.cursorrules` never restate
+  this file.
 - **Eat the dogfood.** Run OS changes through the Feature Lifecycle and Decision Framework;
   log significant structural decisions in the Decision Framework's log.
 - This repo is **docs-only** — no build, no tests. The gate is: does it follow the Manifesto,

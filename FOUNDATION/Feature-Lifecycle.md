@@ -30,7 +30,9 @@ Playtest            — a real person, real hardware, real build. observe, don't
   ↓
 Revision            — change the DESIGN based on what the playtest showed
   ↓
-Production           — implement for real, against the OS's architecture rules
+Production Foundation — after HUMAN KEEP on a new game (skip if FOUNDATION APPROVED already)
+  ↓
+Production           — implement for real, against the approved ownership contract
   ↓
 Code Review         — correctness, responsibility boundaries, dependency justification
   ↓
@@ -54,7 +56,8 @@ A feature does not advance until its current stage's gate is met:
 | Prototype | Answers **one written question** in a greybox sitting (30–90 min for a verb; one or two evenings for a slice). No production art, no production architecture. **TECH PASS** possible. An LLM critic may not close this stage. |
 | Playtest | Observed with a real player on a real build. Only a named human writes **HUMAN PASS** or **HUMAN FAIL**. |
 | Revision | Design updated from playtest evidence (or explicitly confirmed unchanged). |
-| Production | Implemented against architecture rules; one responsibility per file. |
+| Production Foundation | **FOUNDATION APPROVED** (Wyatt). Ownership contract, skeleton, change drill, named proof. Skip if the game already has it. |
+| Production | Implemented against the approved contract; one responsibility per file. Blocked until FOUNDATION APPROVED on a new game. |
 | Code Review | Passed review; every new dependency justified in writing. |
 | QA | Verified in the deployed/shipped artifact, not just locally. |
 | Postmortem | Only after a surprise, a killed prototype, or a production incident — capture the lesson in the *game* repo; promote to the OS if a later game re-derives it. |

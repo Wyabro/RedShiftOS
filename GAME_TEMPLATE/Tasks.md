@@ -5,8 +5,8 @@ human edits this file first and moves a task to the top. This keeps "what's impo
 decision, not something the agent picks for itself.
 
 Each in-progress line names its **evidence state** (Feature-Lifecycle). Agents update TECH PASS
-/ AGENT REVIEW / HUMAN PLAYTEST OWED. Only the human writes HUMAN PASS, HUMAN FAIL, KEEP,
-REWORK, or KILL.
+/ AGENT REVIEW / HUMAN PLAYTEST OWED / FOUNDATION TECH PASS. Only the human writes HUMAN PASS,
+HUMAN FAIL, KEEP, REWORK, KILL, or FOUNDATION APPROVED.
 
 ---
 

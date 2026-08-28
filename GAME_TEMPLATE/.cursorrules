@@ -1,0 +1,9 @@
+## Canonical rules
+
+- **Cold start:** this repo's `AGENTS.md` → `RedShiftOS/AGENTS.md` → `RedShiftOS/FOUNDATION/Development-Manifesto.md` → `PROJECT.md` → `Tasks.md`. Pull the rest of RedShiftOS by the OS task map.
+- **This repo's `AGENTS.md` is canonical for the game.** RedShiftOS `AGENTS.md` is canonical for the OS. Do not restate either file here — the copies rot.
+
+## Cursor notes
+
+- Windows + PowerShell: `Select-String`, not `grep`; single-line commits with `-m "..."`.
+- Role is IDE / backup unless `PROJECT.md` names Cursor as a primary.

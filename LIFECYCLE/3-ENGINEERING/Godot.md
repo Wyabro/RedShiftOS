@@ -130,6 +130,13 @@ On this engine:
 
 An agent does not bulk-install the Store.
 
+## After KEEP
+
+Do not start production feature cards. The next top task is `production-foundation`
+(`FOUNDATION/Feature-Lifecycle.md`). Steam / GodotSteam, GUT, and extra skills stay as listed
+above. The foundation skeleton uses the headless floor, then `godot-export` when a human
+build is owed.
+
 ## Export / production hygiene
 
 - Dev addons off in export presets.

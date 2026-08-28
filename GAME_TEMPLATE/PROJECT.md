@@ -27,6 +27,7 @@ belongs in a separate doc, not here.
 - **Backend / database / hosting:**
 - **Pinned Godot MCP** (name + release tag, or “headless floor only”):
 - **AI coding tools in use:**
+- **Primary tools this game:** *(name them — the OS does not pick a vendor)*
 - **Runtime AI / model use (if any):** none for M1 unless written here
 
 ## First shippable version (the prove)

@@ -20,8 +20,10 @@ the biggest hidden cost isn't the model, it's velocity debt (below).*
 for an hour. If the frontier model stalls too, that's a signal the *task* is
 under-specified, not that you need more attempts (see [Triage & Recovery](./Triage-and-Recovery.md)).
 
-This maps onto the project's real multi-model setup (`/council` — Gemini, Codex, Qwen, GLM,
-Kimi): use the council for independent review/perspective, route implementation by the table.
+This maps onto a multi-model setup (`/council` — Gemini, Codex, Qwen, GLM, Kimi): use the
+council for independent review, route implementation by the table. **The OS does not pick a
+vendor.** Each game names its primaries in `PROJECT.md`. Pointer files stay thin
+(`GROK.md`, `CLAUDE.md`, `GEMINI.md`, `.cursorrules`) — `AGENTS.md` is the shared rule set.
 
 ## Context discipline
 

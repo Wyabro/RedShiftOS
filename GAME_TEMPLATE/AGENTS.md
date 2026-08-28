@@ -1,8 +1,9 @@
 # AGENTS.md — <GAME NAME>
 
 **Read this first, every session.** This game is built with **RedShiftOS**, Red Shift Studios'
-Game Development Operating System. `CLAUDE.md` points here; point other agents (Cursor, Copilot,
-Windsurf) here too.
+Game Development Operating System. Thin pointers (`GROK.md`, `CLAUDE.md`, `GEMINI.md`,
+`.cursorrules`) point here. Codex reads this file. If another tool auto-reads a different
+filename, add a thin pointer — do not restate these rules in it.
 
 ---
 
@@ -15,8 +16,18 @@ Windsurf) here too.
    - then pull the rest of `FOUNDATION/` (Lessons, Anti-Patterns, Decision-Framework,
      Feature-Lifecycle, Philosophy) *by task*, per that map — don't boot-load it all
    - Godot prove: also `RedShiftOS/LIFECYCLE/3-ENGINEERING/Godot.md` + `RedShiftOS/AI/Agent-Loops.md`
+   - After KEEP: also `RedShiftOS/FOUNDATION/Feature-Lifecycle.md` (Production Foundation Gate)
 3. **`PROJECT.md`** — this game's contract (concept, stack, prove, foundation, cut list).
 4. **`STATUS.md` / `Tasks.md` / latest handoff** — what's in flight right now.
+
+**Paste-able opener** (tools that do not auto-read files):
+
+```text
+You are working on <GAME NAME>. Read AGENTS.md, then RedShiftOS/AGENTS.md, then
+RedShiftOS/FOUNDATION/Development-Manifesto.md, then PROJECT.md, then Tasks.md.
+Prove first: one question, greybox, stock Godot 4.7. Do not write HUMAN PASS, KEEP, or KILL.
+After KEEP the next task is production-foundation, not a feature. Never git add -A.
+```
 
 The RedShiftOS **Manifesto is binding** and overrides your defaults. **Lessons Learned are
 binding when the task pulls them** (see `RedShiftOS/AGENTS.md` → "Load by task"). Non-trivial
@@ -38,6 +49,7 @@ work is blocked until that approval.
 - **Concept:** <one sentence>
 - **Stack:** Godot 4.7.x / <language> / <hosting>
 - **Players / authority:** <1 or 2 local prove> / <host-auth or n/a>
+- **Primary tools:** <from PROJECT.md>
 - **Current evidence state:** <from PROJECT.md>
 - **Current milestone / "done":** <what KEEP or this card means>
 
