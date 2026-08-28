@@ -292,3 +292,44 @@ Tradeoffs:
 Reversible?:
   Yes — docs can be cut if Game #3 shows they are lore. Automation still waits for a game past
   KEEP to name a repetitive step.
+
+## Decision #7 — Gate the transition from kept prototype to production
+
+Date: 2026-08-28
+Status: Accepted
+
+Question:
+  How does a game avoid both Cart Clash’s late whole-product refactor and Slop Park’s
+  production ceremony before a fun verb exists?
+
+Alternatives:
+  - Design production architecture before the concept prove.
+  - Extend a kept prototype and schedule a broad refactor when its limits appear.
+  - After HUMAN KEEP, stop feature work for one small, explicit Production Foundation Gate.
+
+Chosen:
+  A concept prove stays disposable and architecture-light. HUMAN KEEP opens a one-time
+  Production Foundation Gate; it does not open production features. The gate requires a
+  game-local ownership contract, decisions for applicable cross-cutting concerns, a working
+  production skeleton, one representative change drill, and named headless/export evidence.
+  An agent may report FOUNDATION TECH PASS. Only Wyatt writes FOUNDATION APPROVED, and
+  production features remain blocked until then.
+
+  Run the gate again only if a foundational lock changes: engine, target platform,
+  multiplayer authority, save model, or an equivalent project-wide boundary.
+
+Reason:
+  Cart Clash extended jam infrastructure until coupling made later separation expensive.
+  Slop Park proved the opposite failure: architecture work before a kept verb is theater.
+  The cheapest safe point to establish lasting boundaries is immediately after KEEP, while
+  the game is proven but still small.
+
+Tradeoffs:
+  Every kept concept pays for one deliberate rewrite and a short pause before content grows.
+  The ownership contract needs maintenance as real evidence changes it. The gate reduces
+  refactor blast radius; it cannot predict every later requirement and is not an architecture
+  freeze. It adds no framework, generator, dependency, or pre-KEEP ceremony.
+
+Reversible?:
+  Yes — the rule and template fields can be removed if Game #3 shows no improvement. A
+  game’s approved contract remains game-local and can evolve through superseding decisions.

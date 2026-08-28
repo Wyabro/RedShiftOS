@@ -40,6 +40,47 @@ belongs in a separate doc, not here.
 If 1.0 is co-op, this prove is **two local players** on one machine (L-22). Steam, lobbies,
 and migration are not this section.
 
+## Production foundation — fill only after HUMAN KEEP
+
+Before KEEP, this section is **NOT OPEN**. After KEEP, the next task is the Production
+Foundation Gate in `RedShiftOS/FOUNDATION/Feature-Lifecycle.md`, not a production feature.
+
+- **Foundation state:** NOT OPEN / IN PROGRESS / FOUNDATION TECH PASS / FOUNDATION APPROVED
+  *(only Wyatt writes APPROVED)*
+- **KEEP evidence** (person, build, date, observed behavior):
+- **Prototype disposition** (delete / archive / reference only):
+- **Composition root** (the one place that wires top-level owners):
+
+### Ownership contract
+
+| Owner | Owns | Public seam | May depend on | Must not reach into |
+|---|---|---|---|---|
+| | | | | |
+
+For Godot: a scene owns its descendants; outside code talks to its root API. Signals travel
+up, calls travel down, and a parent wires siblings. Each mutable state value has one owner.
+Autoloads are platform services, not a general gameplay-state bucket.
+
+### Cross-cutting boundaries
+
+| Concern | Owner and decision, or N/A with reason |
+|---|---|
+| Input | |
+| Time / pause | |
+| Save | |
+| Multiplayer authority | |
+| Diagnostics / export | |
+
+### Foundation proof
+
+- **Production skeleton route:** launch → input → kept verb → reset
+- **Change drill:**
+- **Verification commands and expected signals:**
+- **Windows export tested by:**
+
+If this completed contract later outgrows `PROJECT.md`, move it to `ARCHITECTURE.md` and link
+it here. Do not create that file before the gate opens.
+
 ## Cut list
 
 - **Deferred until KEEP:**

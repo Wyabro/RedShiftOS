@@ -13,8 +13,10 @@ The starting point for a new Red Shift Studios game wired to RedShiftOS. Every n
    question. Do this before asking an agent to build anything serious.
 5. **Prove, then structure.** First sitting = greybox core verb (`prototypes/` or a throwaway
    branch). Stock Godot 4.7 Jolt. Two local players if 1.0 is co-op. Human plays. KEEP / KILL.
-   Only after KEEP: production layout, MCP pin, 4.7 skill allow-list
-   (`RedShiftOS/LIFECYCLE/3-ENGINEERING/Godot.md`), cards, tests.
+   After KEEP, run the Production Foundation Gate in `RedShiftOS/FOUNDATION/Feature-Lifecycle.md`.
+   During the gate, pin only the MCP and task-matched 4.7 skills it needs
+   (`RedShiftOS/LIFECYCLE/3-ENGINEERING/Godot.md`). Only after FOUNDATION APPROVED: production
+   feature cards and broader tests.
 6. Run the prove through `RedShiftOS/FOUNDATION/Feature-Lifecycle.md` evidence states.
    Agents may reach TECH PASS / AGENT REVIEW. They do not write HUMAN PASS.
 

@@ -80,6 +80,8 @@ An agent reports the **highest state the evidence supports**. It never awards it
 | **HUMAN PLAYTEST OWED** | Agent, after TECH PASS | Named steps, local build, one issue. Seeded like Cart Clash playtest debt. |
 | **HUMAN PASS** / **HUMAN FAIL** | Human only | They played the build. Their words in the game repo. |
 | **KEEP** / **REWORK** / **KILL** | Human only | After HUMAN PASS or FAIL on the *question*, not on the slice looking complete. |
+| **FOUNDATION TECH PASS** | Agent, after HUMAN KEEP | Ownership contract, production skeleton, change drill, and named headless/export proof are complete. |
+| **FOUNDATION APPROVED** | Wyatt only | He reviewed the contract and evidence. Production feature work may begin. |
 
 Slop Park’s “FINAL VERDICT: PASS” from screenshots and AI critics was a skip from AGENT REVIEW to KEEP. Frozen. Do not polish it.
 
@@ -101,7 +103,45 @@ KEEP IF:      a fresh player does the verb unprompted and repeats without being 
 KILL IF:      it only works after you explain it, or fun needs systems far beyond this sitting.
 ```
 
-Spike in `prototypes/<idea>/` or a throwaway branch. KEEP authorizes a **rewrite** in the real project, not a copy-paste of the spike. (Shape adapted from `prototype-fast` in awesome-gamedev-agent-skills, Godot **4.7** baseline.)
+Spike in `prototypes/<idea>/` or a throwaway branch. KEEP opens the **Production Foundation
+Gate** below; it does not authorize copying the spike into production. (Shape adapted from
+`prototype-fast` in awesome-gamedev-agent-skills, Godot **4.7** baseline.)
+
+## KEEP opens the Production Foundation Gate
+
+A concept that earns **HUMAN KEEP** does not advance directly to production features. Its next
+top task is `production-foundation`: a deliberate re-foundation while the game is still small.
+This gate runs once when a prototype becomes a product. Run it again only when a foundational
+lock changes, such as engine, target platform, multiplayer authority, or save model.
+
+The gate has five required parts:
+
+1. **Dispose deliberately.** Record the KEEP evidence and whether the prototype is deleted,
+   archived, or retained as reference. Prototype code is not production source by default.
+2. **Name ownership.** In the game’s `PROJECT.md`, name each initial system, what it owns, its
+   public seam, allowed dependencies, and forbidden reaches.
+3. **Set cross-cutting boundaries.** Decide input, time, save, multiplayer authority,
+   diagnostics, and export where they apply. Mark a concern N/A with a reason instead of
+   designing a system the game does not need.
+4. **Build the production skeleton.** Prove launch → input → the kept verb → reset, plus
+   diagnostics, a headless run, and a Windows export. Do not add content breadth.
+5. **Run a change drill.** Add the smallest representative second case through the declared
+   seams, then review the diff and architecture contract. A data variant or alternate input
+   path is enough; this is not permission to build another feature.
+
+An agent may report **FOUNDATION TECH PASS** with named evidence. Only Wyatt writes
+**FOUNDATION APPROVED**. Production feature work is blocked until that approval.
+
+The gate fails when any of these shapes appears:
+
+- External code reaches into another scene’s child hierarchy.
+- Mutable state has more than one owner.
+- Correct behavior depends on string remapping or undocumented initialization order.
+- A simple change requires edits inside three unrelated owners.
+- A file or system needs “and” to describe its responsibility.
+
+Fix the boundary and rerun the affected proof. Do not waive a failed shape into deferred debt
+while the foundation is still small.
 
 ## Killing a prototype is a valid outcome
 
@@ -149,6 +189,7 @@ class and run its gates; anything you drop is a named choice, not a silent skip.
 | **tune / feel** | Prototype (the tune panel) → Playtest → apply → Validate | design docs · heavy review |
 | **chore / docs** | Code Review → Validate | everything upstream |
 | **concept-prove** | One-question prototype → TECH PASS → (optional AGENT REVIEW) → human play → KEEP/REWORK/KILL | production architecture · skill packs · net essays |
+| **production-foundation** | HUMAN KEEP → ownership contract → skeleton → change drill → FOUNDATION TECH PASS → human approval | new content · production art · speculative systems |
 
 Two gates **never** drop, whatever the class: **root-cause before the fix** (L-14) and
 **verify in the shipped artifact** (the proof ladder). If you're unsure which class it is,
