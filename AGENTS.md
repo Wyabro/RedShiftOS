@@ -93,9 +93,10 @@ The Manifesto, made agent-actionable:
 
 ## If you're building a GAME with this OS
 
-- RedShiftOS is checked out **beside your game repo** — a git submodule at `./RedShiftOS`, or
-  a sibling directory. At session start, load the Manifesto + this task map, then pull
-  FOUNDATION by task.
+- RedShiftOS is a **git submodule at `./RedShiftOS`**, pinned to a named commit (Decision #9).
+  Sibling checkout is not supported. At session start, load the Manifesto + this task map,
+  then pull FOUNDATION by task. Game-local records (`decisions.md`, provenance, handoff) are
+  created at their trigger — not as empty files at copy-in. See `GAME_TEMPLATE/README.md`.
 - The game repo has its **own** `AGENTS.md` plus thin pointers (`GROK.md`, `CLAUDE.md`,
   `GEMINI.md`, `.cursorrules`) that point here — start from `GAME_TEMPLATE/` (copy `AGENTS.md`,
   `PROJECT.md`, `Tasks.md`, and the pointer files). If a tool auto-reads a different filename,

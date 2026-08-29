@@ -98,7 +98,8 @@ Reversible?:
 ## Decision #2 — Agent wiring: how games consume the OS
 
 Date: 2026-07-17
-Status: Accepted — load order superseded in part by #5; pointer set extended by #8
+Status: Accepted — load order superseded in part by #5; pointer set extended by #8;
+  supported layout superseded in part by #9
 
 Question:
   How do agents get pointed at RedShiftOS, and where does the wiring live?
@@ -371,3 +372,55 @@ Tradeoffs:
 
 Reversible?:
   Yes — delete unused pointers. `AGENTS.md` remains the source.
+
+## Decision #9 — Supported layout, record triggers, and v0.2 as a field trial
+
+Date: 2026-08-28
+Status: Accepted
+
+Question:
+  How does a new game attach RedShiftOS, when do required game-local records exist, and
+  what status may we claim for v0.2 before Game #3 produces outcome evidence?
+
+Alternatives:
+  - Keep advertising submodule or sibling checkout (current). Sibling paths do not work:
+    every pointer and opener uses `RedShiftOS/...`.
+  - Support both layouts now by dual-path wording (`../RedShiftOS/...` for sibling).
+  - Submodule at `./RedShiftOS` only; create required records at trigger; call v0.2 a
+    Game #3 field trial, not a proven full-cycle OS. Pin the submodule; change the pin
+    only through a named game decision plus a cold-start smoke test.
+  - Delay Game #3 until a doctor, schemas, or bootstrap wizard exist.
+
+Chosen:
+  Submodule only + trigger-created records + field-trial status.
+
+  Supported layout is a git submodule at `./RedShiftOS`, pinned to a named commit.
+  Sibling checkout is not supported until a later decision adds resolved paths.
+
+  Do not seed empty `decisions.md`, provenance, handoff, or export files at copy-in
+  (Decision #1). Create each at its trigger:
+  - `decisions.md` — first significant game decision
+  - provenance tables — first external or AI-assisted asset
+  - latest handoff — end of the first session
+  - export / release notes — after FOUNDATION APPROVED, on the first real export
+
+  v0.2 is field-ready for Game #3 concept proof and the post-KEEP Production Foundation
+  Gate. It is not production-proven. Measure it with the ROADMAP v0.2 metrics. Do not
+  add a doctor, schema, or wizard until a game past KEEP names a repetitive step
+  (Decision #6).
+
+Reason:
+  A 2026-08-28 readiness review found the sibling claim false, the required records
+  described but unseeded, and no field result for v0.2. Advertising a layout that
+  does not work is documentation theater. Empty seeds are the stub sprawl Decision #1
+  forbids. Game #2 dead-ended under v0.1; Game #3 is the test of v0.2 (Decision #6).
+  Calling the OS proven before that trial would be the defect.
+
+Tradeoffs:
+  A sibling checkout needs a later path-resolution change. Record creation stays
+  manual — Wyatt still has to notice a missed trigger. No upgrade guide yet; the pin
+  plus a named decision is the upgrade process.
+
+Reversible?:
+  Yes — a later decision can add sibling path resolution, a tiny health check, or
+  stronger versioning after Game #3 exposes repeated manual failures.

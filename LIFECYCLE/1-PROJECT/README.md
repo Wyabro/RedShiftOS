@@ -5,7 +5,8 @@ the stack, broadens scope, or "fixes" unrelated things.
 
 - Start from `GAME_TEMPLATE/` — copy `AGENTS.md`, `PROJECT.md`, `Tasks.md`, and the thin
   pointers (`GROK.md`, `CLAUDE.md`, `GEMINI.md`, `.cursorrules`) into the new repo, and add
-  RedShiftOS beside it (submodule or sibling).
+  RedShiftOS as a git submodule at `./RedShiftOS`, pinned to a named commit (Decision #9).
+  Sibling checkout is not supported.
 - Fill `PROJECT.md`: concept, target player, stack, first shippable version, primary tools,
   cut list.
 - **Gate:** you can name the core loop, what "done" means for milestone 1, and what's

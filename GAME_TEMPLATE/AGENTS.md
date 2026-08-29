@@ -10,7 +10,7 @@ filename, add a thin pointer — do not restate these rules in it.
 ## Load context in this order
 
 1. **This file.**
-2. **RedShiftOS** (checked out at `./RedShiftOS` as a submodule, or a sibling directory):
+2. **RedShiftOS** (git submodule at `./RedShiftOS`, pinned to a named commit):
    - `RedShiftOS/AGENTS.md` — the task map: what to load for the task in front of you
    - `RedShiftOS/FOUNDATION/Development-Manifesto.md` — the 10 build rules (binding)
    - then pull the rest of `FOUNDATION/` (Lessons, Anti-Patterns, Decision-Framework,
@@ -18,7 +18,7 @@ filename, add a thin pointer — do not restate these rules in it.
    - Godot prove: also `RedShiftOS/LIFECYCLE/3-ENGINEERING/Godot.md` + `RedShiftOS/AI/Agent-Loops.md`
    - After KEEP: also `RedShiftOS/FOUNDATION/Feature-Lifecycle.md` (Production Foundation Gate)
 3. **`PROJECT.md`** — this game's contract (concept, stack, prove, foundation, cut list).
-4. **`STATUS.md` / `Tasks.md` / latest handoff** — what's in flight right now.
+4. **`Tasks.md`** and, if they exist, **`STATUS.md` / latest handoff** — what's in flight.
 
 **Paste-able opener** (tools that do not auto-read files):
 
@@ -41,6 +41,14 @@ production architecture. You may report TECH PASS or AGENT REVIEW. You may not w
 Load the Production Foundation Gate in `RedShiftOS/FOUNDATION/Feature-Lifecycle.md`. An agent
 may report FOUNDATION TECH PASS; only Wyatt writes FOUNDATION APPROVED. Production feature
 work is blocked until that approval.
+
+**Create records at their trigger.** Do not seed empty files at copy-in (Decision #1). If a
+listed record does not exist yet, do not create an empty one.
+
+- `decisions.md` — first significant game decision
+- Provenance tables — first external or AI-assisted asset (`RedShiftOS/LIFECYCLE/6-PRODUCTION/Assets-and-Provenance.md`)
+- Latest handoff (`HANDOFF.md`, `STATUS.md`, or a `Tasks.md` note) — end of the first session
+- Export / release notes — after FOUNDATION APPROVED, on the first real export
 
 ---
 

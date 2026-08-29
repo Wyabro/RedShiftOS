@@ -91,8 +91,8 @@ while building a game — and that's the signal to fix the process, not to skip 
 
 ---
 
-*Status: **v0.2 evidence kernel.** Game #2 (Slop Park) is frozen — do not polish it. The OS
-freeze from Decision #5 is lifted (Decisions #6–#8): evidence states, L-18–L-22, Godot 4.7
-cuts, the Production Foundation Gate after KEEP, and thin per-tool pointers so every model
-hits the same `AGENTS.md`. Measure on Game #3 — metrics in [ROADMAP.md](ROADMAP.md). Still no
-automation wizard.*
+*Status: **v0.2 evidence kernel — field trial, not proven** (Decision #9). Game #2 (Slop Park)
+is frozen — do not polish it. The OS freeze from Decision #5 is lifted (Decisions #6–#9):
+evidence states, L-18–L-22, Godot 4.7 cuts, the Production Foundation Gate after KEEP, thin
+per-tool pointers, submodule-only layout at `./RedShiftOS`, and records created at trigger.
+Measure on Game #3 — metrics in [ROADMAP.md](ROADMAP.md). Still no automation wizard.*

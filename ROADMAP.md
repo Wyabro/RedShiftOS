@@ -6,7 +6,7 @@ list to build now. The rule stands: nothing here gets built until a real game ne
 
 ---
 
-## Now — v0.2 evidence kernel (Decisions #6–#8)
+## Now — v0.2 evidence kernel (Decisions #6–#9)
 
 Game #2 (Slop Park) ran the v0.1 OS and dead-ended. Agents stamped PASS; the human gate is
 FAIL. The project is **frozen** — do not polish it.
@@ -15,6 +15,11 @@ v0.2’s job is to **reject weak hooks quickly** (one-question prototypes, evide
 Godot 4.7 hard cuts, ranked agent loops). KEEP opens the Production Foundation Gate
 (Decision #7) — not production feature cards. **Still no automation wizard.** Pointers stay
 thin (Decision #8) so Grok, Codex, Cursor, Gemini, and Claude hit the same `AGENTS.md`.
+
+**Status:** field-ready for Game #3 concept proof and the post-KEEP Production Foundation
+Gate. Not production-proven (Decision #9). Supported layout: git submodule at `./RedShiftOS`,
+pinned to a named commit. Change the pin only through a named game decision plus a cold-start
+smoke test.
 
 **How we'll know v0.2 worked** (measure on Game #3):
 
