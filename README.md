@@ -1,98 +1,92 @@
 # RedShiftOS
 
-**The operating system for building better games — an AI-first process for planning,
-architecting, building, testing, and shipping.**
+**A practical operating system for building games with AI—without letting the process drift one prompt at a time.**
 
-![RedShiftOS — the operating system for building better games](assets/redshiftos-overview.svg)
+![RedShiftOS development system: prove, build, playtest, ship, and learn](assets/redshiftos-overview.svg)
 
-RedShiftOS is not a game and not an engine. It is the repeatable development *process* —
-philosophy, engineering rules, production workflow, and AI-collaboration standards — that
-lives beside every game Red Shift Studios makes. **The code changes from project to project.
-The process shouldn't.**
+RedShiftOS is a focused set of rules, workflows, and templates that travels with each game.
+It keeps the human director and AI agents aligned on the same intent, architecture, current
+task, and standard of proof.
 
-It exists because of one lesson from the first game (Cart Clash): every time an AI agent
-implemented a feature, it only knew about *that feature*. It didn't know the long-term
-vision, the design pillars, the architectural intent, or the lessons already learned. So
-every implementation was locally optimal and globally expensive.
+It is not a game engine, framework, or code generator. Your game keeps its own source,
+identity, and decisions. RedShiftOS supplies the repeatable development process around it.
 
-RedShiftOS is the shared context that fixes that. Before an agent touches a new game's
-source tree, it reads this repository first — and now it knows *how Red Shift Studios builds
-games*, not just *today's prompt*.
+## Why it exists
 
-## How it's used
+AI can produce code quickly. The harder problem is keeping many sessions pointed toward the
+same game instead of letting each prompt create a locally sensible but globally expensive
+change.
 
-1. **Load the Manifesto + `AGENTS.md`'s task map** — then pull the rest of `FOUNDATION/` *by
-   task*. Don't boot-load the whole library; more context dilutes signal.
-2. **Move through the lifecycle phases** as you build — Project → Design → … → Postmortems
-   (`LIFECYCLE/`).
-3. **Non-trivial features run the [Feature Lifecycle](FOUNDATION/Feature-Lifecycle.md)** — pick
-   the task class, run its gates.
-4. **Every significant decision** runs the [Decision Framework](FOUNDATION/Decision-Framework.md)
-   and gets logged (game-specific ones live in the game repo).
-5. **Every shipped project's pain** feeds back into
-   [Lessons Learned](FOUNDATION/Lessons-Learned.md) and
-   [Anti-Patterns](FOUNDATION/Anti-Patterns.md). The system gets smarter because we actually
-   shipped with it.
+RedShiftOS provides the durable context to:
 
-## What's inside
+- prove that an idea is worth building before giving it production structure;
+- keep one clear task, one owner for each responsibility, and a record of important choices;
+- separate technical evidence from human judgment about whether the game is good;
+- catch architectural drift and repeated mistakes before they spread; and
+- verify work in the artifact players actually receive.
 
-- **[FOUNDATION/](FOUNDATION/)** — how we think: [Philosophy](FOUNDATION/Studio-Philosophy.md)
-  (the *why*), [Manifesto](FOUNDATION/Development-Manifesto.md) (the *what*),
-  [Lessons Learned](FOUNDATION/Lessons-Learned.md), [Anti-Patterns](FOUNDATION/Anti-Patterns.md),
-  [Decision Framework](FOUNDATION/Decision-Framework.md), and the
-  [Feature Lifecycle](FOUNDATION/Feature-Lifecycle.md).
-- **[LIFECYCLE/](LIFECYCLE/)** — the seven phases; folders exist where content does, the rest
-  are covered by FOUNDATION until a game fills them.
-- **[AI/](AI/)** — the cross-cutting AI-collaboration layer: model routing, triage & recovery,
-  prompt library, [agent loops](AI/Agent-Loops.md).
-- **[GAME_TEMPLATE/](GAME_TEMPLATE/)** — copy into a new game repo to wire it to this OS.
-- **[ROADMAP.md](ROADMAP.md)** — where this is headed (the automation endgame — recorded, not
-  yet built).
+## Start here
 
-## Structure
+### If you want to understand the system
 
-```
-RedShiftOS/
-├── README.md
-├── AGENTS.md              ← canonical agent rules; read first, every session
-├── GROK.md / CLAUDE.md / GEMINI.md / .cursorrules  ← thin pointers; do not restate AGENTS.md
-├── ROADMAP.md             ← where this is headed
-├── FOUNDATION/            how we think — Manifesto always-load; the rest by task
-│   ├── Studio-Philosophy.md
-│   ├── Development-Manifesto.md
-│   ├── Lessons-Learned.md
-│   ├── Anti-Patterns.md
-│   ├── Decision-Framework.md
-│   └── Feature-Lifecycle.md
-├── LIFECYCLE/             the 7 phases (folders exist where content does — see LIFECYCLE/README)
-│   ├── 1-PROJECT/         define the game
-│   ├── 3-ENGINEERING/     engine cuts (+ Godot.md, 4.7.x)
-│   ├── 4-IMPLEMENTATION/  build it (+ Session-Handoffs.md)
-│   └── 6-PRODUCTION/      ship it (+ Assets-and-Provenance.md)
-├── AI/                    cross-cutting AI-collaboration layer
-│   ├── Model-Routing.md
-│   ├── Triage-and-Recovery.md
-│   ├── Prompt-Library.md
-│   └── Agent-Loops.md
-└── GAME_TEMPLATE/         copy into a new game repo to wire it to this OS
-    ├── AGENTS.md
-    ├── GROK.md / CLAUDE.md / GEMINI.md / .cursorrules
-    ├── PROJECT.md
-    ├── Tasks.md
-    └── README.md
-```
+1. Read the [Development Manifesto](FOUNDATION/Development-Manifesto.md) for the ten binding
+   rules.
+2. Read the [Feature Lifecycle](FOUNDATION/Feature-Lifecycle.md) for the path from idea to
+   verified release.
+3. Read [AGENTS.md](AGENTS.md) for the working loop and the task-specific reading map.
 
-## The system eats its own dogfood
+### If you are starting a game
 
-RedShiftOS is built using RedShiftOS. Its changes run through the same Feature Lifecycle and
-Decision Framework it prescribes, and its structural calls are logged in the Decision
-Framework. If the process feels cumbersome while building the OS, it would feel cumbersome
-while building a game — and that's the signal to fix the process, not to skip it.
+1. Add RedShiftOS as a pinned git submodule at `./RedShiftOS` in the game repository.
+2. Copy `AGENTS.md`, `PROJECT.md`, `Tasks.md`, and the thin pointer files from
+   [`GAME_TEMPLATE/`](GAME_TEMPLATE/) into the game repository root.
+3. Fill in `PROJECT.md` with the game's promise, pillars, constraints, and ownership
+   boundaries.
+4. Put one top task in `Tasks.md`.
+5. Run the smallest concept proof that can answer one written question.
 
----
+Game-local decisions, task state, provenance, and handoffs stay in the game repository.
+RedShiftOS stays focused on reusable studio process.
 
-*Status: **v0.2 evidence kernel — field trial, not proven** (Decision #9). Game #2 (Slop Park)
-is frozen — do not polish it. The OS freeze from Decision #5 is lifted (Decisions #6–#9):
-evidence states, L-18–L-22, Godot 4.7 cuts, the Production Foundation Gate after KEEP, thin
-per-tool pointers, submodule-only layout at `./RedShiftOS`, and records created at trigger.
-Measure on Game #3 — metrics in [ROADMAP.md](ROADMAP.md). Still no automation wizard.*
+## How work moves
+
+Every non-trivial change follows the same visible loop:
+
+> **Explore → Plan → Approve → Implement → Diff-review → Commit → Validate → Handoff**
+
+The amount of ceremony scales with the risk. A documentation correction does not run the
+same gates as a new gameplay system, but both must remain focused and verifiable. The
+[Feature Lifecycle](FOUNDATION/Feature-Lifecycle.md#task-classes--match-the-gates-to-the-work)
+defines the task classes and their required gates.
+
+Across a whole game, work moves through seven phases:
+
+> **Project → Design → Engineering → Implementation → Playtesting → Production → Postmortems**
+
+Lessons from the end feed back into the foundation, so the process improves without turning
+one game's history into permanent studio law.
+
+## What is inside
+
+| Area | What it gives you |
+|---|---|
+| [`AGENTS.md`](AGENTS.md) | Canonical agent rules, working loop, and task-based context map |
+| [`FOUNDATION/`](FOUNDATION/) | Manifesto, philosophy, evidence gates, lessons, decisions, and anti-patterns |
+| [`LIFECYCLE/`](LIFECYCLE/) | Guidance that belongs to a specific phase of making and shipping a game |
+| [`AI/`](AI/) | Model routing, agent loops, prompt patterns, and recovery when work stalls |
+| [`GAME_TEMPLATE/`](GAME_TEMPLATE/) | The small set of files that connects a new game to the OS |
+| [`ROADMAP.md`](ROADMAP.md) | Current maturity, success measures, and automation that has not earned its place yet |
+
+The repository intentionally avoids empty scaffolding. A document or directory appears only
+when real work has given it something useful to hold.
+
+## Current status
+
+**v0.2 is an evidence kernel in field trial.** Its concept-proof and production-foundation
+gates are ready to use, but the complete system is not yet proven across a full development
+cycle. The [roadmap](ROADMAP.md) defines the evidence required before stronger claims or
+automation are justified.
+
+## License
+
+RedShiftOS is available under the [MIT License](LICENSE).
