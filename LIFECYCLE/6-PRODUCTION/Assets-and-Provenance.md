@@ -19,9 +19,9 @@ hundreds of Asset Library addons is the expensive version of this job.
 
 **Third-party (Asset Store, Asset Library, Kenney, GitHub, packs):**
 
-| Path | Source URL | License | Engine tag | Tweaks (4.7) | Ships? | Attribution owed |
-|---|---|---|---|---|---|---|
-| `addons/example/` | https://store.godotengine.org/asset/… | MIT | 4.7 | none | editor-only | LICENSE kept in addon folder |
+| Path | Source URL | Version / commit | License | Engine tag | 4.7 smoke / tweaks | Ships? | Attribution owed |
+|---|---|---|---|---|---|---|---|
+| `addons/example/` | https://store.godotengine.org/asset/… | `v1.2.3` | MIT | 4.7 | PASS: intended seam loads; none | editor-only | LICENSE kept in addon folder |
 
 ## Where AI is safe vs. risky
 
@@ -110,16 +110,34 @@ Godot Engine itself is MIT. Your game may be any license. Third-party rows are e
 
 ### Prove vs after KEEP
 
-- **During prove:** only if it unblocks the **one question**. Stock nodes beat a plugin.
-  No physics-replacing GDExtension (L-19). No GPL. One addon, not a shopping spree.
-- **After KEEP:** still one justification per addon in `decisions.md` or this log. Disable
-  editor-only addons in export presets (same rule as the MCP addon).
+- **During prove:** use only code that directly accelerates the **one player-facing question**.
+  Multiple existing solutions are allowed; optimize for speed-to-learning, Godot 4.7
+  compatibility, inspectability, and easy removal — not dependency count. Do not bulk-install
+  addons or add speculative systems.
+- **Approval lanes:** low-risk, single-purpose, permissively licensed GDScript addons may be
+  approved as one named batch. Every addon still needs its own justification, pinned version
+  or commit, license check, focused smoke test, and provenance row. Large frameworks or addons
+  that own input, core gameplay, multiplayer authority, networking, saves, the scene tree, or
+  another broad game boundary require separate explicit human approval. Native extensions are
+  prohibited during prove; after KEEP, they require separate explicit human approval (L-19).
+- **Ownership:** reuse solved supporting systems such as controllers, camera effects, particles,
+  audio helpers, ragdolls, pooling, settings, and UI. Keep game-specific mechanics and multiplayer
+  authority under the game's ownership. An existing solution may sit behind a game-owned seam;
+  transferring ownership is a high-risk decision.
+- **Reject:** missing or conflicting licenses, incompatible Godot versions, GPL/AGPL shipping
+  code without written human acceptance, every native extension during prove, unnecessary native
+  extensions after KEEP, and physics-replacing extensions during prove remain rejected.
+- **After KEEP:** apply the same dependency gate. The Production Foundation Gate decides lasting
+  ownership and seams before production feature work begins. Disable editor-only addons in
+  export presets (same rule as the MCP addon).
 
 ### What “documented” means
 
-The third-party table row is filled **in the same commit** as the files. The commit names the
-addon. Do not `git add -A` a mystery `addons/` tree. If you fork or heavily tweak, the
-**Tweaks** cell says what changed and that upstream LICENSE still applies.
+The third-party table row is filled **in the same commit** as the files. Record the exact version
+or commit, and name the addon in the commit. Do not `git add -A` a mystery `addons/` tree. If
+you fork or heavily tweak, the **4.7 smoke / tweaks** cell names the focused scenario and result,
+then says what changed and that upstream LICENSE still applies. A named same-commit evidence note
+may hold the full command and output.
 
 ## Provenance in one paragraph
 

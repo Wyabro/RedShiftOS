@@ -105,30 +105,42 @@ Re-evaluate them after KEEP instead of expanding the day-0 skill surface.
 
 GUT / GdUnit4: after KEEP. They test behavior, not fun.
 
-## Reuse — Store first, then Kenney, then GitHub
+## Reuse first — code: Store, Library, then GitHub
 
-Do not rewrite a solved Godot problem when a **4.7** addon or a CC0 kit already does it.
-Pull [`LIFECYCLE/6-PRODUCTION/Assets-and-Provenance.md`](../6-PRODUCTION/Assets-and-Provenance.md)
+Do not rewrite a solved Godot system when a compatible, inspectable code solution can answer
+the current question faster. During a concept prove, dependency count is not a gate. Every
+addon must directly accelerate the same one player-facing question. Pull
+[`LIFECYCLE/6-PRODUCTION/Assets-and-Provenance.md`](../6-PRODUCTION/Assets-and-Provenance.md)
 — license bucket, then version, then code.
 
-On this engine:
+1. **Search in order.** For code, search the [Godot Asset Store](https://store.godotengine.org)
+   first, the legacy [Asset Library](https://godotengine.org/asset-library/asset) second, then
+   licensed GitHub `godot-addon` repositories. For greybox art / UI / SFX, use
+   [Kenney](https://kenney.nl) (CC0); for HDRIs/textures, [Poly Haven](https://polyhaven.com)
+   (CC0); and for shaders, [godotshaders.com](https://godotshaders.com) (per-page license).
+2. **Reuse supporting systems.** Controllers, camera effects, particles, audio helpers,
+   ragdolls, pooling, settings, and UI are valid reuse targets. Keep game-specific mechanics
+   and multiplayer authority under the game's ownership. An existing solution may sit behind
+   a game-owned seam; transferring ownership is a high-risk decision.
+3. **Approve by risk.** Low-risk, single-purpose, permissively licensed GDScript addons may
+   be approved together as one reviewed batch. Name the exact addons and versions, and justify
+   each one. Large frameworks or addons that take ownership of input, core gameplay,
+   multiplayer authority, networking, saves, the scene tree, or another broad game boundary
+   require separate explicit human approval. Native extensions are prohibited during prove;
+   after KEEP, they require separate explicit human approval. The stock-Jolt prove rule still
+   applies.
+4. **Verify each dependency.** Require Godot 4.7 compatibility, a permitted license, a pinned
+   version or commit, a focused smoke test of the intended integration, and provenance recorded
+   in the same commit as the dependency. A **4.x** tag needs a 4.7.x smoke + tweak note.
+   Godot 3: no.
+5. **Reject unsafe fits.** Reject missing or conflicting licenses, incompatible Godot versions,
+   GPL/AGPL shipping code without written human acceptance, every native extension during prove,
+   unnecessary native extensions after KEEP, and physics-replacing extensions during prove.
+   Export presets exclude editor-only addons.
 
-1. **Code / addons:** [Godot Asset Store](https://store.godotengine.org) (4.7 in-editor). Fall
-   back to the [Asset Library](https://godotengine.org/asset-library/asset) only if it is not
-   on the Store yet. Then GitHub `godot-addon` with a `LICENSE`.
-2. **Greybox art / UI / SFX:** [Kenney](https://kenney.nl) (CC0). HDRIs/textures:
-   [Poly Haven](https://polyhaven.com) (CC0). Shaders: [godotshaders.com](https://godotshaders.com)
-   (per-page license).
-3. Open the listing **and** the `LICENSE`. If they disagree, skip.
-4. Prefer Godot **4.7**. **4.x** needs a 4.7.x smoke + tweak note. Godot 3: no.
-5. Copy `LICENSE` next to the files. Fill the third-party table in the **same commit**.
-6. **GPL/AGPL code does not ship** unless Wyatt accepts that in writing. CC-BY-NC does not
-   ship on Steam.
-7. Prove: at most one permissive addon, and only if it is the core verb. Kenney CC0 kits do
-   not count as that addon. No Box3D-class physics plugins (L-19).
-8. Export presets exclude editor-only addons.
-
-An agent does not bulk-install the Store.
+Do not bulk-install addons or add speculative systems. Prefer narrow public seams, inspectable
+source, and removal that does not cross unrelated owners. Reuse does not close HUMAN PASS/KEEP
+or bypass the Production Foundation Gate.
 
 ## After KEEP
 

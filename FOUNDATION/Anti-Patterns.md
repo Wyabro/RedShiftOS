@@ -22,7 +22,7 @@ its cross-referenced Lesson or Manifesto rule — this file is the **detector**,
 | 6 | **One-Off Exceptions** | A name-checked conditional (`=== 'zanzibar'`) inside otherwise-generic logic; roughly one special-case per variant. | L-13, L-17 |
 | 7 | **Premature Optimization** | No profile or playtest pointed at it before it was optimized; the fast path is the default with no fallback; no measured before/after. | L-09 |
 | 8 | **Refactoring Without Purpose** | The diff's file list isn't a subset of the plan's; "while I was here"; a structural refactor landing *before* the gate it could break. | L-11 |
-| 9 | **Dependency Collecting** | A dep used in exactly one place / for one function; it entered with no decision-log line; you can name a <20-line hand-roll that replaces it. | Manifesto §5 |
+| 9 | **Dependency Collecting** | A dependency cannot be tied to the current one-question proof or an approved production need; it arrived through a bulk install; or it owns a broad game boundary without named approval and a removal seam. | Manifesto §5, L-23 |
 | 10 | **Menu Explosion** | The menu file is a top-3 churn hotspot; options-added outpaces options-removed; a setting no playtester has ever changed. | Manifesto §6, L-06 |
 | 11 | **Singleton Abuse** | Runtime (non-init) code assigns to a global / `CONFIG`; two stores expose the same state; a test fails unless you reset a global first. | Manifesto §4 |
 | 12 | **Architecture Astronautics** | An interface / factory / plugin system with one implementation and no second on the roadmap; a folder of stub files; you can't name the concrete case it serves *today*. | Manifesto §5 |

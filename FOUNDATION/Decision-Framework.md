@@ -424,3 +424,48 @@ Tradeoffs:
 Reversible?:
   Yes — a later decision can add sibling path resolution, a tiny health check, or
   stronger versioning after Game #3 exposes repeated manual failures.
+
+## Decision #10 — Gate Godot code reuse by risk and removability
+
+Date: 2026-09-01
+Status: Accepted
+
+Question:
+  How should Godot concept proofs reuse solved code without returning to dependency sprawl?
+
+Alternatives:
+  - Keep the one-addon cap and hand-write every other supporting system.
+  - Remove the cap and allow unrestricted addon installation.
+  - Allow multiple directly useful solutions, gated by compatibility, license, proof,
+    inspectability, ownership risk, and removability.
+
+Chosen:
+  Godot is reuse-first on the code side. During a concept proof, multiple existing code
+  solutions may be used when each directly accelerates the one player-facing question. Select
+  by speed-to-learning, Godot 4.7 compatibility, license, focused smoke, inspectability,
+  ownership risk, and easy removal — not dependency count.
+
+  Low-risk, single-purpose, permissively licensed GDScript addons may be approved as one named
+  batch, with per-addon justification and provenance. Large frameworks or addons that own input,
+  core gameplay, multiplayer authority, networking, saves, the scene tree, or another broad game
+  boundary require separate explicit human approval. Native extensions are prohibited during
+  prove and require separate explicit human approval after KEEP. Do not bulk-install or add
+  speculative systems. Keep game-specific mechanics and multiplayer authority under the game's
+  ownership; an existing solution may sit behind a game-owned seam, but transferring ownership
+  is a high-risk decision. HUMAN PASS/KEEP ownership and the Production Foundation Gate do not
+  change.
+
+Reason:
+  The GAME-3 field trial showed that a dependency-count limit encouraged agents to rewrite
+  solved prototype systems. That delayed player-visible learning without reducing the risks
+  that matter. A risk-and-removability gate better serves fast iteration and the philosophy's
+  direction to optimize for change and deletion (L-23).
+
+Tradeoffs:
+  A prove may carry more third-party code, license review, and smoke-test work. Named versions,
+  per-addon provenance, narrow seams, batch limits, and explicit approval for architecture-owning
+  dependencies keep that cost visible and make abandoned addons replaceable.
+
+Reversible?:
+  Yes — the policy prefers dependencies that can be removed without crossing unrelated owners.
+  A later field trial can tighten the risk lanes without restoring an arbitrary count.

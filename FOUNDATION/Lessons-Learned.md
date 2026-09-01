@@ -15,17 +15,17 @@ doesn't get cargo-culted).
 
 ## Pull by tag
 
-Load the lessons a task needs, not all twenty-two:
+Load the lessons a task needs, not the whole catalog:
 
-- **architecture** — L-01, L-03, L-04, L-17, L-19
+- **architecture** — L-01, L-03, L-04, L-17, L-19, L-23
 - **net / multiplayer** — L-02, L-08, L-22
 - **ship / verify** — L-05, L-07, L-08, L-18
 - **perf / hardware** — L-06, L-09, L-10
-- **process / workflow** — L-01, L-10, L-11, L-12, L-14, L-17, L-20, L-21
+- **process / workflow** — L-01, L-10, L-11, L-12, L-14, L-17, L-20, L-21, L-23
 - **ai-collaboration** — L-05, L-11, L-13, L-14, L-18, L-21
 - **design / feel** — L-13, L-16, L-20
 - **playtest** — L-06, L-15, L-16, L-18, L-20
-- **godot / engine** — L-19, L-21
+- **godot / engine** — L-19, L-21, L-23
 
 ---
 
@@ -373,6 +373,27 @@ Load the lessons a task needs, not all twenty-two:
 - **Exceptions:** A genuinely single-player game decides that on purpose (L-02).
 - **Example:** Cart Clash host-authoritative Rapier was a one-line invariant from early on;
   the transport still changed later. The invariant informed the toy. The essay did not.
+
+## L-23 — Gate reuse by risk and removability, not dependency count
+
+- **Problem:** During the GAME-3 field trial, the one-addon concept-prove limit discouraged
+  reuse. Solved supporting systems were written from scratch, slowing the path to a polished,
+  playable prototype.
+- **Why we missed it:** A numerical cap looked like a simple defense against dependency sprawl,
+  so agents optimized the count instead of the cost.
+- **Root cause:** Dependency count does not measure maintenance or architecture risk. A small,
+  inspectable, removable addon can cost less than custom code.
+- **Rule:** Godot projects are reuse-first on the code side. Select dependencies by direct
+  contribution to the one player-facing question, speed-to-learning, Godot 4.7 compatibility,
+  license, focused proof, inspectability, ownership risk, and easy removal. Low-risk GDScript
+  addons may receive batch approval; high-risk dependencies require explicit individual
+  approval. Native extensions are prohibited during prove and require explicit approval after
+  KEEP. Do not bulk-install or add speculative systems.
+- **Exceptions:** Missing or conflicting licenses, incompatible engine versions, unaccepted
+  GPL/AGPL shipping code, native extensions during prove, unnecessary native extensions after
+  KEEP, and physics-replacing prove dependencies remain rejected.
+- **Example:** GAME-3 spent time rebuilding solved prototype support because RedShiftOS
+  permitted only one addon.
 
 ---
 
