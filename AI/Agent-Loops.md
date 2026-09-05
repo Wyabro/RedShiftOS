@@ -12,17 +12,23 @@ screenshot gauntlet and called it PASS (L-18). This page is the loop we trust, r
 ## The loop (every engine)
 
 ```
-one question → edit → run → observe → assert (TECH PASS) → AGENT REVIEW (optional)
+one hypothesis → approved slice grant → edit → run → observe → assert (TECH PASS) → AGENT REVIEW (optional)
     → HUMAN PLAYTEST OWED → HUMAN PASS / FAIL → KEEP / REWORK / KILL
     KEEP → production-foundation → FOUNDATION TECH PASS → FOUNDATION APPROVED → feature work
 ```
 
-Stop at ~45 minutes or 3 failed approaches (`AI/Triage-and-Recovery.md`). Write a handoff.
-Do not start a critic gauntlet to “unblock” a timebox.
+Use the approved grant for normal reversible edit → run → observe cycles. Stop at ~45 minutes or
+3 failed approaches (`AI/Triage-and-Recovery.md`), write a handoff, and name the next playable
+build. Do not reopen approval for a tuning value inside the same boundary. Do not start a critic
+gauntlet to “unblock” a timebox.
+
+Batch related questions before the plan. Keep the main gameplay hypothesis and the next
+player-visible build in view. The canonical grant, hypothesis, and cadence rules live in
+[`FOUNDATION/Feature-Lifecycle.md`](../FOUNDATION/Feature-Lifecycle.md).
 
 After **KEEP:** stop feature work. The next loop is the Production Foundation Gate in
 `FOUNDATION/Feature-Lifecycle.md`. An agent may report FOUNDATION TECH PASS. Only Wyatt
-writes FOUNDATION APPROVED. REWORK returns to the one-question loop. KILL is a valid stop.
+writes FOUNDATION APPROVED. REWORK returns to the one-hypothesis loop. KILL is a valid stop.
 
 | Step | Proof it belongs | What it is not |
 |---|---|---|

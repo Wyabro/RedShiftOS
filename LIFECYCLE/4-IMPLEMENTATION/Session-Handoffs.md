@@ -18,6 +18,11 @@ That's it. More than three lines is fine; fewer means you skipped one.
 
 ## Where it goes
 
+The handoff is recovery context, not a second task tracker. `Tasks.md` is authoritative for the
+active task, evidence state, and approved support lane. `PROJECT.md` holds durable product and
+architecture facts. `decisions.md` holds durable game decisions. The handoff records only the
+latest change, known breakage, and next action needed to resume.
+
 - Commit it (a `HANDOFF.md`, or append to `Tasks.md` / a `sessions/` log), so the next
   session — human or agent — reads it as part of the load order.
 - In a game repo, this is what `STATUS.md` / the latest handoff refers to in the AGENTS.md

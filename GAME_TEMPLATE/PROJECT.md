@@ -5,6 +5,9 @@ how you stop every new session from re-deciding the stack, broadening scope, or 
 unrelated files. Keep it short, dense, and current; if a rule needs constant rewriting, it
 belongs in a separate doc, not here.
 
+This file holds durable product and architecture facts. Keep the active task, evidence state,
+and approved support lane in `Tasks.md`. Keep recent execution context in the latest handoff.
+
 ---
 
 ## Project
@@ -15,8 +18,6 @@ belongs in a separate doc, not here.
 - **Target player:**
 - **Target platform & hardware:**
 - **Price band (if Steam):**
-- **Current milestone — what success looks like:**
-- **Current evidence state:** *(TECH PASS / AGENT REVIEW / HUMAN PLAYTEST OWED / HUMAN PASS / HUMAN FAIL / KEEP / REWORK / KILL)* — human writes PASS/FAIL/KEEP/KILL
 
 ## Stack
 
@@ -32,7 +33,7 @@ belongs in a separate doc, not here.
 
 ## First shippable version (the prove)
 
-- **The one question:**
+- **The one gameplay hypothesis:**
 - **Core verb:**
 - **Required scenes / systems** (greybox only):
 - **What counts as KEEP:** a fresh player does the verb unprompted and repeats without being asked
@@ -46,9 +47,7 @@ and migration are not this section.
 Before KEEP, this section is **NOT OPEN**. After KEEP, the next task is the Production
 Foundation Gate in `RedShiftOS/FOUNDATION/Feature-Lifecycle.md`, not a production feature.
 
-- **Foundation state:** NOT OPEN / IN PROGRESS / FOUNDATION TECH PASS / FOUNDATION APPROVED
-  *(only Wyatt writes APPROVED)*
-- **KEEP evidence** (person, build, date, observed behavior):
+- **KEEP evidence record** (historical proof; not the active evidence state in `Tasks.md`):
 - **Prototype disposition** (delete / archive / reference only):
 - **Composition root** (the one place that wires top-level owners):
 

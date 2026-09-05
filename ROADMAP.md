@@ -6,27 +6,40 @@ list to build now. The rule stands: nothing here gets built until a real game ne
 
 ---
 
-## Now — v0.2 evidence kernel (Decisions #6–#9)
+## Now — v0.2 velocity-correction field trial (Decisions #6–#11)
 
 Game #2 (Slop Park) ran the v0.1 OS and dead-ended. Agents stamped PASS; the human gate is
 FAIL. The project is **frozen** — do not polish it.
 
-v0.2’s job is to **reject weak hooks quickly** (one-question prototypes, evidence states,
+v0.2’s job is to **reject weak hooks quickly** (one-hypothesis prototypes, evidence states,
 Godot 4.7 hard cuts, ranked agent loops). KEEP opens the Production Foundation Gate
 (Decision #7) — not production feature cards. **Still no automation wizard.** Pointers stay
 thin (Decision #8) so Grok, Codex, Cursor, Gemini, and Claude hit the same `AGENTS.md`.
 
-**Status:** field-ready for Game #3 concept proof and the post-KEEP Production Foundation
-Gate. Not production-proven (Decision #9). Supported layout: git submodule at `./RedShiftOS`,
-pinned to a named commit. Change the pin only through a named game decision plus a cold-start
-smoke test.
+**Status:** GAME-3 produced useful but mixed evidence. Human-only verdicts stayed controlled,
+the Production Foundation Gate completed, reuse-first rules corrected an arbitrary dependency
+cap, and real playable systems reached artifact and network proof. The trial also showed that
+serial approvals, excess records, repeated context reconstruction, and copied volatile state
+can delay the next playable build. The product concept still required correction. RedShiftOS is
+not production-proven. The supported layout remains a git submodule at `./RedShiftOS`, pinned to
+a named commit. Change the pin only through a named game decision plus a cold-start smoke test.
 
-**How we'll know v0.2 worked** (measure on Game #3):
+**Next trial goal:** reach the next human-playable build quickly and recover cleanly between
+sessions. Measure the approved iteration grant, the active-state source of truth, and one
+bounded support lane without weakening human verdicts, ownership boundaries, or artifact proof.
+
+**How we'll measure the next throughput trial:**
 
 - **False PASS** — agent writes HUMAN PASS / KEEP. *(zero)*
 - **Repeat L-18–L-22** — critic-as-close, Box3D-class plugins, OS-before-laugh, harness-as-game, solo-only prove on a co-op 1.0. *(fewer)*
 - **Time to first human play** of the core verb. *(hours, not days)*
 - **OS overhead** — hours maintaining the OS vs. hours in `prototypes/`. *(small)*
+- **Playable-build cadence** — approved slices that reach the named next build before new
+  process records accumulate. *(increases)*
+- **Recovery clarity** — new sessions find the active task and evidence state from `Tasks.md`
+  and the latest handoff without oral correction. *(yes)*
+- **Support-lane safety** — any parallel support work stays inside its allowlist and passes
+  focused integration review. *(yes or lane removed)*
 
 If these don't move, cut v0.2 harder — do not add layers.
 

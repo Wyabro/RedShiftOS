@@ -5,16 +5,20 @@ paste. Keep them short — a prompt you have to re-read is too long.*
 
 ---
 
-## Interview before planning
+## Batch blocking questions before planning
 
-> Before you write any plan or code, ask me the questions you need answered to do this well —
-> stack, constraints, edge cases, what "done" means. Don't assume; a capable agent asks first.
+> Before you write the plan, batch the blocking questions you need answered: stack, constraints,
+> edge cases, and what “done” means. Make reversible assumptions explicit. Ask one question alone
+> only if its answer selects a materially different direction or makes work unsafe. Do not turn
+> one gameplay hypothesis into one chat message at a time.
 
 ## Plan before code (the checkpoint)
 
-> Explore the relevant code and report back **without editing anything**: what you'd change,
-> which files, the approach, the risks, and how you'll verify it. Wait for my approval before
-> implementing.
+> Explore the relevant code and report back **without editing anything**: goal, exact files,
+> ownership and risk boundaries, approach, and verification. After approval, use the approved
+> iteration grant for normal reversible implementation, tuning, focused debugging, and repair
+> inside that boundary. Ask again only when work crosses it. Do not commit or push without a
+> separate instruction.
 
 ## Describe the end result / feel
 
@@ -44,12 +48,12 @@ paste. Keep them short — a prompt you have to re-read is too long.*
 > score funny, hooked, or comparisons to other games. End with HUMAN PLAYTEST OWED. Never
 > write HUMAN PASS, KEEP, or KILL.
 
-## One-question prototype brief
+## One-hypothesis prototype brief
 
-> Fill this, then stop and wait:
-> QUESTION / CORE VERB / PLAYERS (1 or 2 local) / THROWAWAY? / TIMEBOX / KEEP IF / KILL IF.
-> Greybox only. Stock Godot 4.7 Jolt. No GDExtension. Spike in prototypes/ or a throwaway
-> branch. Do not stamp HUMAN PASS.
+> Fill this one gameplay hypothesis: QUESTION / CORE VERB / PLAYERS (1 or 2 local) / THROWAWAY?
+> / TIMEBOX / KEEP IF / KILL IF. Batch related questions before the plan. Greybox only. Stock
+> Godot 4.7 Jolt. No GDExtension. Spike in prototypes/ or a throwaway branch. Do not stamp
+> HUMAN PASS.
 
 ## Verify in the shipped artifact
 

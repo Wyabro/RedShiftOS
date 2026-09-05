@@ -31,7 +31,7 @@ Pull only what the task in front of you needs:
 | starting a new system / feature | `FOUNDATION/Feature-Lifecycle.md` (full) · `FOUNDATION/Decision-Framework.md` · Lessons tagged *architecture / design* |
 | starting / proving a Godot game | `LIFECYCLE/3-ENGINEERING/Godot.md` · `AI/Agent-Loops.md` · Lessons L-18–L-22 |
 | after HUMAN KEEP / production foundation | Feature-Lifecycle **Production Foundation Gate** · game `PROJECT.md` ownership contract · `LIFECYCLE/3-ENGINEERING/Godot.md` (export hygiene) |
-| prototyping a verb (any engine) | Feature-Lifecycle **Evidence states** + **One question per prototype** · `AI/Agent-Loops.md` · `prototype-fast` if installed in the *game* repo |
+| prototyping a verb (any engine) | Feature-Lifecycle **Evidence states** + **One gameplay hypothesis per prototype** · `AI/Agent-Loops.md` · `prototype-fast` if installed in the *game* repo |
 | fixing a bug | root-cause first (L-14) · the Lesson IDs for that area (Lessons → "Pull by tag") · the proof ladder |
 | tuning feel / balance | the prototype + playtest gates · Lessons tagged *design / playtest* |
 | working netcode / multiplayer | Lessons tagged *net* (L-02, L-08, L-22) · the game's own netcode notes · Godot: `godot-multiplayer` skill **only if** it names 4.7 |
@@ -56,8 +56,9 @@ Every non-trivial change follows this loop — it's what keeps agents consistent
 
 - **Explore** the code and report risks — no edits yet.
 - **Plan** in writing: files to touch, approach, risks, how it'll be verified.
-- **Human approves the plan.** This checkpoint is the highest-leverage gate — it's cheaper to
-  fix a plan than a diff.
+- **Human approves the plan.** The approved iteration grant in
+  [`FOUNDATION/Feature-Lifecycle.md`](FOUNDATION/Feature-Lifecycle.md) defines the reversible
+  work that approval covers.
 - **Implement** the plan, targeted edits only.
 - **Diff-review:** the human reads the diff. For non-trivial work, a *fresh-context*
   writer-reviewer checks the diff + plan for scope creep — the agent that wrote the code has
@@ -74,10 +75,15 @@ Lifecycle) — a typo fix and a new game mode do not get the same gates.
 The Manifesto, made agent-actionable:
 
 - **One feature or bug at a time** — the single top task in `Tasks.md`. The human sets
-  priority by editing that file; don't self-assign what to work on. Explain the plan before
-  broad edits.
+  priority by editing that file; don't self-assign what to work on. A support lane is an
+  explicit, bounded exception owned by `Tasks.md` and the Feature Lifecycle. Explain the plan
+  before broad edits.
 - **Targeted edits only.** Don't rewrite whole files or refactor architecture unless the plan
   says so. Don't touch unrelated files "while you're here."
+- **Concept-prove cadence** — one gameplay hypothesis, batched related questions, and the next
+  player-visible build are defined in [Feature-Lifecycle](FOUNDATION/Feature-Lifecycle.md).
+- **Support lanes** — the game's `Tasks.md` owns active state and the exact allowlist; the
+  Feature Lifecycle owns the boundary rules.
 - **No new dependencies** without written justification and human approval (Manifesto §5).
 - **"Done" means verified in the build you ship** (Manifesto §8) — not "it compiles," not
   "works in dev." Review your own diff; confirm you changed only what was agreed.

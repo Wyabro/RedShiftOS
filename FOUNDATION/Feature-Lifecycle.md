@@ -53,7 +53,7 @@ A feature does not advance until its current stage's gate is met:
 | Design | Written, with edge cases and a measurable success metric. |
 | Technical Review | Impact on existing systems and cross-cutting concerns documented. |
 | Risk Review | Biggest risk named; a way to test the assumption cheaply identified. |
-| Prototype | Answers **one written question** in a greybox sitting (30–90 min for a verb; one or two evenings for a slice). No production art, no production architecture. **TECH PASS** possible. An LLM critic may not close this stage. |
+| Prototype | Answers **one written gameplay hypothesis** in a greybox sitting (30–90 min for a verb; one or two evenings for a slice). No production art, no production architecture. **TECH PASS** possible. An LLM critic may not close this stage. |
 | Playtest | Observed with a real player on a real build. Only a named human writes **HUMAN PASS** or **HUMAN FAIL**. |
 | Revision | Design updated from playtest evidence (or explicitly confirmed unchanged). |
 | Production Foundation | **FOUNDATION APPROVED** (Wyatt). Ownership contract, skeleton, change drill, named proof. Skip if the game already has it. |
@@ -90,9 +90,9 @@ Slop Park’s “FINAL VERDICT: PASS” from screenshots and AI critics was a sk
 
 LLM critics are useful when the model can **see** (GameDevBench: visual feedback raised pass rates). They score observables (“the weld spark fired,” “both pads move a body”). They do **not** score fun. A weak-vision critic is worse than none — it stamps theater.
 
-## One question per prototype
+## One gameplay hypothesis per prototype
 
-If you have two questions, build two prototypes. A prototype that tests movement + experimental physics + welding + terrain + HUD + comedy tests nothing (Slop Park).
+If you have two gameplay hypotheses, build two prototypes. A prototype that tests movement + experimental physics + welding + terrain + HUD + comedy tests nothing (Slop Park). The one-hypothesis rule controls prototype scope, not chat cadence. Batch related design questions. Ask one question alone only when its answer selects a materially different direction or makes further work unsafe.
 
 Fill this before any prototype code:
 
@@ -105,6 +105,30 @@ TIMEBOX:      30–90 min (verb) or one sitting (slice). Stop when it rings.
 KEEP IF:      a fresh player does the verb unprompted and repeats without being asked.
 KILL IF:      it only works after you explain it, or fun needs systems far beyond this sitting.
 ```
+
+## Approved iteration grant
+
+The approved plan is the boundary for normal reversible work. The plan must name the goal,
+files, owners and public seams, risk boundary, and verification plan. After human approval, the
+agent may implement, tune, debug, run repeated edit → run → observe cycles, repair tests caused
+by the approved change, and add documentation that the result makes necessary. These actions do
+not need a new approval while they stay inside the named boundary.
+
+Ask for a new approval when the work crosses the goal, file, owner, risk, or verification
+boundary. A grant never authorizes a new dependency, architecture or ownership change, purchase,
+destructive or external action, human verdict, commit, merge, or push.
+
+## Playable-build cadence
+
+Every concept proof or gameplay slice names the next player-visible build. Keep the slice small
+enough to reach that build in one development sitting when practical. Test several tuning values
+inside the approved slice instead of opening a new planning cycle for each value. If plans,
+records, frameworks, or harnesses continue to grow without another playable build, cut scope.
+
+The minimum concept-proof record is: one hypothesis, player-visible behavior, scope, KEEP or
+rework condition, technical floor, and current evidence state. Write detailed records after
+evidence exists. Use the full Decision Framework only for a durable product, architecture,
+process, dependency, authority, or ownership choice.
 
 Spike in `prototypes/<idea>/` or a throwaway branch. KEEP opens the **Production Foundation
 Gate** below; it does not authorize copying the spike into production. (Shape adapted from
@@ -191,7 +215,7 @@ class and run its gates; anything you drop is a named choice, not a silent skip.
 | **bug** | Root-cause (L-14) → Fix → Code Review → Validate | design · prototype · playtest |
 | **tune / feel** | Prototype (the tune panel) → Playtest → apply → Validate | design docs · heavy review |
 | **chore / docs** | Code Review → Validate | everything upstream |
-| **concept-prove** | One-question prototype → TECH PASS → (optional AGENT REVIEW) → human play → KEEP/REWORK/KILL | production architecture · skill packs · net essays |
+| **concept-prove** | One-hypothesis prototype → TECH PASS → (optional AGENT REVIEW) → human play → KEEP/REWORK/KILL | production architecture · skill packs · net essays |
 | **production-foundation** | HUMAN KEEP → ownership contract → skeleton → change drill → FOUNDATION TECH PASS → human approval | new content · production art · speculative systems |
 
 Two gates **never** drop, whatever the class: **root-cause before the fix** (L-14) and

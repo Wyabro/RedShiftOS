@@ -29,6 +29,10 @@ Before committing to a major decision, answer:
 
 If a decision can't answer 1, 2, and 7, it's not a decision yet — it's a hunch.
 
+Do not use this full record for every reversible tune or edit-run-observe cycle inside an
+approved plan. Use it for a durable product, architecture, process, dependency, authority, or
+ownership choice. The active task and evidence state belong in the game's `Tasks.md`.
+
 ## Decision Log format
 
 Every significant decision gets an entry. Keep them append-only; when a decision is
@@ -469,3 +473,35 @@ Tradeoffs:
 Reversible?:
   Yes — the policy prefers dependencies that can be removed without crossing unrelated owners.
   A later field trial can tighten the risk lanes without restoring an arbitrary count.
+
+## Decision #11 — Give approved slices room to iterate
+Date: 2026-09-04
+Status: Accepted — field-trial policy
+
+Question:
+  How should RedShiftOS protect human and architecture gates without turning a bounded playable
+  slice into serial approvals and documentation work?
+
+Alternatives:
+  - Require a new approval for each implementation, tuning, or repair step.
+  - Remove the plan gate and let agents expand freely.
+  - Keep the plan gate, then grant normal reversible iteration inside named boundaries.
+
+Chosen:
+  Use the approved iteration grant, one-hypothesis definition, and playable-build cadence
+  defined in `FOUNDATION/Feature-Lifecycle.md`. Keep active task, evidence, and support-lane
+  state in `Tasks.md`; keep durable product and architecture facts in `PROJECT.md`.
+
+Reason:
+  GAME-3 showed that human-only verdicts and ownership boundaries can remain intact while the
+  delivery path becomes too slow. The correction must reduce process overhead without weakening
+  the proof ladder or human direction.
+
+Tradeoffs:
+  A broad grant can hide scope creep if the plan boundary is vague. Exact file, owner, risk, and
+  verification boundaries plus diff review keep the permission legible. The support-lane rule is
+  a bounded field-trial option, not a multi-feature parallel wave.
+
+Reversible?:
+  Yes — later field evidence can tighten or remove the grant without changing the human verdict
+  or shipped-artifact gates.

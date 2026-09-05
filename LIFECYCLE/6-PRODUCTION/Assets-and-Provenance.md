@@ -54,6 +54,18 @@ Greybox / programmer-art in a prove does not go to the store.
 Prefer an existing addon or CC0 kit over a from-scratch rewrite when it answers a real need
 (Manifesto §5). **License first, then version, then code.** This is not legal advice.
 
+### Asset value and visual fit
+
+Name the asset gap before shopping. A large bundle is not automatically valuable. Inspect one
+representative asset at the game's camera distance and intended scale before bulk import. Prefer
+editable source formats, clear commercial and modification rights, and a source format the game
+can own through a narrow adapter. Use a source-specific adapter before designing a universal
+import framework. Keep private paid sources outside public repositories. Record provenance in the
+same change as derived runtime assets.
+
+For a first-person game, judge the model at player-eye distance. A top-down or diorama pack may
+be useful greybox material while failing as production art.
+
 ### Where to look (Godot 4.7)
 
 **Do now** — same log + license buckets for all of these:

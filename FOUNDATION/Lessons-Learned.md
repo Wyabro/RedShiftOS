@@ -339,10 +339,15 @@ Load the lessons a task needs, not the whole catalog:
   **KEEP**, the next task is the Production Foundation Gate — not feature cards, and not a
   copy of the spike. Cards and production architecture start after **FOUNDATION APPROVED**.
   If 1.0 is multiplayer, the unstructured prove is still **2-player-shaped** (L-22) — that is
-  a design constraint, not a process novel.
+  a design constraint, not a process novel. Once a bounded slice is approved, give it room for
+  normal reversible implementation, tuning, focused debugging, and repeated edit → run → observe
+  cycles. One gameplay hypothesis does not require one chat message per question, and a tuning
+  lever inside the same boundary does not require a new plan.
 - **Exceptions:** A behavior change on a game that already has KEEP follows the full gates.
 - **Example:** Cart Clash jam (Apr 2026) vs RedShiftOS written in July from those lessons —
-  Game #2 cargo-culted the docs, not the jam.
+  Game #2 cargo-culted the docs, not the jam. GAME-3 then showed the related failure inside a
+  real production composition: serial approvals and records delayed the next playable collision
+  proof even though the gameplay boundary had not changed.
 
 ## L-21 — The harness must not become the game
 

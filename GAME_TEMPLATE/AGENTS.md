@@ -18,14 +18,15 @@ filename, add a thin pointer — do not restate these rules in it.
    - Godot prove: also `RedShiftOS/LIFECYCLE/3-ENGINEERING/Godot.md` + `RedShiftOS/AI/Agent-Loops.md`
    - After KEEP: also `RedShiftOS/FOUNDATION/Feature-Lifecycle.md` (Production Foundation Gate)
 3. **`PROJECT.md`** — this game's contract (concept, stack, prove, foundation, cut list).
-4. **`Tasks.md`** and, if they exist, **`STATUS.md` / latest handoff** — what's in flight.
+4. **`Tasks.md`** — the active task, evidence state, and any approved support lane.
+5. If it exists, the latest handoff — recovery context only; it does not override `Tasks.md`.
 
 **Paste-able opener** (tools that do not auto-read files):
 
 ```text
 You are working on <GAME NAME>. Read AGENTS.md, then RedShiftOS/AGENTS.md, then
 RedShiftOS/FOUNDATION/Development-Manifesto.md, then PROJECT.md, then Tasks.md.
-Prove first: one question, greybox, stock Godot 4.7. Do not write HUMAN PASS, KEEP, or KILL.
+Prove first: one gameplay hypothesis, greybox, stock Godot 4.7. Do not write HUMAN PASS, KEEP, or KILL.
 After KEEP the next task is production-foundation, not a feature. Never git add -A.
 ```
 
@@ -34,7 +35,7 @@ binding when the task pulls them** (see `RedShiftOS/AGENTS.md` → "Load by task
 features run the Feature Lifecycle — pick the task class and run its gates; a dropped gate is a
 named choice, not a silent skip. Prove it before you build it.
 
-**Until KEEP:** one question, greybox, stock Godot 4.7, two players if 1.0 is co-op. No
+**Until KEEP:** one gameplay hypothesis, greybox, stock Godot 4.7, two players if 1.0 is co-op. No
 production architecture. You may report TECH PASS or AGENT REVIEW. You may not write HUMAN PASS.
 
 **After HUMAN KEEP:** the next top task is `production-foundation`, not a production feature.
@@ -52,19 +53,16 @@ listed record does not exist yet, do not create an empty one.
 
 ---
 
-## This game (fill from PROJECT.md)
+## State ownership
 
-- **Concept:** <one sentence>
-- **Stack:** Godot 4.7.x / <language> / <hosting>
-- **Players / authority:** <1 or 2 local prove> / <host-auth or n/a>
-- **Primary tools:** <from PROJECT.md>
-- **Current evidence state:** <from PROJECT.md>
-- **Current milestone / "done":** <what KEEP or this card means>
+Do not copy the current concept, milestone, or evidence state into this file. Read durable
+product and architecture facts from `PROJECT.md`. Read the active task, evidence state, and any
+approved support lane from `Tasks.md`. Read recent execution context from the latest handoff.
 
 ## Non-negotiables
 
-- Work only the single top task in `Tasks.md` (the human sets priority); explain the plan
-  before broad edits.
+- Work only the single top task in `Tasks.md` (the human sets priority), unless that file names
+  one approved support lane; explain the plan before broad edits.
 - Targeted edits only — no whole-file rewrites or refactors unless the plan says so; don't
   touch unrelated files.
 - No new dependencies without written justification + approval. No GDExtension in prove.
